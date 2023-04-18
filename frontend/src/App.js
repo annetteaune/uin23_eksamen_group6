@@ -1,7 +1,11 @@
+
+import Layout from "./components/Layout";
 import "./css/main.css";
 
 function App() {
-	return <h1>Eksamensoppgave UIN23</h1>;
+	return (
+    <Layout/>
+  )
 }
 
 export default App;
