@@ -1,6 +1,6 @@
 import Dashboard from "./Dashboard"
 
-export default function Layout() {
+export default function Layout({shopGames}) {
 	return (
 		<>
         <header>
@@ -10,7 +10,7 @@ export default function Layout() {
             <div>navigation</div>
         </nav>
         <main>
-			<Dashboard />
+			<Dashboard shopGames={shopGames}/>
         </main>
         <footer>
             footer w/link to api
