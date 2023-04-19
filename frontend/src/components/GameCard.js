@@ -1,9 +1,10 @@
-export default function GameCard() {
+export default function GameCard({ title, image }) {
 	return (
-		<article>
-			<div>image</div>
-			<h3>Title</h3>
-			<h4>Genre </h4>
+		<article className="game-card"> 
+			<img src={image} alt={title}/>
+			<h3>{title}</h3>
+            <button>Buy</button>
+            <button>View</button>
 		</article>
 	);
 }
