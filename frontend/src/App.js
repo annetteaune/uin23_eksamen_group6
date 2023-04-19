@@ -16,7 +16,7 @@ function App() {
 	//hente spill til shop fra api
 	const getGamesForShop = async () => {
 		const response = await fetch(
-			`https://api.rawg.io/api/games?key=58b2b216076c4896b0055f655cd83168&dates=2023-01-10,2023-05-01&ordering=-released&stores=1&page=1&page_size=6`
+			`https://api.rawg.io/api/games?key=58b2b216076c4896b0055f655cd83168&dates=2023-01-10,2023-05-01&ordering=-released&stores=1&page=1&page_size=3`
 		);
 
 		const data = await response.json();
@@ -46,6 +46,19 @@ function App() {
 		console.log(data);
 		setSelectedGame(data)
 	};
+
+	/******* */
+	const getShops = async () => {
+		const response = await fetch(
+			`https://api.rawg.io/api/games/793647/stores?key=58b2b216076c4896b0055f655cd83168`
+		);
+
+		const data = await response.json();
+		console.log(data)
+	}
+	useEffect(() => {
+		getShops();
+	}, []);
 
 	return (
 		<>

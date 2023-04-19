@@ -1,21 +1,36 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-export default function GamePage({ getGame, selectedGame  }) {
+export default function GamePage({ getGame, selectedGame }) {
 	const { slug } = useParams();
 
-useEffect(() => {
-	getGame();
-}, []);
+	useEffect(() => {
+		getGame();
+	}, []);
 
 	return (
-		<article>
-			
+		<>
+			<article>
 				<h3>{selectedGame.name}</h3>
-				<span>Release date:{selectedGame.released}</span>
+				<h5>Release date:</h5>
+				<span>{selectedGame.released}</span>
+				<h5>Genres:</h5>
+				{selectedGame.genres?.map((gen) => (
+					<span>{gen.name} </span>
+				))}
+				<h5>Developers:</h5>
+				{selectedGame.developers?.map((dev) => (
+					<span>{dev.name} </span>
+				))}
 				<img src={selectedGame.background_image} alt={selectedGame.name} />
-				{selectedGame.description_raw}
-			
-		</article>
+				<p>{selectedGame.description_raw}</p>
+			</article>
+			<section>
+				<h4>Avaliable at:</h4>
+				{selectedGame.stores?.map((store) => (
+					<span>{store.store.name}</span>
+				))}
+			</section>
+		</>
 	);
 }
