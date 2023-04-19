@@ -3,6 +3,8 @@ export default function GameCard({ title, image }) {
 		<article className="game-card"> 
 			<img src={image} alt={title}/>
 			<h3>{title}</h3>
+            <button>Buy</button>
+            <button>View</button>
 		</article>
 	);
 }
