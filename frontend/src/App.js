@@ -1,8 +1,15 @@
+import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import "./css/main.css";
 import { useEffect, useState } from "react";
+import Dashboard from "./components/Dashboard"
+import ShopPage from "./components/pages/ShopPage";
+import MyGamesPage from "./components/pages/MyGamesPage";
+import FavouritesPage from "./components/pages/FavouritesPage";
+import GamePage from "./components/pages/GamePage"
 
 function App() {
+	/** GAMESHOP ********************************************************************************/
 	//state for å lagre spill til shop
 	const [shopGames, setShopGames] = useState([]);
 
@@ -20,7 +27,44 @@ function App() {
 	useEffect(() => {
 		getGamesForShop();
 	}, []);
-	return <Layout shopGames={shopGames} />;
+
+	/** GAMEPAGE **********************************************************************************/
+
+	//state for å lagre id for å se detaljer om hvert enkelt spill
+	const [selectedId, setSelectedId] = useState("");
+
+	//state for å lagre info om hvert enkelt spill
+	const [selectedGame, setSelectedGame] = useState([])
+
+	//hente detaljer om hvert enkelt spill
+	const getGame = async () => {
+		const response = await fetch(
+			`https://api.rawg.io/api/games/${selectedId}?key=58b2b216076c4896b0055f655cd83168`
+		);
+
+		const data = await response.json();
+		console.log(data);
+		setSelectedGame(data)
+	};
+
+	return (
+		<>
+			<Routes>
+				<Route path="/" element={<Layout />}>
+					<Route
+						index
+						element={
+							<Dashboard shopGames={shopGames} setSelectedId={setSelectedId} />
+						}
+					/>
+					<Route path="/shop" element={<ShopPage />} />
+					<Route path="/my-games" element={<MyGamesPage />} />
+					<Route path="/favourites" element={<FavouritesPage />} />
+					<Route path=":slug" element={<GamePage getGame={getGame} selectedGame={selectedGame}/>} />
+				</Route>
+			</Routes>
+		</>
+	);
 }
 
 export default App;
