@@ -1,0 +1,10 @@
+main {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    .shop{
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+}
