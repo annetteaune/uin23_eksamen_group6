@@ -16,7 +16,7 @@ export default function GameCard({
 			<img src={image} alt={title} />
 			<h3>{title}</h3>
 			{genres.map((gen) => (
-				<h4>{gen.name}</h4>
+				<h4 key={gen.id} >{gen.name}</h4>
 			))}
 
 			<Link to={slug}>

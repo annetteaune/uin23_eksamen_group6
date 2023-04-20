@@ -13,6 +13,7 @@ function App() {
 	//state for å lagre spill til shop
 	const [shopGames, setShopGames] = useState([]);
 
+
 	//hente spill til shop fra api
 	const getGamesForShop = async () => {
 		const response = await fetch(
@@ -36,10 +37,11 @@ function App() {
 	//state for å lagre info om hvert enkelt spill
 	const [selectedGame, setSelectedGame] = useState([]);
 
-	//State for å lagre tilgjengelige  butikker
+	//State for å lagre tilgjengelige  butikker, har url men ikke navn
 	const [stores, setStores] = useState([]);
 
 	//state for å lagre en array av stores for hvert enkelt spill, inneholder ikke url
+	//kombineres med stores i gamepage
 	const [storeNoURL, setStoreNoURL] = useState([]);
 
 	//hente detaljer om hvert enkelt spill
@@ -74,9 +76,24 @@ function App() {
 							<Dashboard shopGames={shopGames} setSelectedId={setSelectedId} />
 						}
 					/>
-					<Route path="/shop" element={<ShopPage />} />
+					<Route
+						path="/shop"
+						element={<ShopPage setSelectedId={setSelectedId} />}
+					/>
 					<Route path="/my-games" element={<MyGamesPage />} />
 					<Route path="/favourites" element={<FavouritesPage />} />
+					<Route
+						path="/shop/:slug"
+						element={
+							<GamePage
+								getGame={getGame}
+								selectedGame={selectedGame}
+								getShops={getShops}
+								stores={stores}
+								storeNoURL={storeNoURL}
+							/>
+						}
+					/>
 					<Route
 						path=":slug"
 						element={

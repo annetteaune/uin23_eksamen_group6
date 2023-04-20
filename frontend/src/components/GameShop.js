@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 import GameCard from "./GameCard";
 
 export default function GameShop({ shopGames, setSelectedId }) {
 	return (
 		<section className="shop">
+			<Link to="/shop">Visit Shop</Link>
 			{shopGames.map((game, index) => (
 				<GameCard
 					key={index}
