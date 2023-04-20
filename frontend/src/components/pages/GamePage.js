@@ -29,12 +29,16 @@ export default function GamePage({ getGame, selectedGame, getShops, stores, stor
 				<h4>Release date: </h4>
 				<span>{selectedGame.released}</span>
 				<h4>Genres:</h4>
-				{selectedGame.genres?.map(( gen) => (
+				{selectedGame.genres?.map((gen) => (
 					<span key={gen.id}>{gen.name} </span>
 				))}
 				<h4>Developers:</h4>
 				{selectedGame.developers?.map((dev) => (
 					<span key={dev.id}>{dev.name} </span>
+				))}
+				<h4>Published by:</h4>
+				{selectedGame.publishers?.map((pub) => (
+					<span key={pub.id}>{pub.name} </span>
 				))}
 				<img src={selectedGame.background_image} alt={selectedGame.name} />
 				<p>{selectedGame.description_raw}</p>
@@ -42,7 +46,7 @@ export default function GamePage({ getGame, selectedGame, getShops, stores, stor
 			<section>
 				<h4>Avaliable for purchase from:</h4>
 				{completeStore.map((store) => (
-					<a href={store.url} key={store.id}>
+					<a href={store.url} key={store.id} target="blank">
 						{store.store.name}
 					</a>
 				))}
