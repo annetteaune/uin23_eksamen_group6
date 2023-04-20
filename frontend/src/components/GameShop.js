@@ -11,6 +11,7 @@ export default function GameShop({ shopGames, setSelectedId }) {
 					slug={game.slug}
 					id={game.id}
 					setSelectedId={setSelectedId}
+					genres={game.genres}
 				/>
 			))}
 		</section>

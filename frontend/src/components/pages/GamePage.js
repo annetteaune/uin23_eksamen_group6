@@ -24,7 +24,7 @@ export default function GamePage({ getGame, selectedGame, getShops, stores, stor
 
 	return (
 		<>
-			<article>
+			<article className="game-page">
 				<h3>{selectedGame.name}</h3>
 				<h4>Release date: </h4>
 				<span>{selectedGame.released}</span>
