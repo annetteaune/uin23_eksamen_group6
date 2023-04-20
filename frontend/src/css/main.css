@@ -34,6 +34,26 @@ footer {
   text-align: center;
 }
 
+.game-page img {
+  max-width: 100%;
+}
+
+.page-title {
+  font-size: 1rem;
+}
+
+.games-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.games-list h3 {
+  width: 100%;
+}
+.games-list .gamecard {
+  max-width: 30%;
+}
+
 * {
   margin: 0;
   padding: 0;
