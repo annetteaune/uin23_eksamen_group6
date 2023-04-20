@@ -2,17 +2,16 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import "./css/main.css";
 import { useEffect, useState } from "react";
-import Dashboard from "./components/Dashboard"
+import Dashboard from "./components/Dashboard";
 import ShopPage from "./components/pages/ShopPage";
 import MyGamesPage from "./components/pages/MyGamesPage";
 import FavouritesPage from "./components/pages/FavouritesPage";
-import GamePage from "./components/pages/GamePage"
+import GamePage from "./components/pages/GamePage";
 
 function App() {
 	/** GAMESHOP ********************************************************************************/
 	//state for å lagre spill til shop
 	const [shopGames, setShopGames] = useState([]);
-
 
 	//hente spill til shop fra api
 	const getGamesForShop = async () => {

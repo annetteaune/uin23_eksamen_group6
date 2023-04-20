@@ -34,8 +34,8 @@ export default function ShopPage({setSelectedId}) {
 
 	return (
 		<>
-			<h2>Shop</h2>
-			<article>
+			<h2 className="page-title">Shop</h2>
+			<section className="games-list">
 				<h3>New Games</h3>
 				{newGames.map((game, index) => (
 					<GameCard
@@ -48,8 +48,8 @@ export default function ShopPage({setSelectedId}) {
 						genres={game.genres}
 					/>
 				))}
-			</article>
-			<article>
+			</section>
+			<section className="games-list">
 				<h3>Trending games</h3>
 				{trendingGames.map((game, index) => (
 					<GameCard
@@ -62,7 +62,7 @@ export default function ShopPage({setSelectedId}) {
 						genres={game.genres}
 					/>
 				))}
-			</article>
+			</section>
 		</>
 	);
 }
