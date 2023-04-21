@@ -10,7 +10,7 @@ import GamePage from "./components/pages/GamePage";
 import { fetchMyGames } from "./sanity/gameServices";
 
 function App() {
-	/** GAMESHOP ********************************************************************************/
+/** GAMESHOP ********************************************************************************/
 	//state for å lagre spill til shop
 	const [shopGames, setShopGames] = useState([]);
 
@@ -28,7 +28,7 @@ function App() {
 		getGamesForShop();
 	}, []);
 
-	/** GAMEPAGE **********************************************************************************/
+/** GAMEPAGE **********************************************************************************/
 
 	//state for å lagre id for å se detaljer om hvert enkelt spill
 	const [selectedId, setSelectedId] = useState("");
@@ -65,7 +65,7 @@ function App() {
 		setStores(data.results);
 	};
 
-	/*MYGAMES********************************************************************/
+/**MYGAMES************************************************************************************/
 
 	//state for å lagre mygames
 	const [myGamesArray, setMyGamesArray] = useState([])
@@ -86,7 +86,7 @@ function App() {
 					<Route
 						index
 						element={
-							<Dashboard shopGames={shopGames} setSelectedId={setSelectedId} />
+							<Dashboard shopGames={shopGames} setSelectedId={setSelectedId} myGamesArray={myGamesArray} />
 						}
 					/>
 					<Route
