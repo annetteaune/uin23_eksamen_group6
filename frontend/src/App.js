@@ -21,9 +21,8 @@ function App() {
 		);
 
 		const data = await response.json();
-		console.log(data.results);
 		setShopGames(data.results);
-		console.log(shopGames);
+		console.log("shopgames:",data.results);
 	};
 	useEffect(() => {
 		getGamesForShop();
@@ -69,12 +68,12 @@ function App() {
 	/*MYGAMES********************************************************************/
 
 	//state for å lagre mygames
-	const [myGames, setMyGames] = useState([])
+	const [myGamesArray, setMyGamesArray] = useState([])
 	//hente mygames fra sanity
 	const getMyGames = async () => {
 		const data = await fetchMyGames();
-		setMyGames(data);
-		console.log("mygames",myGames)
+		setMyGamesArray(data);
+		console.log("mygames:",data)
 	};
 	useEffect(() => {
 		getMyGames();

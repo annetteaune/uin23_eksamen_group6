@@ -25,11 +25,9 @@ export default {
     },
     {
       name: 'genre',
-      type: 'array',
-      of: [{type: 'genre'}],
-      title: 'Genre',
       type: 'reference',
       to: {type: 'genre'},
+      title: 'Genre',
     },
     {
       name: 'favourited',
