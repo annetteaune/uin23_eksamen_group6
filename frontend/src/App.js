@@ -7,6 +7,7 @@ import ShopPage from "./components/pages/ShopPage";
 import MyGamesPage from "./components/pages/MyGamesPage";
 import FavouritesPage from "./components/pages/FavouritesPage";
 import GamePage from "./components/pages/GamePage";
+import { fetchMyGames } from "./sanity/gameServices";
 
 function App() {
 	/** GAMESHOP ********************************************************************************/
@@ -64,6 +65,20 @@ function App() {
 		const data = await response.json();
 		setStores(data.results);
 	};
+
+	/*MYGAMES********************************************************************/
+
+	//state for å lagre mygames
+	const [myGames, setMyGames] = useState([])
+	//hente mygames fra sanity
+	const getMyGames = async () => {
+		const data = await fetchMyGames();
+		setMyGames(data);
+		console.log("mygames",myGames)
+	};
+	useEffect(() => {
+		getMyGames();
+	}, []);
 
 	return (
 		<>
