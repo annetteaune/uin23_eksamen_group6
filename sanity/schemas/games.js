@@ -9,6 +9,11 @@ export default {
       title: 'Gametitle',
     },
     {
+      name: "image",
+      type: "image",
+      title: "Image"
+    },
+    {
       name: 'slug',
       type: 'string',
       title: 'Slug',

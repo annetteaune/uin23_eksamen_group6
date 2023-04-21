@@ -25,7 +25,7 @@ export default function Layout({ shopGames }) {
 			<main>
 				<Outlet shopGames={shopGames} />
 			</main>
-			<footer>footer w/link to api</footer>
+			<footer>footer w/link to api & all photo credit to api</footer>
 		</>
 	);
 }

@@ -86,15 +86,34 @@ function App() {
 					<Route
 						index
 						element={
-							<Dashboard shopGames={shopGames} setSelectedId={setSelectedId} myGamesArray={myGamesArray} />
+							<Dashboard
+								shopGames={shopGames}
+								setSelectedId={setSelectedId}
+								myGamesArray={myGamesArray}
+							/>
 						}
 					/>
 					<Route
 						path="/shop"
 						element={<ShopPage setSelectedId={setSelectedId} />}
 					/>
-					<Route path="/my-games" element={<MyGamesPage />} />
+					<Route
+						path="/my-games"
+						element={<MyGamesPage myGamesArray={myGamesArray} setSelectedId={setSelectedId}/>}
+					/>
 					<Route path="/favourites" element={<FavouritesPage />} />
+					<Route
+						path="/my-games/:slug"
+						element={
+							<GamePage
+								getGame={getGame}
+								selectedGame={selectedGame}
+								getShops={getShops}
+								stores={stores}
+								storeNoURL={storeNoURL}
+							/>
+						}
+					/>
 					<Route
 						path="/shop/:slug"
 						element={
