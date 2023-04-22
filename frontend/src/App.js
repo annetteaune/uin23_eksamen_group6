@@ -8,6 +8,7 @@ import MyGamesPage from "./components/pages/MyGamesPage";
 import FavouritesPage from "./components/pages/FavouritesPage";
 import GamePage from "./components/pages/GamePage";
 import { fetchMyGames } from "./sanity/gameServices";
+import LoginPage from "./components/pages/LoginPage";
 
 function App() {
 /** GAMESHOP ********************************************************************************/
@@ -97,6 +98,7 @@ function App() {
 						path="/shop"
 						element={<ShopPage setSelectedId={setSelectedId} />}
 					/>
+					<Route path="/login" element={<LoginPage/>} />
 					<Route
 						path="/my-games"
 						element={<MyGamesPage myGamesArray={myGamesArray} setSelectedId={setSelectedId}/>}
