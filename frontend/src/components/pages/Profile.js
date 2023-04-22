@@ -8,9 +8,12 @@ export default function Profile({ user, login }) {
 			<section className="profile-page">
 				{" "}
 				<div className="image-wrapper">
-					{user.imageUrl == null ? <img src="user.jpg" alt="User image placeholder" />: <img src={user.imageUrl} alt="User image" />}
-					<img src={user.imageUrl} />
-				</div> 
+					{user.imageUrl == null ? (
+						<img src="user.jpg" alt="User avatar placeholder" />
+					) : (
+						<img src={user.imageUrl} alt="User avatar" />
+					)}
+				</div>
 				<h2>Welcome, {user.username}!</h2>
 				<span>{user.useremail}</span>
 			</section>
