@@ -9,9 +9,11 @@ import FavouritesPage from "./components/pages/FavouritesPage";
 import GamePage from "./components/pages/GamePage";
 import { fetchMyGames } from "./sanity/gameServices";
 import LoginPage from "./components/pages/LoginPage";
+import Profile from "./components/pages/Profile";
+import { fetchAllUsers } from "./sanity/userServices";
 
 function App() {
-/** GAMESHOP ********************************************************************************/
+	/** GAMESHOP ********************************************************************************/
 	//state for å lagre spill til shop
 	const [shopGames, setShopGames] = useState([]);
 
@@ -23,13 +25,13 @@ function App() {
 
 		const data = await response.json();
 		setShopGames(data.results);
-		console.log("shopgames:",data.results);
+		console.log("shopgames:", data.results);
 	};
 	useEffect(() => {
 		getGamesForShop();
 	}, []);
 
-/** GAMEPAGE **********************************************************************************/
+	/** GAMEPAGE **********************************************************************************/
 
 	//state for å lagre id for å se detaljer om hvert enkelt spill
 	const [selectedId, setSelectedId] = useState("");
@@ -66,24 +68,42 @@ function App() {
 		setStores(data.results);
 	};
 
-/**MYGAMES************************************************************************************/
+	/**MYGAMES************************************************************************************/
 
 	//state for å lagre mygames
-	const [myGamesArray, setMyGamesArray] = useState([])
+	const [myGamesArray, setMyGamesArray] = useState([]);
 	//hente mygames fra sanity
 	const getMyGames = async () => {
 		const data = await fetchMyGames();
 		setMyGamesArray(data);
-		console.log("mygames:",data)
+		console.log("mygames:", data);
 	};
 	useEffect(() => {
 		getMyGames();
 	}, []);
 
+	/**LOGIN & USERPAGE**************************************************************************/
+	//state for å lagre om en bruker er logget inn
+	const [login, setLogin] = useState(false);
+	//state for å lagre brukere
+	const [users, setUsers] = useState([])
+	//state for å lagre innlogget bruker
+	const [user, setUser] = useState({})
+	//hente brukere fra sanity
+	const getUsers = async () => {
+		const data = await fetchAllUsers()
+		setUsers(data)
+		console.log("users",data)
+	}
+
+	useEffect(() => {
+		getUsers()
+	}, [])
+
 	return (
 		<>
 			<Routes>
-				<Route path="/" element={<Layout />}>
+				<Route path="/" element={<Layout login={login} />}>
 					<Route
 						index
 						element={
@@ -95,13 +115,28 @@ function App() {
 						}
 					/>
 					<Route
+						path="/login"
+						element={
+							<LoginPage setLogin={setLogin} users={users} setUser={setUser} />
+						}
+					/>
+					<Route
+						path="/profile"
+						element={<Profile user={user} login={login}/>}
+					/>
+					<Route
 						path="/shop"
 						element={<ShopPage setSelectedId={setSelectedId} />}
 					/>
-					<Route path="/login" element={<LoginPage/>} />
+
 					<Route
 						path="/my-games"
-						element={<MyGamesPage myGamesArray={myGamesArray} setSelectedId={setSelectedId}/>}
+						element={
+							<MyGamesPage
+								myGamesArray={myGamesArray}
+								setSelectedId={setSelectedId}
+							/>
+						}
 					/>
 					<Route path="/favourites" element={<FavouritesPage />} />
 					<Route
