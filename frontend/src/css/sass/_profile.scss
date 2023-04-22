@@ -1,0 +1,17 @@
+.profile-page {
+    //kilde for sirkulære bilder:
+    //https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+	.image-wrapper {
+		width: 250px;
+		height: 250px;
+		position: relative;
+		overflow: hidden;
+		border-radius: 50%;
+		img {
+			display: inline;
+			margin: 0 auto;
+			height: 100%;
+			width: auto;
+		}
+	}
+}
