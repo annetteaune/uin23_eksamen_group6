@@ -11,6 +11,7 @@ import { fetchMyGames } from "./sanity/gameServices";
 import LoginPage from "./components/pages/LoginPage";
 import Profile from "./components/pages/Profile";
 import { fetchAllUsers } from "./sanity/userServices";
+import Register from "./components/pages/Register";
 
 function App() {
 	/** GAMESHOP ********************************************************************************/
@@ -119,7 +120,9 @@ function App() {
 						element={
 							<LoginPage setLogin={setLogin} users={users} setUser={setUser} />
 						}
+					
 					/>
+					<Route path="/register" element={<Register/>} />
 					<Route
 						path="/profile"
 						element={<Profile user={user} login={login}/>}

@@ -31,7 +31,7 @@ export default function LoginPage({ setLogin, users, setUser }) {
 	return (
 		<section>
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="username">Registered e-mail:</label>
+				<label htmlFor="email">Registered e-mail:</label>
 				<input
 					name="email"
 					id="email"
