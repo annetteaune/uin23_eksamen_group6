@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 
-export default function Layout({ shopGames }) {
+export default function Layout({ shopGames, login }) {
 	return (
 		<>
 			<header>
@@ -18,6 +18,15 @@ export default function Layout({ shopGames }) {
 						<Link to="/favourites">
 							<li>Favourites</li>
 						</Link>
+						{login === false ? (
+							<Link to="/login">
+								<li>Login</li>
+							</Link>
+						) : (
+							<Link to="/profile">
+								<li>Profile</li>
+							</Link>
+						)}
 					</ul>
 				</nav>
 			</header>

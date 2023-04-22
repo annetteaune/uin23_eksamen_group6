@@ -13,5 +13,10 @@ export default {
       type: 'string',
       title: 'User e-mail',
     },
+    {
+      name: 'userimage',
+      type: 'image',
+      title: 'User image',
+    },
   ],
 }
