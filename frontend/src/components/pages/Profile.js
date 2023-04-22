@@ -15,7 +15,7 @@ export default function Profile({ user, login }) {
 	} else {
 		return (
 			<section>
-				<h2>You need to log in to see your profile.</h2>
+				<h2>You need to log in to see your profile</h2>
                 <Link to="/login">
                 <button>Log in</button></Link>
 			</section>
