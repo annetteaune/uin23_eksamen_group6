@@ -7,9 +7,10 @@ import ShopPage from "./components/pages/ShopPage";
 import MyGamesPage from "./components/pages/MyGamesPage";
 import FavouritesPage from "./components/pages/FavouritesPage";
 import GamePage from "./components/pages/GamePage";
+import { fetchMyGames } from "./sanity/gameServices";
 
 function App() {
-	/** GAMESHOP ********************************************************************************/
+/** GAMESHOP ********************************************************************************/
 	//state for å lagre spill til shop
 	const [shopGames, setShopGames] = useState([]);
 
@@ -20,15 +21,14 @@ function App() {
 		);
 
 		const data = await response.json();
-		console.log(data.results);
 		setShopGames(data.results);
-		console.log(shopGames);
+		console.log("shopgames:",data.results);
 	};
 	useEffect(() => {
 		getGamesForShop();
 	}, []);
 
-	/** GAMEPAGE **********************************************************************************/
+/** GAMEPAGE **********************************************************************************/
 
 	//state for å lagre id for å se detaljer om hvert enkelt spill
 	const [selectedId, setSelectedId] = useState("");
@@ -65,6 +65,20 @@ function App() {
 		setStores(data.results);
 	};
 
+/**MYGAMES************************************************************************************/
+
+	//state for å lagre mygames
+	const [myGamesArray, setMyGamesArray] = useState([])
+	//hente mygames fra sanity
+	const getMyGames = async () => {
+		const data = await fetchMyGames();
+		setMyGamesArray(data);
+		console.log("mygames:",data)
+	};
+	useEffect(() => {
+		getMyGames();
+	}, []);
+
 	return (
 		<>
 			<Routes>
@@ -72,15 +86,34 @@ function App() {
 					<Route
 						index
 						element={
-							<Dashboard shopGames={shopGames} setSelectedId={setSelectedId} />
+							<Dashboard
+								shopGames={shopGames}
+								setSelectedId={setSelectedId}
+								myGamesArray={myGamesArray}
+							/>
 						}
 					/>
 					<Route
 						path="/shop"
 						element={<ShopPage setSelectedId={setSelectedId} />}
 					/>
-					<Route path="/my-games" element={<MyGamesPage />} />
+					<Route
+						path="/my-games"
+						element={<MyGamesPage myGamesArray={myGamesArray} setSelectedId={setSelectedId}/>}
+					/>
 					<Route path="/favourites" element={<FavouritesPage />} />
+					<Route
+						path="/my-games/:slug"
+						element={
+							<GamePage
+								getGame={getGame}
+								selectedGame={selectedGame}
+								getShops={getShops}
+								stores={stores}
+								storeNoURL={storeNoURL}
+							/>
+						}
+					/>
 					<Route
 						path="/shop/:slug"
 						element={
