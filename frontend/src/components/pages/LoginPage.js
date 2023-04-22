@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginPage({ setLogin, users, setUser }) {
 	//state for feilmedling
@@ -45,6 +45,7 @@ export default function LoginPage({ setLogin, users, setUser }) {
 				</button>
 			</form>
 			<p>{message}</p>
+            <p>Not registered? Register <Link to="/register">here!</Link></p>
 		</section>
 	);
 }
