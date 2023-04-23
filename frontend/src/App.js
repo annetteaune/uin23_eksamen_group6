@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import Layout from "./components/Layout";
 import "./css/main.css";
 import { useEffect, useState } from "react";
@@ -7,11 +7,12 @@ import ShopPage from "./components/pages/ShopPage";
 import MyGamesPage from "./components/pages/MyGamesPage";
 import FavouritesPage from "./components/pages/FavouritesPage";
 import GamePage from "./components/pages/GamePage";
-import { fetchMyGames } from "./sanity/gameServices";
+import { fetchMyGames, fetchSanityGame } from "./sanity/gameServices";
 import LoginPage from "./components/pages/LoginPage";
 import Profile from "./components/pages/Profile";
 import { fetchAllUsers } from "./sanity/userServices";
 import Register from "./components/pages/Register";
+import ShopGamePage from "./components/pages/ShopGamePage"
 
 function App() {
 	/** GAMESHOP ********************************************************************************/
@@ -26,11 +27,9 @@ function App() {
 
 		const data = await response.json();
 		setShopGames(data.results);
-		console.log("shopgames:", data.results);
+		//console.log("shopgames:", data.results);
 	};
-	useEffect(() => {
-		getGamesForShop();
-	}, []);
+	
 
 	/** GAMEPAGE **********************************************************************************/
 
@@ -54,7 +53,6 @@ function App() {
 		);
 
 		const data = await response.json();
-		console.log(data);
 		setSelectedGame(data);
 		setStoreNoURL(data.stores);
 	};
@@ -73,15 +71,18 @@ function App() {
 
 	//state for å lagre mygames
 	const [myGamesArray, setMyGamesArray] = useState([]);
+
+	//state for å lagre ett enkelt spill
+	const [myGame, setMyGame] = useState([])
+
+	 
 	//hente mygames fra sanity
 	const getMyGames = async () => {
 		const data = await fetchMyGames();
 		setMyGamesArray(data);
-		console.log("mygames:", data);
+		//console.log("mygames:", data);
 	};
-	useEffect(() => {
-		getMyGames();
-	}, []);
+
 
 	/**LOGIN & USERPAGE**************************************************************************/
 	//state for å lagre om en bruker er logget inn
@@ -94,12 +95,14 @@ function App() {
 	const getUsers = async () => {
 		const data = await fetchAllUsers()
 		setUsers(data)
-		console.log("users",data)
+		
 	}
 
 	useEffect(() => {
 		getUsers()
 	}, [])
+
+
 
 	return (
 		<>
@@ -112,20 +115,23 @@ function App() {
 								shopGames={shopGames}
 								setSelectedId={setSelectedId}
 								myGamesArray={myGamesArray}
+								getGamesForShop={getGamesForShop}
+								getMyGames={getMyGames}
+								user={user}
+								login={login}
 							/>
 						}
 					/>
 					<Route
 						path="/login"
 						element={
-							<LoginPage setLogin={setLogin} users={users} setUser={setUser} />
+							<LoginPage setLogin={setLogin} login={login} users={users} setUser={setUser} />
 						}
-					
 					/>
-					<Route path="/register" element={<Register/>} />
+					<Route path="/register" element={<Register />} />
 					<Route
 						path="/profile"
-						element={<Profile user={user} login={login}/>}
+						element={<Profile user={user} login={login} />}
 					/>
 					<Route
 						path="/shop"
@@ -148,28 +154,17 @@ function App() {
 							<GamePage
 								getGame={getGame}
 								selectedGame={selectedGame}
-								getShops={getShops}
-								stores={stores}
-								storeNoURL={storeNoURL}
+								setMyGame={setMyGame}
+								myGame={myGame}
+								user={user}
+								login={login}
 							/>
 						}
 					/>
 					<Route
 						path="/shop/:slug"
 						element={
-							<GamePage
-								getGame={getGame}
-								selectedGame={selectedGame}
-								getShops={getShops}
-								stores={stores}
-								storeNoURL={storeNoURL}
-							/>
-						}
-					/>
-					<Route
-						path=":slug"
-						element={
-							<GamePage
+							<ShopGamePage
 								getGame={getGame}
 								selectedGame={selectedGame}
 								getShops={getShops}

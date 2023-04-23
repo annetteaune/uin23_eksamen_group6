@@ -20,11 +20,15 @@ export default function Layout({ shopGames, login }) {
 						</Link>
 						{login === false ? (
 							<Link to="/login">
-								<li>Login</li>
+								<li>
+									<i className="fa-regular fa-user"></i>
+								</li>
 							</Link>
 						) : (
 							<Link to="/profile">
-								<li>Profile</li>
+								<li>
+									<i className="fa-solid fa-user"></i>
+								</li>
 							</Link>
 						)}
 					</ul>

@@ -7,14 +7,21 @@ export default function GameCard({
 	id,
 	setSelectedId,
 	genres,
+	_id,
+	
 }) {
 	const saveGameId = (event) => {
 		setSelectedId(event.target.id);
 	};
 
+	
+
 	/* filter for å bestemme om det er shop- eller mygame-kort som returneres.
 		API-et returnerer en array for sjangere, mens sanity returnerer et objekt, så jeg bruker
 		disse for å differensiere mellom dem. Kunne også brukt state her.
+		Kilder:
+		https://www.w3schools.com/jsref/jsref_isarray.asp
+		https://www.w3schools.com/js/js_typeof.asp 
 	*/
 	if (Array.isArray(genres)) {
 		return (
@@ -25,7 +32,7 @@ export default function GameCard({
 					<h4 key={gen.id}>{gen.name}</h4>
 				))}
 
-				<Link to={slug}>
+				<Link to={`/shop/${slug}`}>
 					<button id={id} onClick={saveGameId}>
 						View Game
 					</button>
@@ -39,7 +46,7 @@ export default function GameCard({
 				<h3>{title}</h3>
 				<h4 key={genres.id}>{genres.title}</h4>
 
-				<Link to={slug}>
+				<Link to={`/my-games/${slug}`}>
 					<button id={id} onClick={saveGameId}>
 						Details
 					</button>

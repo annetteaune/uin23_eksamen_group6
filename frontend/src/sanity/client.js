@@ -15,4 +15,5 @@ export const writeClient = createClient({
 		"skGTGRwabHB5aF5gfNu8ly3AjRqtUvwev02NfHKmMZnT3BmVOUKCrFhwqv92vnl35gaEoHLQIJG9wFLqE5tUp0hJ4hBzjYMhSelCHigNLNvqJ9lUxkGc1QPQ6nPkGY99tyWCv9m3Ir4ZVRpl1YYQUXAYJVw7a1gsFQJXRNsVuQ8QlIQg3ya3",
 	projectId: "4trl9uor",
 	dataset: "production",
+	useCdn: true,
 });

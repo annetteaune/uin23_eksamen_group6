@@ -1,31 +1,67 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { writeClient } from "../../sanity/client";
+import { fetchSanityGame } from "../../sanity/gameServices";
 
-export default function GamePage({ getGame, selectedGame, getShops, stores, storeNoURL }) {
+export default function GamePage({
+	getGame,
+	selectedGame,
+	setMyGame,
+	myGame,
+	user,
+	login
+}) {
 	const { slug } = useParams();
 
+	//hente enkelt spill fra sanity
+	const getMyGame = async (slug) => {
+		const data = await fetchSanityGame(slug);
+		setMyGame(data[0]);
+		console.log("mygame:", data[0]);
+	};
+
+	//hente api-info
 	useEffect(() => {
 		getGame();
 	}, []);
 
+	//hente sanity-info
 	useEffect(() => {
-		getShops();
-	}, []);
+		getMyGame(slug);
+	}, [slug]);
 
-	/* Kombinere arrays med info om stores med og uten url, slik at de kan mappes gjennom  
-		Kilde: https://stackoverflow.com/questions/46849286/merge-two-array-of-objects-based-on-a-key
-		Resultatene i begge svar-arrayer returneres i APIet i samme rekkefølge hver gang, så velger 
-		å benytte det øverste svaret i linken. 
-		*/
-	let completeStore = storeNoURL?.map((item, i) =>
-		Object.assign({}, item, stores[i])
-	);
+//state for melding om favoritter
+const [message, setMessage] = useState("")
 
+//legge til favoritt ved klikk om man er logget inn
+//kilder i vedlagt dokument
+	const gameReference = {
+		_type: "reference",
+		_ref: myGame._id,
+		_key: myGame.title,
+	
+	};
+	
+	function addFave(t, a) {
+		if (login === true) {
+	writeClient
+			.patch(user._id)
+			.setIfMissing({ favourites: [] })
+			.append("favourites", [gameReference], [{ title: t, apiid: a  }])
+			.commit({ autoGenerateKeys: true });
+		setMessage(`${myGame.title} has been added to your favourites!`)
+		} else {
+			setMessage("You must be logged in to add favourites.");
+		}
+	
+	}
 
 	return (
 		<>
 			<article className="game-page">
-				<h3>{selectedGame.name}</h3>
+				<h3>{myGame.title}</h3>
+				<h4>Playtime:</h4>
+				<span>{myGame.hoursplayed} hours</span>
 				<h4>Release date: </h4>
 				<span>{selectedGame.released}</span>
 				<h4>Genres:</h4>
@@ -40,17 +76,10 @@ export default function GamePage({ getGame, selectedGame, getShops, stores, stor
 				{selectedGame.publishers?.map((pub) => (
 					<span key={pub.id}>{pub.name} </span>
 				))}
+				<button onClick={addFave}>Add to favourites</button>
+				<span>{message}</span>
 				<img src={selectedGame.background_image} alt={selectedGame.name} />
-				<p>{selectedGame.description_raw}</p>
 			</article>
-			<section>
-				<h4>Avaliable for purchase from:</h4>
-				{completeStore.map((store) => (
-					<a href={store.url} key={store.id} target="blank">
-						{store.store.name}
-					</a>
-				))}
-			</section>
 		</>
 	);
 }
