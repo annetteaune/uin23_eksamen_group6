@@ -10,7 +10,7 @@ import GamePage from "./components/pages/GamePage";
 import { fetchMyGames, fetchSanityGame } from "./sanity/gameServices";
 import LoginPage from "./components/pages/LoginPage";
 import Profile from "./components/pages/Profile";
-import { fetchAllUsers } from "./sanity/userServices";
+import { fetchAllUsers, fetchUser, fetchUserById } from "./sanity/userServices";
 import Register from "./components/pages/Register";
 import ShopGamePage from "./components/pages/ShopGamePage"
 
@@ -100,9 +100,13 @@ function App() {
 
 	useEffect(() => {
 		getUsers()
+		console.log(users)
 	}, [])
 
+const [favourites, setFavourites] = useState([]);
 
+
+	
 
 	return (
 		<>
@@ -119,13 +123,19 @@ function App() {
 								getMyGames={getMyGames}
 								user={user}
 								login={login}
+								favourites={favourites}
 							/>
 						}
 					/>
 					<Route
 						path="/login"
 						element={
-							<LoginPage setLogin={setLogin} login={login} users={users} setUser={setUser} />
+							<LoginPage
+								setLogin={setLogin}
+								login={login}
+								users={users}
+								setUser={setUser}
+							/>
 						}
 					/>
 					<Route path="/register" element={<Register />} />
@@ -158,6 +168,12 @@ function App() {
 								myGame={myGame}
 								user={user}
 								login={login}
+								getUsers={getUsers}
+								setUser={setUser}
+								users={users}
+								favourites={favourites}
+								setFavourites={setFavourites}
+								userId={user._id}
 							/>
 						}
 					/>

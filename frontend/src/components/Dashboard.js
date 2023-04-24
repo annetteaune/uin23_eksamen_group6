@@ -3,7 +3,7 @@ import MyGames from "./MyGames";
 import MyFavourites from "./MyFavourites";
 import { useEffect } from "react";
 
-export default function Dashboard({ shopGames, setSelectedId, myGamesArray, getGamesForShop, getMyGames, user, login }) {
+export default function Dashboard({ shopGames, setSelectedId, myGamesArray, getGamesForShop, getMyGames, user, login, favourites }) {
 
 
 
@@ -22,7 +22,7 @@ useEffect(() => {
 				myGamesArray={myGamesArray}
 				login={login}
 			/>
-			<MyFavourites setSelectedId={setSelectedId} user={user} login={login} />
+			<MyFavourites setSelectedId={setSelectedId} user={user} login={login} favourites={favourites} />
 		</>
 	);
 }

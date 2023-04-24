@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 
-export default function MyFavourites({user, login, setSelectedId}) {
+export default function MyFavourites({user, login, setSelectedId, favourites}) {
 	console.log("user::", user);
 
 
@@ -13,7 +13,9 @@ export default function MyFavourites({user, login, setSelectedId}) {
 			<section>
 				<h2>MyFavourites</h2>
 				<Link to="/favourites">Go to Favourites</Link>
-
+                {user.favourites.map((game,index) => (
+                    <p key={index}>{game._key}</p>
+                ))}
 			</section>
 		);
 	} else {

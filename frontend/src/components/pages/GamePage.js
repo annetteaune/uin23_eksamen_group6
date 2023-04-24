@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { writeClient } from "../../sanity/client";
+import { client, writeClient } from "../../sanity/client";
 import { fetchSanityGame } from "../../sanity/gameServices";
+import { fetchUserById } from "../../sanity/userServices";
 
 export default function GamePage({
 	getGame,
@@ -9,7 +10,10 @@ export default function GamePage({
 	setMyGame,
 	myGame,
 	user,
-	login
+	users,
+	login,
+	setUser,
+	userId
 }) {
 	const { slug } = useParams();
 
@@ -30,31 +34,50 @@ export default function GamePage({
 		getMyGame(slug);
 	}, [slug]);
 
-//state for melding om favoritter
-const [message, setMessage] = useState("")
+	//state for melding om favoritter
+	const [message, setMessage] = useState("");
 
-//legge til favoritt ved klikk om man er logget inn
-//kilder i vedlagt dokument
+	//legge til favoritt ved klikk om man er logget inn
+	//kilde: https://github.com/toremake/UIN2023_sanity_create/blob/main/frontend/src/components/Show.js
 	const gameReference = {
 		_type: "reference",
 		_ref: myGame._id,
 		_key: myGame.title,
-	
 	};
-	
-	function addFave(t, a) {
+
+	function addFave(event) {
+		event.preventDefault();
 		if (login === true) {
-	writeClient
-			.patch(user._id)
-			.setIfMissing({ favourites: [] })
-			.append("favourites", [gameReference], [{ title: t, apiid: a  }])
-			.commit({ autoGenerateKeys: true });
-		setMessage(`${myGame.title} has been added to your favourites!`)
+			writeClient
+				.patch(user._id)
+				.setIfMissing({ favourites: [] })
+				.append("favourites", [gameReference])
+				.commit({ autoGenerateKeys: true });
+			setMessage(`${myGame.title} has been added to your favourites!`);
+			getUserById();
 		} else {
 			setMessage("You must be logged in to add favourites.");
 		}
-	
 	}
+
+	
+	
+	const getUserById = async () => {
+	
+			const userData = await fetchUserById(userId);
+			setUser(userData);
+			console.log("userdata",userData)
+		
+	};
+	
+	useEffect(() => {
+		getUserById();
+	}, [userId]);
+
+	
+
+
+
 
 	return (
 		<>
