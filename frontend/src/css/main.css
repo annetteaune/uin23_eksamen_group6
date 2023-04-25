@@ -208,7 +208,15 @@ footer a:hover {
 }
 
 .game-page img {
-  max-width: 100%;
+  max-width: 70%;
+}
+
+.heart-btn {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+.heart-btn img {
+  width: 96px;
 }
 
 .page-title {

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { client, writeClient } from "../../sanity/client";
+import {  writeClient } from "../../sanity/client";
 import { fetchSanityGame } from "../../sanity/gameServices";
 import { fetchUserById } from "../../sanity/userServices";
+
 
 export default function GamePage({
 	getGame,
@@ -55,16 +56,35 @@ export default function GamePage({
 				.setIfMissing({ favourites: [] })
 				.append("favourites", [gameReference])
 				.commit({ autoGenerateKeys: true });
-			setMessage(`${myGame.title} has been added to your favourites!`);
+
 			//setTimeout for å gi sanity nok tid til å fullføre oppdatering av ny favoritt
 			setTimeout(() => {
+				setMessage(`${myGame.title} has been added to your favourites!`);
 				getUserById();
 			}, 1000);
 		} else {
 			setMessage("You must be logged in to add favourites.");
 		}
 	}
-
+	function removeFave(event) {
+		event.preventDefault();
+		if (login === true) {
+			const updatedFavourites = user.favourites.filter(
+				(fav) => fav._ref !== myGame._id
+			);
+			writeClient
+				.patch(user._id)
+				.set({ favourites: updatedFavourites })
+				.commit({ autoGenerateKeys: true });
+			//setTimeout for å gi sanity nok tid til å fullføre oppdateringen
+			setTimeout(() => {
+				setMessage(`${myGame.title} has been removed from your favourites!`);
+				getUserById();
+			}, 1000);
+		} else {
+			setMessage("You must be logged in to remove favourites.");
+		}
+	}
 	const getUserById = async () => {
 		const userData = await fetchUserById(userId);
 		setUser(userData);
@@ -78,20 +98,20 @@ export default function GamePage({
 
 	//state for å sjekke om spillet er i favoritter
 	const [isFaved, setIsFaved] = useState(false);
-	 useEffect(() => {
-			if (user.favourites && myGame._id) {
-				const gameFaved = user.favourites.find(
-					(fav) => fav._ref === myGame._id
-				);
-				if (gameFaved) {
-					setIsFaved(true);
-				} else{
-					setIsFaved(false)
-				}
+	useEffect(() => {
+		if (user.favourites && myGame._id) {
+			const gameFaved = user.favourites.find((fav) => fav._ref === myGame._id);
+			if (gameFaved) {
+				setIsFaved(true);
+			} else {
+				setIsFaved(false);
 			}
-		}, [user, myGame])
+		}
+	}, [user, myGame]);
+
+	console.log("isfaved", isFaved);
+
 	
-		console.log("isfaved",isFaved)
 
 	return (
 		<>
@@ -113,8 +133,16 @@ export default function GamePage({
 				{selectedGame.publishers?.map((pub) => (
 					<span key={pub.id}>{pub.name} </span>
 				))}
-				{isFaved === true ? null : <button onClick={addFave}>Add to favourites</button>}
-				
+				{isFaved === true ? (
+					<button className="heart-btn" onClick={removeFave}>
+						<img src="/fav.png" alt="red heart icon" />
+					</button>
+				) : (
+					<button className="heart-btn" onClick={addFave}>
+						<img src="/nofav.png" alt="empty heart icon" />
+					</button>
+				)}
+
 				<span>{message}</span>
 				<img src={selectedGame.background_image} alt={selectedGame.name} />
 			</article>
