@@ -6,6 +6,7 @@
 @import "gamepage.scss";
 @import "collectionpages.scss";
 @import "profile.scss";
+@import "breakpoints.scss";
 
 @import url("https://fonts.googleapis.com/css2?family=Bitter:wght@500&family=Quicksand:wght@400;500;600&display=swap");
 
@@ -26,81 +27,4 @@ html {
 	font-size: calc(1em + 1vw);
 }
 
-/*BREAKPOINTS*/
-//tablet
-@media (min-width: 480px) and (max-width: 768px) {
-	main {
-		.shop {
-			flex-direction: row;
-		}
-		.my-games {
-			flex-direction: row;
-		}
-	}
-	.game-card {
-		width: 30%;
-	}
-	.games-list {
-		flex-direction: row;
-	}
-	.header-title {
-		h2 {
-			text-align: left!important;
-		}
-		a {
-			text-align: left!important;
-		}
-	}
-}
-//desktop
-@media (min-width: 769px) and (max-width: 1200px) {
-	main {
-		max-width: 800px;
-		.shop {
-			flex-direction: row;
-		}
-		.my-games {
-			flex-direction: row;
-		}
-	}
-	.game-card {
-		width: 30%;
-	}
-	.games-list {
-		flex-direction: row;
-	}
-	.header-title {
-		h2 {
-			text-align: left!important;
-		}
-		a {
-			text-align: left!important;
-		}
-	}
-}
-//xl
-@media (min-width: 1201px) {
-	main {
-		max-width: 1000px;
-		.shop {
-			flex-direction: row;
-		}
-		.my-games {
-			flex-direction: row;
-		}
-	}
-	.game-card {
-		width: 30%;
-	}
-	.games-list {
-		flex-direction: row;
-	}
-	.header-title {
-		h2 {
-			text-align: left!important;
-		}
-		a {
-			text-align: left!important;
-		}
-	}
-}
+

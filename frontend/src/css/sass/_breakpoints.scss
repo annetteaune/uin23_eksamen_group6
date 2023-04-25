@@ -1,0 +1,102 @@
+//tablet
+@media (min-width: 480px) and (max-width: 768px) {
+	main {
+        max-width: 600px;
+	}
+	.game-card {
+		width: 70%;
+	}
+    .fave-card {
+		.fave-card-btn {
+			font-size: 0.55rem;
+		}
+	}
+	.games-list {
+		flex-direction: row;
+	}
+	.header-title {
+		h2 {
+			text-align: left !important;
+		}
+		a {
+			text-align: left !important;
+		}
+	}
+	.grid-container {
+		display: grid;
+		grid-template-areas: "main aside";
+		grid-template-columns: 3fr 1fr;
+	}
+}
+//desktop
+@media (min-width: 769px) and (max-width: 1200px) {
+	main {
+		max-width: 800px;
+		.shop {
+			flex-direction: row;
+		}
+		.my-games {
+			flex-direction: row;
+		}
+	}
+	.game-card {
+		width: 30%;
+	}
+	.fave-card {
+		.fave-card-btn {
+			font-size: 0.55rem;
+		}
+	}
+	.games-list {
+		flex-direction: row;
+	}
+	.header-title {
+		h2 {
+			text-align: left !important;
+		}
+		a {
+			text-align: left !important;
+		}
+	}
+	.grid-container {
+		display: grid;
+		grid-template-areas: "main aside";
+		grid-template-columns: 3fr 1fr;
+	}
+}
+//xl
+@media (min-width: 1201px) {
+	main {
+		max-width: 1000px;
+		.shop {
+			flex-direction: row;
+		}
+		.my-games {
+			flex-direction: row;
+		}
+	}
+	.game-card {
+		width: 30%;
+	}
+	.fave-card {
+		.fave-card-btn {
+			font-size: 0.6rem;
+		}
+	}
+	.games-list {
+		flex-direction: row;
+	}
+	.header-title {
+		h2 {
+			text-align: left !important;
+		}
+		a {
+			text-align: left !important;
+		}
+	}
+	.grid-container {
+		display: grid;
+		grid-template-areas: "main aside";
+		grid-template-columns: 3fr 1fr;
+	}
+}

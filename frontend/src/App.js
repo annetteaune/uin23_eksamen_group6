@@ -7,12 +7,12 @@ import ShopPage from "./components/pages/ShopPage";
 import MyGamesPage from "./components/pages/MyGamesPage";
 import FavouritesPage from "./components/pages/FavouritesPage";
 import GamePage from "./components/pages/GamePage";
-import { fetchMyGames, fetchSanityGame } from "./sanity/gameServices";
+import { fetchMyGames } from "./sanity/gameServices";
 import LoginPage from "./components/pages/LoginPage";
 import Profile from "./components/pages/Profile";
-import { fetchAllUsers, fetchUser, fetchUserById } from "./sanity/userServices";
+import { fetchAllUsers } from "./sanity/userServices";
 import Register from "./components/pages/Register";
-import ShopGamePage from "./components/pages/ShopGamePage"
+import ShopGamePage from "./components/pages/ShopGamePage";
 
 function App() {
 	/** GAMESHOP ********************************************************************************/
@@ -29,7 +29,6 @@ function App() {
 		setShopGames(data.results);
 		//console.log("shopgames:", data.results);
 	};
-	
 
 	/** GAMEPAGE **********************************************************************************/
 
@@ -73,9 +72,8 @@ function App() {
 	const [myGamesArray, setMyGamesArray] = useState([]);
 
 	//state for å lagre ett enkelt spill
-	const [myGame, setMyGame] = useState([])
+	const [myGame, setMyGame] = useState([]);
 
-	 
 	//hente mygames fra sanity
 	const getMyGames = async () => {
 		const data = await fetchMyGames();
@@ -83,30 +81,24 @@ function App() {
 		console.log("mygames:", data);
 	};
 
-
 	/**LOGIN & USERPAGE**************************************************************************/
 	//state for å lagre om en bruker er logget inn
 	const [login, setLogin] = useState(false);
-	//state for å lagre brukere
-	const [users, setUsers] = useState([])
+	//state for å lagre alle brukere
+	const [users, setUsers] = useState([]);
 	//state for å lagre innlogget bruker
-	const [user, setUser] = useState({})
+	const [user, setUser] = useState({});
 	//hente brukere fra sanity
 	const getUsers = async () => {
-		const data = await fetchAllUsers()
-		setUsers(data)
-		
-	}
-
+		const data = await fetchAllUsers();
+		setUsers(data);
+	};
 	useEffect(() => {
-		getUsers()
-		console.log(users)
-	}, [])
+		getUsers();
+		console.log(users);
+	}, []);
 
-const [favourites, setFavourites] = useState([]);
-
-
-
+	const [favourites, setFavourites] = useState([]);
 
 	return (
 		<>
@@ -124,7 +116,7 @@ const [favourites, setFavourites] = useState([]);
 								user={user}
 								login={login}
 								favourites={favourites}
-
+								setFavourites={setFavourites}
 							/>
 						}
 					/>
@@ -158,7 +150,16 @@ const [favourites, setFavourites] = useState([]);
 							/>
 						}
 					/>
-					<Route path="/favourites" element={<FavouritesPage />} />
+					<Route
+						path="/favourites"
+						element={
+							<FavouritesPage
+								setSelectedId={setSelectedId}
+								login={login}
+								favourites={favourites}
+							/>
+						}
+					/>
 					<Route
 						path="/my-games/:slug"
 						element={
