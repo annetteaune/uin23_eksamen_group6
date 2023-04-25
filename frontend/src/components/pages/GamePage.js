@@ -15,7 +15,7 @@ export default function GamePage({
 	setUser,
 	userId,
 	favourite,
-	setFavourite
+	setFavourite,
 }) {
 	const { slug } = useParams();
 
@@ -66,22 +66,32 @@ export default function GamePage({
 	}
 
 	const getUserById = async () => {
-	
-			const userData = await fetchUserById(userId);
-			setUser(userData);
-			
-			console.log("userdata faves",userData.favourites)
-		
+		const userData = await fetchUserById(userId);
+		setUser(userData);
+
+		console.log("userdata faves", userData.favourites);
 	};
-	
+
 	useEffect(() => {
 		getUserById();
 	}, [userId]);
 
+	//state for å sjekke om spillet er i favoritter
+	const [isFaved, setIsFaved] = useState(false);
+	 useEffect(() => {
+			if (user.favourites && myGame._id) {
+				const gameFaved = user.favourites.find(
+					(fav) => fav._ref === myGame._id
+				);
+				if (gameFaved) {
+					setIsFaved(true);
+				} else{
+					setIsFaved(false)
+				}
+			}
+		}, [user, myGame])
 	
-
-
-
+		console.log("isfaved",isFaved)
 
 	return (
 		<>
@@ -103,7 +113,8 @@ export default function GamePage({
 				{selectedGame.publishers?.map((pub) => (
 					<span key={pub.id}>{pub.name} </span>
 				))}
-				<button onClick={addFave}>Add to favourites</button>
+				{isFaved === true ? null : <button onClick={addFave}>Add to favourites</button>}
+				
 				<span>{message}</span>
 				<img src={selectedGame.background_image} alt={selectedGame.name} />
 			</article>
