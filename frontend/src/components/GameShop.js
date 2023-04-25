@@ -4,7 +4,11 @@ import GameCard from "./GameCard";
 export default function GameShop({ shopGames, setSelectedId }) {
 	return (
 		<section className="shop">
-			<Link to="/shop">Visit Shop</Link>
+			<div className="header-title">
+				<h2>Shop</h2>
+				<Link to="/shop">Visit Shop</Link>
+			</div>
+
 			{shopGames.map((game, index) => (
 				<GameCard
 					key={index}

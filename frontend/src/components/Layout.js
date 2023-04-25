@@ -9,6 +9,9 @@ export default function Layout({ shopGames, login }) {
 				</Link>
 				<nav>
 					<ul>
+						<Link to="/">
+							<li>Home</li>
+						</Link>
 						<Link to="/shop">
 							<li>Shop</li>
 						</Link>
@@ -38,7 +41,9 @@ export default function Layout({ shopGames, login }) {
 			<main>
 				<Outlet shopGames={shopGames} />
 			</main>
-			<footer>footer w/link to api & all photo credit to api</footer>
+			<footer>
+				API and additional images by <a href="https://rawg.io/" target="blank">RAWG</a>
+			</footer>
 		</>
 	);
 }

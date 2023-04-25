@@ -1,32 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Bitter:wght@500&family=Quicksand:wght@400;500;600&display=swap");
 .game-card {
-  width: 30%;
-  background-color: #ffffff;
-  margin-bottom: 2rem;
+  width: 70%;
+  height: 8rem;
+  background-color: #202020;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 4%;
+  border: 2px solid #202020;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2705882353);
+}
+.game-card .card-title {
+  font-size: 0.8rem;
+  text-align: center;
+}
+.game-card .card-genre {
+  display: flex;
+  gap: 0.3rem;
+}
+.game-card .card-genre h4 {
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  color: inherit;
+}
+.game-card a {
+  height: 0.1rem;
+}
+.game-card a .card-btn {
+  width: 100%;
+  color: rgba(255, 255, 255, 0);
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 4%;
+  border: none;
+  position: relative;
+  top: -7.7rem;
+  padding: 6rem 0.5rem 1rem 0.5rem;
+}
+.game-card a .card-btn:hover {
+  color: white;
+  font-size: 0.9rem;
+  transition: ease-in-out 0.2s;
+  text-decoration: underline;
 }
 .game-card img {
   width: 100%;
+  height: 70%;
+  object-fit: cover;
+  border-top-right-radius: 4%;
+  border-top-left-radius: 4%;
+}
+.game-card:hover {
+  background-color: #9f5200;
+  border: 2px solid #9f5200;
+  color: #9f5200;
 }
 
 main {
-  max-width: 1200px;
+  max-width: 479px;
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 main .shop {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
   flex-wrap: wrap;
 }
+main .shop h2 {
+  width: 100%;
+}
+main .shop a {
+  width: 100%;
+}
 main .my-games {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
   flex-wrap: wrap;
+}
+main .my-games h2 {
+  width: 100%;
+}
+main .my-games a {
+  width: 100%;
+}
+main .favourites {
+  padding-bottom: 2rem;
+}
+main .favourites h2 {
+  width: 100%;
+}
+main .favourites a {
+  width: 100%;
+}
+main .header-title {
+  width: 100%;
+  padding: 0 0.1rem;
+}
+main .header-title h2 {
+  width: 100%;
+  color: white;
+  padding-top: 1rem;
+  font-size: 1.3rem;
+  font-family: "Bitter", Times, serif;
+  text-align: center;
+}
+main .header-title a {
+  display: block;
+  width: 100%;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+}
+main .header-title a:hover {
+  text-decoration: underline;
 }
 
 header {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+  background-color: #9f5200;
+}
+header a {
+  text-decoration: none;
+  color: white;
+}
+header a h1 {
+  text-decoration: none;
+  color: white;
+}
+header nav a {
+  text-decoration: none;
+  color: white;
+}
+header nav a:hover {
+  text-decoration: underline;
 }
 header nav ul {
   display: flex;
@@ -36,7 +149,17 @@ header nav ul {
 
 footer {
   padding: 1rem;
+  background-color: #d18828;
   text-align: center;
+  color: black;
+  padding-top: 4rem;
+}
+footer a {
+  color: black;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
 }
 
 .game-page img {
@@ -45,18 +168,15 @@ footer {
 
 .page-title {
   font-size: 1rem;
+  text-align: center;
 }
 
 .games-list {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 1rem;
-}
-.games-list h3 {
   width: 100%;
-}
-.games-list .gamecard {
-  max-width: 30%;
 }
 
 .profile-page .image-wrapper {
@@ -81,13 +201,81 @@ footer {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #e9eaea;
-  color: #000000;
+  font-family: Quicksand, Arial, Helvetica, sans-serif;
+  background-color: #333333;
+  color: white;
 }
 
 html {
   font-size: calc(1em + 1vw);
+}
+
+/*BREAKPOINTS*/
+@media (min-width: 480px) and (max-width: 768px) {
+  main .shop {
+    flex-direction: row;
+  }
+  main .my-games {
+    flex-direction: row;
+  }
+  .game-card {
+    width: 30%;
+  }
+  .games-list {
+    flex-direction: row;
+  }
+  .header-title h2 {
+    text-align: left !important;
+  }
+  .header-title a {
+    text-align: left !important;
+  }
+}
+@media (min-width: 769px) and (max-width: 1200px) {
+  main {
+    max-width: 800px;
+  }
+  main .shop {
+    flex-direction: row;
+  }
+  main .my-games {
+    flex-direction: row;
+  }
+  .game-card {
+    width: 30%;
+  }
+  .games-list {
+    flex-direction: row;
+  }
+  .header-title h2 {
+    text-align: left !important;
+  }
+  .header-title a {
+    text-align: left !important;
+  }
+}
+@media (min-width: 1201px) {
+  main {
+    max-width: 1000px;
+  }
+  main .shop {
+    flex-direction: row;
+  }
+  main .my-games {
+    flex-direction: row;
+  }
+  .game-card {
+    width: 30%;
+  }
+  .games-list {
+    flex-direction: row;
+  }
+  .header-title h2 {
+    text-align: left !important;
+  }
+  .header-title a {
+    text-align: left !important;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
