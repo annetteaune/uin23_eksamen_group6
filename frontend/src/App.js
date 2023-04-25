@@ -80,7 +80,7 @@ function App() {
 	const getMyGames = async () => {
 		const data = await fetchMyGames();
 		setMyGamesArray(data);
-		//console.log("mygames:", data);
+		console.log("mygames:", data);
 	};
 
 
@@ -106,7 +106,7 @@ function App() {
 const [favourites, setFavourites] = useState([]);
 
 
-	
+
 
 	return (
 		<>
@@ -124,6 +124,7 @@ const [favourites, setFavourites] = useState([]);
 								user={user}
 								login={login}
 								favourites={favourites}
+
 							/>
 						}
 					/>

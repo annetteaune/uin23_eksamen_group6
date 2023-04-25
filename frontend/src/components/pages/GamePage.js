@@ -13,7 +13,9 @@ export default function GamePage({
 	users,
 	login,
 	setUser,
-	userId
+	userId,
+	favourite,
+	setFavourite
 }) {
 	const { slug } = useParams();
 
@@ -54,19 +56,21 @@ export default function GamePage({
 				.append("favourites", [gameReference])
 				.commit({ autoGenerateKeys: true });
 			setMessage(`${myGame.title} has been added to your favourites!`);
-			getUserById();
+			//setTimeout for å gi sanity nok tid til å fullføre oppdatering av ny favoritt
+			setTimeout(() => {
+				getUserById();
+			}, 1000);
 		} else {
 			setMessage("You must be logged in to add favourites.");
 		}
 	}
 
-	
-	
 	const getUserById = async () => {
 	
 			const userData = await fetchUserById(userId);
 			setUser(userData);
-			console.log("userdata",userData)
+			
+			console.log("userdata faves",userData.favourites)
 		
 	};
 	

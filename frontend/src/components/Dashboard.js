@@ -22,7 +22,7 @@ useEffect(() => {
 				myGamesArray={myGamesArray}
 				login={login}
 			/>
-			<MyFavourites setSelectedId={setSelectedId} user={user} login={login} favourites={favourites} />
+			<MyFavourites setSelectedId={setSelectedId} user={user} login={login} favourites={favourites} myGamesArray={myGamesArray}/>
 		</>
 	);
 }
