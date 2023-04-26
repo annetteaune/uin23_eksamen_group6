@@ -180,7 +180,7 @@ export default function GamePage({
 				<section className="platform-area list-bckg">
 					<div>
 						<p>Avaliable platforms:</p>
-						{selectedGame.platforms.map((plat) => (
+						{selectedGame.platforms?.map((plat) => (
 							<span key={plat.id}>{plat.platform.name}</span>
 						))}
 					</div>

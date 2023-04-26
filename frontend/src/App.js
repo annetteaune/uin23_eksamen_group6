@@ -7,7 +7,7 @@ import ShopPage from "./components/pages/ShopPage";
 import MyGamesPage from "./components/pages/MyGamesPage";
 import FavouritesPage from "./components/pages/FavouritesPage";
 import GamePage from "./components/pages/GamePage";
-import { fetchMyGames } from "./sanity/gameServices";
+import { fetchGamesCount, fetchMyGames } from "./sanity/gameServices";
 import LoginPage from "./components/pages/LoginPage";
 import Profile from "./components/pages/Profile";
 import { fetchAllUsers } from "./sanity/userServices";
@@ -176,6 +176,9 @@ function App() {
 								favourites={favourites}
 								setFavourites={setFavourites}
 								userId={user._id}
+								getShops={getShops}
+								stores={stores}
+								storeNoURL={storeNoURL}
 							/>
 						}
 					/>

@@ -25,13 +25,13 @@ export default function FavouritesPage({ setSelectedId, login, favourites }) {
 	} else {
 		console.log("login", login);
 		return (
-			<>
+			<article className="mustlogin">
 				<h2>Favourites</h2>
 				<p>You must be logged in to see your favourites.</p>
 				<Link to="/login">
-					<button>To Login</button>
+					<button className="login-btn">To Login</button>
 				</Link>
-			</>
+			</article>
 		);
 	}
 }

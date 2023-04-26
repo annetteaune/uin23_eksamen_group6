@@ -40,12 +40,14 @@ export default function LoginPage({ setLogin, login, users, setUser }) {
 					value={inputValue}
 					onChange={handleInputChange}
 				></input>
-				<button type="submit" onClick={handleSubmit}>
+				<button type="submit" onClick={handleSubmit} className="login-btn">
 					Login
 				</button>
 			</form>
 			<p>{message}</p>
-            <p>Not registered? Register <Link to="/register">here!</Link></p>
+			<p>
+				Not registered? Register <Link to="/register">here!</Link>
+			</p>
 		</article>
 	);
 }

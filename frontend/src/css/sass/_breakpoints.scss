@@ -9,6 +9,9 @@
 	.favourites {
 		.header-title {
 			padding-left: 0.5rem;
+			h2 {
+				text-align: left;
+			}
 		}
 	}
 	.fave-card {
@@ -23,14 +26,7 @@
 	.games-list {
 		flex-direction: row;
 	}
-	.header-title {
-		h2 {
-			text-align: left !important;
-		}
-		a {
-			text-align: left !important;
-		}
-	}
+
 	.grid-container {
 		display: grid;
 		grid-template-areas: "main aside";
@@ -81,18 +77,26 @@
 		grid-template-areas: "main aside";
 		grid-template-columns: 3fr 1fr;
 	}
-
-	.info-area {
-		display: flex;
-		justify-content: space-evenly;
-		gap: 1rem;
-		p {
-			font-weight: bold;
+	.game-page {
+		.info-area {
 			display: flex;
-			flex-direction: column;
+			justify-content: space-evenly;
+			gap: 1rem;
+			padding: 1rem;
+			p {
+				font-weight: bold;
+				display: flex;
+				flex-direction: column;
 
-			span {
-				font-weight: normal;
+				span {
+					font-weight: normal;
+				}
+			}
+		}
+		.img-area {
+			flex-direction: row;
+			img {
+				max-width: 50%;
 			}
 		}
 	}
@@ -141,18 +145,39 @@
 		grid-template-areas: "main aside";
 		grid-template-columns: 3fr 1fr;
 	}
-	.info-area {
-		display: flex;
-		justify-content: space-evenly;
-		gap: 1rem;
-		p {
-			font-weight: bold;
+	.game-page {
+		.info-area {
+			padding: 1rem;
 			display: flex;
-			flex-direction: column;
+			justify-content: space-evenly;
+			gap: 1rem;
+			p {
+				font-weight: bold;
+				display: flex;
+				flex-direction: column;
 
-			span {
-				font-weight: normal;
+				span {
+					font-weight: normal;
+				}
 			}
 		}
+		.img-area {
+			flex-direction: row;
+			img {
+				max-width: 50%;
+			}
+		}
+		.platform-area {
+		display: flex;
+		p {
+			font-weight: bold;
+			width: 100%;
+		}
+		span, a {
+			width: 100%;
+			flex-direction: column;
+			display: flex;
+		}
+	}
 	}
 }

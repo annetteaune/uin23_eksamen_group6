@@ -23,8 +23,6 @@ export default function GamePage({
 		getShops();
 	}, []);
 
-
-
 	/* Kombinere arrays med info om stores med og uten url, slik at de kan mappes gjennom  
 		Kilde: https://stackoverflow.com/questions/46849286/merge-two-array-of-objects-based-on-a-key
 		Resultatene i begge svar-arrayer returneres i APIet i samme rekkefølge hver gang, så velger 
@@ -34,36 +32,75 @@ export default function GamePage({
 		Object.assign({}, item, stores[i])
 	);
 
-
+	console.log(selectedGame);
 	return (
 		<>
 			<article className="game-page">
-				<h3>{selectedGame.name}</h3>
-				<h4>Release date: </h4>
-				<span>{selectedGame.released}</span>
-				<h4>Genres:</h4>
-				{selectedGame.genres?.map((gen) => (
-					<span key={gen.id}>{gen.name} </span>
-				))}
-				<h4>Developers:</h4>
-				{selectedGame.developers?.map((dev) => (
-					<span key={dev.id}>{dev.name} </span>
-				))}
-				<h4>Published by:</h4>
-				{selectedGame.publishers?.map((pub) => (
-					<span key={pub.id}>{pub.name} </span>
-				))}
-				<img src={selectedGame.background_image} alt={selectedGame.name} />
-				<p>{selectedGame.description_raw}</p>
+				<h3 className="game-page-title">{selectedGame.title}</h3>
+				<section className="info-area list-bckg">
+					<p>
+						Release date:
+						{selectedGame.released !== null ? (
+							<span>{selectedGame.released}</span>
+						) : (
+							<span>N/A</span>
+						)}
+					</p>
+					<p>
+						Genres:
+						{selectedGame.genres?.map((gen) => (
+							<span key={gen.id}> {gen.name} </span>
+						))}{" "}
+					</p>
+					<p>
+						Rating:
+						{selectedGame.metacritic !== null ? (
+							<span>{selectedGame.metacritic}</span>
+						) : (
+							<span>N/A</span>
+						)}
+					</p>
+					<p>
+						Developers:
+						{selectedGame.developers?.map((dev) => (
+							<span key={dev.id}> {dev.name} </span>
+						))}
+					</p>
+					<p>
+						Published by:
+						{selectedGame.publishers?.map((pub) => (
+							<span key={pub.id}> {pub.name} </span>
+						))}{" "}
+					</p>
+				</section>
+				<section className="platform-area list-bckg">
+					<div>
+						<p>Avaliable platforms:</p>
+						{selectedGame.platforms?.map((plat) => (
+							<span key={plat.id}>{plat.platform.name}</span>
+						))}
+					</div>
+					<div>
+						<p>Avaliable to purchase from:</p>
+						{completeStore.map((store) => (
+							<a href={store.url} key={store.id} target="blank">
+								{store.store.name}
+							</a>
+						))}
+					</div>
+				</section>
+
+				<section className="img-area">
+					<img src={selectedGame.background_image} alt={selectedGame.name} />
+					<img
+						src={selectedGame.background_image_additional}
+						alt={selectedGame.name}
+					/>
+				</section>
+				<section className="plot-area list-bckg">
+					<p>{selectedGame.description_raw}</p>
+				</section>
 			</article>
-			<section>
-				<h4>Avaliable for purchase from:</h4>
-				{completeStore.map((store) => (
-					<a href={store.url} key={store.id} target="blank">
-						{store.store.name}
-					</a>
-				))}
-			</section>
 		</>
 	);
 }

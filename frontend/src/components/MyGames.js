@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
 import GameCard from "./GameCard";
+import { useEffect, useState } from "react";
 
-export default function MyGames({ setSelectedId, myGamesArray, login }) {
+export default function MyGames({ setSelectedId, myGamesArray,  }) {
 	//ny games-array for å kun hente ut tre stk
 	const dashGames = myGamesArray.slice(0, 3);
+
+
 
 	return (
 		<section className="my-games">
 			<div className="header-title">
 				<h2>My Games</h2>
-				<Link to="/my-games">See all games</Link>
+				<Link to="/my-games">See all {myGamesArray.length} games</Link>
 			</div>
 			{dashGames.map((game, index) => (
 				<GameCard

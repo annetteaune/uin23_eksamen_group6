@@ -13,8 +13,8 @@
 }
 
 .list-bckg{
-    background-color: $footercolor;
-    border-radius: 4%;
+    background-color: $backgroundcolor;
+    border-radius: 25px;
     padding: 1rem;
     margin-bottom: 1rem;
     
@@ -33,4 +33,16 @@
     }
     
    
+}
+
+.mustlogin{
+    text-align: center;
+    button{
+        background-color: $cardcolor;
+			color: $fontcolor;
+			border: 2px solid $darkfontcolor;
+			padding: 0.3rem;
+			border-radius: 15px;
+			margin: 0.3rem auto;
+    }
 }

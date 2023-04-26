@@ -51,7 +51,7 @@ export default function Register() {
 					value={useremail}
 				></input>
 
-				<button type="submit" onClick={saveUser}>
+				<button type="submit" onClick={saveUser} className="login-btn">
 					Create User
 				</button>
 			</form>
@@ -60,7 +60,7 @@ export default function Register() {
 					<p>Your user account has been created!</p>
 					<p>May require a site refresh.</p>
 					<Link to="/login">
-						<button>Log in</button>
+						<button className="login-btn">Log in</button>
 					</Link>
 				</>
 			) : null}

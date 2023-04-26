@@ -2,17 +2,17 @@
 .game-card {
   width: 70%;
   height: 8rem;
-  background-color: #b85c3c;
+  background-color: #9bceb5;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  border-radius: 4%;
-  border: 2px solid #b85c3c;
+  border-radius: 15px;
+  border: 2px solid #9bceb5;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2705882353);
   overflow: clip;
-  color: #fff6e9;
+  color: #161514;
 }
 .game-card .card-title {
   font-size: 0.8rem;
@@ -21,10 +21,10 @@
 .game-card .card-genre {
   display: flex;
   gap: 0.3rem;
-  color: black;
+  color: #161514;
 }
 .game-card .card-genre h4 {
-  font-size: 0.5rem;
+  font-size: 0.45rem;
   text-transform: uppercase;
   color: inherit;
 }
@@ -35,7 +35,7 @@
   width: 100%;
   color: rgba(255, 255, 255, 0);
   background-color: rgba(0, 0, 0, 0);
-  border-radius: 4%;
+  border-radius: 15px;
   border: none;
   position: relative;
   top: -7.7rem;
@@ -50,8 +50,8 @@
   width: 100%;
   height: 70%;
   object-fit: cover;
-  border-top-right-radius: 4%;
-  border-top-left-radius: 4%;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
 }
 .game-card:hover {
   background-color: #e5af7d;
@@ -63,10 +63,10 @@
   display: flex;
   align-items: center;
   margin: 0.5rem auto;
-  border-radius: 4%;
-  background-color: #b85c3c;
+  border-radius: 15px;
+  background-color: #9bceb5;
   width: 85%;
-  border: 2px solid #b85c3c;
+  border: 2px solid #9bceb5;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2705882353);
 }
 .fave-card:hover {
@@ -76,12 +76,12 @@
 }
 .fave-card img {
   max-width: 50%;
-  border-top-left-radius: 4%;
-  border-bottom-left-radius: 4%;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 .fave-card .fave-card-btn {
   width: 80%;
-  color: #fff6e9;
+  color: #161514;
   background-color: rgba(0, 0, 0, 0);
   border: none;
 }
@@ -93,7 +93,7 @@
 .fave-card .fa-chevron-right {
   width: 10%;
   padding-right: 0.1rem;
-  color: #fff6e9;
+  color: #161514;
 }
 
 main {
@@ -143,7 +143,9 @@ main .favourites a {
   width: 100%;
 }
 main .favourites .login-msg {
-  padding: 0.1rem;
+  padding: 0.1rem 0.5rem;
+  width: 100%;
+  display: block;
 }
 main .header-title {
   width: 100%;
@@ -260,6 +262,22 @@ footer a:hover {
   margin: 0 auto;
   border: 2px solid #e5af7d;
 }
+.game-page .platform-area {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-evenly;
+}
+.game-page .platform-area p {
+  font-weight: bold;
+}
+.game-page .platform-area span,
+.game-page .platform-area a {
+  display: flex;
+  color: #161514;
+}
+.game-page .plot-area {
+  margin: 1rem;
+}
 
 .page-title {
   font-size: 1.2rem;
@@ -276,8 +294,8 @@ footer a:hover {
 }
 
 .list-bckg {
-  background-color: #9bceb5;
-  border-radius: 4%;
+  background-color: #f4debe;
+  border-radius: 25px;
   padding: 1rem;
   margin-bottom: 1rem;
 }
@@ -291,6 +309,18 @@ footer a:hover {
 }
 .games-list .game-card button {
   padding: 5.7rem 4.2rem 1.2rem 4.2rem;
+}
+
+.mustlogin {
+  text-align: center;
+}
+.mustlogin button {
+  background-color: #9bceb5;
+  color: #161514;
+  border: 2px solid #161514;
+  padding: 0.3rem;
+  border-radius: 15px;
+  margin: 0.3rem auto;
 }
 
 .profile-page {
@@ -344,15 +374,15 @@ footer a:hover {
   text-align: center;
   font-size: 0.8rem;
 }
-.login-page form button {
-  background-color: #b85c3c;
-  color: #fff6e9;
+.login-page form .login-btn {
+  background-color: #9bceb5;
+  color: #161514;
   border: 2px solid #161514;
   padding: 0.3rem;
   border-radius: 15px;
   margin: 0.3rem auto;
 }
-.login-page form button:hover {
+.login-page form .login-btn:hover {
   color: #161514;
   background-color: #e5af7d;
   text-decoration: underline;
@@ -368,6 +398,9 @@ footer a:hover {
   .favourites .header-title {
     padding-left: 0.5rem;
   }
+  .favourites .header-title h2 {
+    text-align: left;
+  }
   .fave-card img {
     max-width: 40%;
     mask-image: linear-gradient(90deg, black, transparent);
@@ -377,12 +410,6 @@ footer a:hover {
   }
   .games-list {
     flex-direction: row;
-  }
-  .header-title h2 {
-    text-align: left !important;
-  }
-  .header-title a {
-    text-align: left !important;
   }
   .grid-container {
     display: grid;
@@ -427,18 +454,25 @@ footer a:hover {
     grid-template-areas: "main aside";
     grid-template-columns: 3fr 1fr;
   }
-  .info-area {
+  .game-page .info-area {
     display: flex;
     justify-content: space-evenly;
     gap: 1rem;
+    padding: 1rem;
   }
-  .info-area p {
+  .game-page .info-area p {
     font-weight: bold;
     display: flex;
     flex-direction: column;
   }
-  .info-area p span {
+  .game-page .info-area p span {
     font-weight: normal;
+  }
+  .game-page .img-area {
+    flex-direction: row;
+  }
+  .game-page .img-area img {
+    max-width: 50%;
   }
 }
 @media (min-width: 1201px) {
@@ -478,18 +512,37 @@ footer a:hover {
     grid-template-areas: "main aside";
     grid-template-columns: 3fr 1fr;
   }
-  .info-area {
+  .game-page .info-area {
+    padding: 1rem;
     display: flex;
     justify-content: space-evenly;
     gap: 1rem;
   }
-  .info-area p {
+  .game-page .info-area p {
     font-weight: bold;
     display: flex;
     flex-direction: column;
   }
-  .info-area p span {
+  .game-page .info-area p span {
     font-weight: normal;
+  }
+  .game-page .img-area {
+    flex-direction: row;
+  }
+  .game-page .img-area img {
+    max-width: 50%;
+  }
+  .game-page .platform-area {
+    display: flex;
+  }
+  .game-page .platform-area p {
+    font-weight: bold;
+    width: 100%;
+  }
+  .game-page .platform-area span, .game-page .platform-area a {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
   }
 }
 * {

@@ -1,7 +1,7 @@
 import { client } from "./client";
 
 //hente alle spill i sanity
-//kilde for imageurl: 
+//kilde for imageurl:
 //https://www.sanity.io/docs/presenting-images
 export const fetchMyGames = async () => {
 	const data = await client.fetch(
@@ -9,7 +9,6 @@ export const fetchMyGames = async () => {
 	);
 	return data;
 };
-
 
 //hente ett enkelt spill
 export const fetchSanityGame = async (slug) => {
@@ -19,4 +18,5 @@ export const fetchSanityGame = async (slug) => {
 	);
 	return data;
 };
+
 
