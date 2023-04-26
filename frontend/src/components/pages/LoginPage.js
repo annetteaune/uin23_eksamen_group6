@@ -29,7 +29,7 @@ export default function LoginPage({ setLogin, login, users, setUser }) {
 	let navigate = useNavigate();
 
 	return (
-		<section>
+		<article className="login-page">
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="email">Registered e-mail:</label>
 				<input
@@ -46,6 +46,6 @@ export default function LoginPage({ setLogin, login, users, setUser }) {
 			</form>
 			<p>{message}</p>
             <p>Not registered? Register <Link to="/register">here!</Link></p>
-		</section>
+		</article>
 	);
 }

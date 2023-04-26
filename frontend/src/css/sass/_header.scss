@@ -5,16 +5,16 @@ header {
 	background-color: $cardhovercolor;
 	a {
 		text-decoration: none;
-		color: $fontcolor;
+		color: $darkfontcolor;
 		h1 {
 			text-decoration: none;
-			color: $fontcolor;
+			color: $darkfontcolor;
 		}
 	}
 	nav {
 		a {
 			text-decoration: none;
-			color: $fontcolor;
+			color: $darkfontcolor;
 			&:hover {
 				text-decoration: underline;
 			}
@@ -23,6 +23,9 @@ header {
 			display: flex;
 			list-style: none;
 			gap: 1rem;
+			li{
+				color: $darkfontcolor;
+			}
 		}
 	}
 }

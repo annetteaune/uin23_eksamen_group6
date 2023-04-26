@@ -1,12 +1,12 @@
 //tablet
 @media (min-width: 480px) and (max-width: 768px) {
 	main {
-        max-width: 600px;
+		max-width: 600px;
 	}
 	.game-card {
 		width: 70%;
 	}
-    .fave-card {
+	.fave-card {
 		.fave-card-btn {
 			font-size: 0.55rem;
 		}
@@ -63,6 +63,21 @@
 		grid-template-areas: "main aside";
 		grid-template-columns: 3fr 1fr;
 	}
+
+	.info-area {
+		display: flex;
+		justify-content: space-evenly;
+		gap: 1rem;
+		p {
+			font-weight: bold;
+			display: flex;
+			flex-direction: column;
+
+			span {
+				font-weight: normal;
+			}
+		}
+	}
 }
 //xl
 @media (min-width: 1201px) {
@@ -98,5 +113,19 @@
 		display: grid;
 		grid-template-areas: "main aside";
 		grid-template-columns: 3fr 1fr;
+	}
+	.info-area {
+		display: flex;
+		justify-content: space-evenly;
+		gap: 1rem;
+		p {
+			font-weight: bold;
+			display: flex;
+			flex-direction: column;
+
+			span {
+				font-weight: normal;
+			}
+		}
 	}
 }

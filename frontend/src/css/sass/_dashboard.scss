@@ -36,6 +36,9 @@ main {
         padding-bottom: 2rem;
         h2 {
 			width: 100%;
+			img{
+				width: 1rem;
+			}
 		}
 		a {
 			width: 100%;
@@ -49,7 +52,7 @@ main {
 			padding: 0 0.1rem;
 			h2 {
 				width: 100%;
-				color: $fontcolor;
+				color: $darkfontcolor;
 				padding-top: 1rem;
 				font-size: 1.3rem;
 				font-family: "Bitter", Times, serif;
@@ -58,7 +61,7 @@ main {
 			a {
                 display: block;
 				width: 100%;
-				color: $fontcolor;
+				color: $darkfontcolor;
 				text-decoration: none;
                 text-align: center;
 				&:hover {

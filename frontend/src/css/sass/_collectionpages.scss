@@ -1,7 +1,23 @@
 .page-title{
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-align: center;
     padding: 1rem;
+    font-family: "Bitter", Times, serif;
+    
+}
+.under-title{
+    width: 100%;
+    font-family: "Bitter", Times, serif;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.list-bckg{
+    background-color: $footercolor;
+    border-radius: 4%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    
 }
 .games-list{
     display: flex;
@@ -9,6 +25,12 @@
     flex-wrap: wrap;
     gap: 1rem;
     width: 100%;
+    .game-card{
+        button{
+            padding: 5.7rem 4.2rem 1.2rem 4.2rem;
+        }
+       
+    }
     
    
 }

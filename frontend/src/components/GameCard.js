@@ -32,7 +32,7 @@ export default function GameCard({
 				</div>
 				<Link to={`/shop/${slug}`}>
 					<button className="card-btn" id={id} onClick={saveGameId}>
-						View Game
+						View
 					</button>
 				</Link>
 			</article>
@@ -49,7 +49,7 @@ export default function GameCard({
 
 				<Link to={`/my-games/${slug}`}>
 					<button className="card-btn" id={id} onClick={saveGameId}>
-						View Game
+						View
 					</button>
 				</Link>
 			</article>

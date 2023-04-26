@@ -31,7 +31,10 @@ export default function MyFavourites({
 		return (
 			<section className="favourites">
 				<div className="header-title">
-					<h2>MyFavourites</h2>
+					<h2>
+						My <img src="/fav.png" alt="red heart icon" /> Favourites
+						
+					</h2>
 					<Link to="/favourites">Go to Favourites</Link>
 				</div>
 				{favourites.map((game, index) => (

@@ -35,8 +35,8 @@ export default function ShopPage({setSelectedId}) {
 	return (
 		<>
 			<h2 className="page-title">Shop</h2>
-			<section className="games-list">
-				<h3>New Games</h3>
+			<section className="games-list list-bckg">
+				<h3 className="under-title">New Games</h3>
 				{newGames.map((game, index) => (
 					<GameCard
 						key={index}
@@ -49,8 +49,8 @@ export default function ShopPage({setSelectedId}) {
 					/>
 				))}
 			</section>
-			<section className="games-list">
-				<h3>Trending games</h3>
+			<section className="games-list list-bckg">
+				<h3 className="under-title">Trending games</h3>
 				{trendingGames.map((game, index) => (
 					<GameCard
 						key={index}

@@ -20,7 +20,12 @@
 body {
 	font-family: Quicksand, Arial, Helvetica, sans-serif;
 	background-color: $backgroundcolor;
-	color: $fontcolor;
+	color: $darkfontcolor;
+	background-image:url('/src/images/5.jpg');
+	background-size: cover;
+	  background-blend-mode: soft-light;
+
+
 }
 
 html {

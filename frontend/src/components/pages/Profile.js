@@ -10,7 +10,7 @@ export default function Profile({ user, login }) {
 				{" "}
 				<div className="image-wrapper">
 					{user.imageUrl == null ? (
-						<img src="user.jpg" alt="User avatar placeholder" />
+						<img src="fav.png" alt="User avatar placeholder" />
 					) : (
 						<img src={user.imageUrl} alt="User avatar" />
 					)}
