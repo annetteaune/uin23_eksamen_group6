@@ -16,6 +16,9 @@ export default function GamePage({
 	userId,
 	favourite,
 	setFavourite,
+	getShops,
+	stores,
+	storeNoURL,
 }) {
 	const { slug } = useParams();
 
@@ -35,6 +38,20 @@ export default function GamePage({
 	useEffect(() => {
 		getMyGame(slug);
 	}, [slug]);
+
+	//hente shops
+	useEffect(() => {
+		getShops();
+	}, []);
+
+	/* Kombinere arrays med info om stores med og uten url, slik at de kan mappes gjennom  
+		Kilde: https://stackoverflow.com/questions/46849286/merge-two-array-of-objects-based-on-a-key
+		Resultatene i begge svar-arrayer returneres i APIet i samme rekkefølge hver gang, så velger 
+		å benytte det øverste svaret i linken. 
+		*/
+	let completeStore = storeNoURL?.map((item, i) =>
+		Object.assign({}, item, stores[i])
+	);
 
 	//state for melding om favoritter
 	const [message, setMessage] = useState("Click to toggle");
@@ -110,6 +127,9 @@ export default function GamePage({
 
 	console.log(selectedGame);
 
+
+	
+
 	return (
 		<>
 			<article className="game-page">
@@ -127,7 +147,7 @@ export default function GamePage({
 				</section>
 
 				<h3 className="game-page-title">{myGame.title}</h3>
-				<section className="info-area">
+				<section className="info-area list-bckg">
 					<p>
 						Playtime: <span>{myGame.hoursplayed} hours</span>
 					</p>
@@ -142,6 +162,9 @@ export default function GamePage({
 						))}{" "}
 					</p>
 					<p>
+						Rating: <span>{selectedGame.metacritic}</span>
+					</p>
+					<p>
 						Developers:
 						{selectedGame.developers?.map((dev) => (
 							<span key={dev.id}> {dev.name} </span>
@@ -154,6 +177,22 @@ export default function GamePage({
 						))}{" "}
 					</p>
 				</section>
+				<section className="platform-area list-bckg">
+					<div>
+						<p>Avaliable platforms:</p>
+						{selectedGame.platforms.map((plat) => (
+							<span key={plat.id}>{plat.platform.name}</span>
+						))}
+					</div>
+					<div>
+						<p>Avaliable to purchase from:</p>
+						{completeStore.map((store) => (
+							<a href={store.url} key={store.id} target="blank">
+								{store.store.name}
+							</a>
+						))}
+					</div>
+				</section>
 
 				<section className="img-area">
 					<img src={selectedGame.background_image} alt={selectedGame.name} />
@@ -161,6 +200,9 @@ export default function GamePage({
 						src={selectedGame.background_image_additional}
 						alt={selectedGame.name}
 					/>
+				</section>
+				<section className="plot-area list-bckg">
+					<p>{selectedGame.description_raw}</p>
 				</section>
 			</article>
 		</>
