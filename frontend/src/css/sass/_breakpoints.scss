@@ -6,7 +6,16 @@
 	.game-card {
 		width: 70%;
 	}
+	.favourites {
+		.header-title {
+			padding-left: 0.5rem;
+		}
+	}
 	.fave-card {
+		img {
+			max-width: 40%;
+			mask-image: linear-gradient(90deg, black, transparent);
+		}
 		.fave-card-btn {
 			font-size: 0.55rem;
 		}
@@ -42,7 +51,16 @@
 	.game-card {
 		width: 30%;
 	}
+	.favourites {
+		.header-title {
+			padding-left: 0.5rem;
+		}
+	}
 	.fave-card {
+		img {
+			max-width: 40%;
+			mask-image: linear-gradient(90deg, black, transparent);
+		}
 		.fave-card-btn {
 			font-size: 0.55rem;
 		}
@@ -93,7 +111,16 @@
 	.game-card {
 		width: 30%;
 	}
+	.favourites {
+		.header-title {
+			padding-left: 0.5rem;
+		}
+	}
 	.fave-card {
+		img {
+			max-width: 40%;
+			mask-image: linear-gradient(90deg, black, transparent);
+		}
 		.fave-card-btn {
 			font-size: 0.6rem;
 		}
