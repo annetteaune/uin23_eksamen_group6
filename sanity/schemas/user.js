@@ -18,5 +18,16 @@ export default {
       type: 'image',
       title: 'User image',
     },
+    {
+      name: 'favourites',
+      title: 'Favourites',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'game'}],
+        },
+      ],
+    },
   ],
 }

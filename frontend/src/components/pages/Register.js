@@ -26,7 +26,7 @@ export default function Register() {
 	}
 
 	return (
-		<section>
+		<section className="login-page">
 			<form>
 				<label htmlFor="username">Your name:</label>
 				<input

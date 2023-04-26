@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function LoginPage({ setLogin, users, setUser }) {
+export default function LoginPage({ setLogin, login, users, setUser }) {
 	//state for feilmedling
 	const [message, setMessage] = useState("");
 	//lagre inputvalue for sjekk mot brukerarray
@@ -15,7 +15,7 @@ export default function LoginPage({ setLogin, users, setUser }) {
 		event.preventDefault();
 		const user = users.find((user) => user.useremail === inputValue);
 		if (user) {
-			setLogin(true);
+			setLogin(!login);
 			setUser(user);
 			setMessage("");
 			let path = `/profile`;
@@ -29,7 +29,7 @@ export default function LoginPage({ setLogin, users, setUser }) {
 	let navigate = useNavigate();
 
 	return (
-		<section>
+		<article className="login-page">
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="email">Registered e-mail:</label>
 				<input
@@ -46,6 +46,6 @@ export default function LoginPage({ setLogin, users, setUser }) {
 			</form>
 			<p>{message}</p>
             <p>Not registered? Register <Link to="/register">here!</Link></p>
-		</section>
+		</article>
 	);
 }

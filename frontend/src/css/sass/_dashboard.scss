@@ -1,15 +1,72 @@
 main {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    .shop{
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
+	max-width: 479px;
+	width: 100%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	.shop {
+		grid-area: main;
+		h2 {
+			width: 100%;
+		}
+		a {
+			width: 100%;
+		}
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+		
+	}
+	.my-games {
+		grid-area: main;
+		h2 {
+			width: 100%;
+		}
+		a {
+			width: 100%;
+		}
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+	}
+    .favourites{
+		grid-area: aside;
+        padding-bottom: 2rem;
+        h2 {
+			width: 100%;
+			img{
+				width: 1rem;
+			}
+		}
+		a {
+			width: 100%;
+		}
+        .login-msg{
+         padding: 0.1rem;
+        }
     }
-    .my-games{
-         display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
+    .header-title {
+			width: 100%;
+			padding: 0 0.1rem;
+			h2 {
+				width: 100%;
+				color: $darkfontcolor;
+				padding-top: 1rem;
+				font-size: 1.3rem;
+				font-family: "Bitter", Times, serif;
+                text-align: center;
+			}
+			a {
+                display: block;
+				width: 100%;
+				color: $darkfontcolor;
+				text-decoration: none;
+                text-align: center;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
 }

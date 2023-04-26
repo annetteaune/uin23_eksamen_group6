@@ -9,23 +9,31 @@ export default function Layout({ shopGames, login }) {
 				</Link>
 				<nav>
 					<ul>
-						<Link to="/shop">
-							<li>Shop</li>
-						</Link>
-						<Link to="/my-games">
-							<li>My Games</li>
-						</Link>
-						<Link to="/favourites">
-							<li>Favourites</li>
-						</Link>
+						<li>
+							<Link to="/">Home</Link>
+						</li>
+
+						<li>
+							<Link to="/shop">Shop</Link>
+						</li>
+
+						<li>
+							{" "}
+							<Link to="/my-games">My Games</Link>
+						</li>
+
+						<li>
+							<Link to="/favourites">Favourites</Link>
+						</li>
+
 						{login === false ? (
-							<Link to="/login">
-								<li>Login</li>
-							</Link>
+							<li>
+								<Link to="/login">Log in</Link>
+							</li>
 						) : (
-							<Link to="/profile">
-								<li>Profile</li>
-							</Link>
+							<li>
+								<Link to="/profile">Account</Link>
+							</li>
 						)}
 					</ul>
 				</nav>
@@ -34,7 +42,14 @@ export default function Layout({ shopGames, login }) {
 			<main>
 				<Outlet shopGames={shopGames} />
 			</main>
-			<footer>footer w/link to api & all photo credit to api</footer>
+			<footer>
+				<a href="https://rawg.io/" target="blank">
+					API and additional images by RAWG
+				</a>
+				<a href="https://www.vecteezy.com/vector-art/2915042-small-squares-are-connected-to-each-other-to-form-a-color-bar-simple-pattern-design-template">
+					Background by Vecteezy
+				</a>
+			</footer>
 		</>
 	);
 }

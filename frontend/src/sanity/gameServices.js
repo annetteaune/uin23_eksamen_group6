@@ -5,9 +5,18 @@ import { client } from "./client";
 //https://www.sanity.io/docs/presenting-images
 export const fetchMyGames = async () => {
 	const data = await client.fetch(
-		`*[_type == "game"]{title, slug, apiid, hoursplayed, favourited, image, "imageUrl": image.asset->url, genre->}`
+		`*[_type == "game"]{title, slug, apiid, _id, hoursplayed, image, "imageUrl": image.asset->url, genre->}`
 	);
 	return data;
 };
 
+
+//hente ett enkelt spill
+export const fetchSanityGame = async (slug) => {
+	const data = await client.fetch(
+		`*[_type == "game" && slug == $slug]{title, slug, apiid, _id, hoursplayed, image, "imageUrl": image.asset->url, genre->}`,
+		{ slug }
+	);
+	return data;
+};
 

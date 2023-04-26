@@ -1,12 +1,31 @@
 header {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    nav{
-        ul{
-            display: flex;
-            list-style: none;
-            gap: 1rem;
-        }
-    }
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+	background-color: $cardhovercolor;
+	a {
+		text-decoration: none;
+		color: $darkfontcolor;
+		h1 {
+			text-decoration: none;
+			color: $darkfontcolor;
+		}
+	}
+	nav {
+		a {
+			text-decoration: none;
+			color: $darkfontcolor;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+		ul {
+			display: flex;
+			list-style: none;
+			gap: 1rem;
+			li{
+				color: $darkfontcolor;
+			}
+		}
+	}
 }

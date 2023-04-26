@@ -1,4 +1,16 @@
 footer {
-    padding: 1rem;
+    background-color: $footercolor;
     text-align: center;
+    color: $darkfontcolor;
+   padding: 2rem 0 1rem 0;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    a{
+        color: $darkfontcolor;
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
 }
