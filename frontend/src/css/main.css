@@ -24,7 +24,7 @@
   color: #161514;
 }
 .game-card .card-genre h4 {
-  font-size: 0.45rem;
+  font-size: 0.4rem;
   text-transform: uppercase;
   color: inherit;
 }
@@ -74,6 +74,11 @@
   border: 2px solid #f4a127;
   color: #f4a127;
 }
+.fave-card a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
 .fave-card img {
   max-width: 50%;
   border-top-left-radius: 15px;
@@ -90,9 +95,10 @@
   transition: ease-in-out 0.2s;
   text-decoration: underline;
 }
-.fave-card .fa-chevron-right {
-  width: 10%;
-  padding-right: 0.1rem;
+
+.fa-chevron-right {
+  font-size: 0.5rem;
+  padding: 0 0.1rem;
   color: #161514;
 }
 
@@ -134,15 +140,20 @@ main .favourites {
   grid-area: aside;
   padding-bottom: 2rem;
   margin-top: 1rem;
+  flex-direction: column;
 }
-main .favourites h2 {
+main .favourites div {
+  flex-direction: column;
   width: 100%;
 }
-main .favourites h2 img {
+main .favourites div h2 {
+  width: 100%;
+}
+main .favourites div h2 img {
   width: 1rem;
 }
-main .favourites a {
-  width: 100%;
+main .favourites div a {
+  justify-content: left;
 }
 main .favourites .login-msg {
   padding: 0.1rem 0.5rem;
@@ -152,6 +163,8 @@ main .favourites .login-msg {
 main .header-title {
   width: 100%;
   padding: 0 0.1rem;
+  display: flex;
+  align-items: baseline;
 }
 main .header-title h2 {
   width: 100%;
@@ -161,11 +174,12 @@ main .header-title h2 {
   text-align: center;
 }
 main .header-title a {
-  display: block;
+  display: flex;
   width: 100%;
   color: #161514;
   text-decoration: none;
-  text-align: center;
+  justify-content: end;
+  align-items: baseline;
 }
 main .header-title a:hover {
   text-decoration: underline;
@@ -223,6 +237,7 @@ footer a:hover {
   width: 100%;
 }
 .game-page .game-page-title {
+  margin-top: 2rem;
   font-size: 1.2rem;
   font-family: "Bitter", Times, serif;
   text-align: center;
@@ -298,7 +313,8 @@ footer a:hover {
   background-color: #fff5da;
   border-radius: 25px;
   padding: 1rem;
-  margin-bottom: 1rem;
+  max-width: 90%;
+  margin: 0 auto 1rem auto;
 }
 
 .games-list {
@@ -325,7 +341,7 @@ footer a:hover {
 }
 
 .profile-page {
-  margin: 0 auto;
+  margin: 1rem auto;
   padding: 1rem;
 }
 .profile-page h2 {
@@ -405,6 +421,9 @@ footer a:hover {
   .favourites .header-title h2 {
     text-align: left;
   }
+  .list-bckg {
+    max-width: 100%;
+  }
   .fave-card img {
     max-width: 40%;
     mask-image: linear-gradient(90deg, black, transparent);
@@ -431,6 +450,9 @@ footer a:hover {
   }
   main .my-games {
     flex-direction: row;
+  }
+  .list-bckg {
+    max-width: 100%;
   }
   .game-card {
     width: 30%;
@@ -490,6 +512,9 @@ footer a:hover {
   }
   main .my-games {
     flex-direction: row;
+  }
+  .list-bckg {
+    max-width: 100%;
   }
   .game-card {
     width: 30%;
@@ -556,6 +581,14 @@ footer a:hover {
   padding: 0;
   box-sizing: border-box;
   font-size: 0.7rem;
+}
+
+.breadcrumb-not-active {
+  display: none;
+}
+
+.breadcrumb-active {
+  color: #161514;
 }
 
 body {

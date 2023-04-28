@@ -1,8 +1,10 @@
+import Breadcrumbs from "../Breadcrumbs";
 import GameCard from "../GameCard";
 
 export default function MyGamesPage({ myGamesArray, setSelectedId }) {
 	return (
 		<>
+		<Breadcrumbs />
 			<h2 className="page-title">My games</h2>
 			<section className="games-list">
 				{myGamesArray.map((game, index) => (

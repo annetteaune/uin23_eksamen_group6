@@ -17,6 +17,14 @@
 	font-size: 0.7rem;
 }
 
+.breadcrumb-not-active {
+display: none;
+}
+
+.breadcrumb-active {
+color: $darkfontcolor;
+}
+
 body {
 	font-family: Urbanist, Arial, Helvetica, sans-serif;
 	background: linear-gradient(

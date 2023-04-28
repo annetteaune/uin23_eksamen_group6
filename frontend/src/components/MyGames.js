@@ -12,7 +12,10 @@ export default function MyGames({ setSelectedId, myGamesArray,  }) {
 		<section className="my-games list-bckg">
 			<div className="header-title">
 				<h2>My Games</h2>
-				<Link to="/my-games">See all {myGamesArray.length} games</Link>
+				<Link to="/my-games">
+					See all {myGamesArray.length} games{" "}
+					<i className="fa-solid fa-chevron-right"></i>
+				</Link>
 			</div>
 			{dashGames.map((game, index) => (
 				<GameCard

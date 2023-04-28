@@ -37,7 +37,10 @@ export default function MyFavourites({
 					{favourites.length < 1 ? (
 						<Link to="/favourites">Add some favourites! </Link>
 					) : (
-						<Link to="/favourites">See all {favourites.length} games</Link>
+						<Link to="/favourites">
+							See all {favourites.length} games{" "}
+							<i className="fa-solid fa-chevron-right"></i>
+						</Link>
 					)}
 				</div>
 				{favourites.map((game, index) => (

@@ -23,7 +23,8 @@ export default function GameCard({
 	if (Array.isArray(genres)) {
 		return (
 			<article className="game-card">
-				<img src={image} alt={title} />
+				{image !== null ?<img src={image} alt={title} /> : <img src="/placeholder.png" alt="pleaceholder image" />}
+				
 				<h3 className="card-title">{title}</h3>
 				<div className="card-genre">
 					{genres.map((gen) => (

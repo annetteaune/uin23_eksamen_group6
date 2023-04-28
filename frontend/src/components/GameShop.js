@@ -6,7 +6,9 @@ export default function GameShop({ shopGames, setSelectedId }) {
 		<section className="shop list-bckg">
 			<div className="header-title">
 				<h2>Shop</h2>
-				<Link to="/shop">Visit Shop</Link>
+				<Link to="/shop">
+					Visit Shop <i className="fa-solid fa-chevron-right"></i>
+				</Link>
 			</div>
 
 			{shopGames.map((game, index) => (

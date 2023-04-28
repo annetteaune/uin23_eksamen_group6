@@ -1,3 +1,9 @@
+.fa-chevron-right {
+	font-size: 0.5rem;
+	padding: 0 0.1rem;
+	color: $fontcolor;
+}
+
 main {
 	max-width: 479px;
 	width: 100%;
@@ -17,7 +23,6 @@ main {
 		flex-direction: column;
 		gap: 0.5rem;
 		flex-wrap: wrap;
-		
 	}
 	.my-games {
 		grid-area: main;
@@ -32,44 +37,54 @@ main {
 		gap: 0.5rem;
 		flex-wrap: wrap;
 	}
-    .favourites{
+	.favourites {
 		grid-area: aside;
-        padding-bottom: 2rem;
+		padding-bottom: 2rem;
 		margin-top: 1rem;
-        h2 {
+		flex-direction: column;
+		div{
+			flex-direction: column;
+			h2 {
 			width: 100%;
-			img{
+			
+			img {
 				width: 1rem;
 			}
 		}
 		a {
-			width: 100%;
+			justify-content: left;
 		}
-        .login-msg{
-         padding: 0.1rem 0.5rem;
-		 width: 100%;
-		 display: block;
-        }
-    }
-    .header-title {
+		width: 100%;
+		}
+		.login-msg {
+			padding: 0.1rem 0.5rem;
 			width: 100%;
-			padding: 0 0.1rem;
-			h2 {
-				width: 100%;
-				color: $darkfontcolor;
-				font-size: 1.3rem;
-				font-family: "Bitter", Times, serif;
-                text-align: center;
-			}
-			a {
-                display: block;
-				width: 100%;
-				color: $darkfontcolor;
-				text-decoration: none;
-                text-align: center;
-				&:hover {
-					text-decoration: underline;
-				}
+			display: block;
+		}
+	}
+	.header-title {
+		width: 100%;
+		padding: 0 0.1rem;
+		display: flex;
+		align-items: baseline;
+
+		h2 {
+			width: 100%;
+			color: $darkfontcolor;
+			font-size: 1.3rem;
+			font-family: "Bitter", Times, serif;
+			text-align: center;
+		}
+		a {
+			display: flex;
+			width: 100%;
+			color: $darkfontcolor;
+			text-decoration: none;
+			justify-content: end;
+			align-items: baseline;
+			&:hover {
+				text-decoration: underline;
 			}
 		}
+	}
 }

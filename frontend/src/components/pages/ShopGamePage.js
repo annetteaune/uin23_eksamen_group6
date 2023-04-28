@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { writeClient } from "../../sanity/client";
+import Breadcrumbs from "../Breadcrumbs";
 
 export default function GamePage({
 	getGame,
@@ -8,10 +8,6 @@ export default function GamePage({
 	getShops,
 	stores,
 	storeNoURL,
-	setFaves,
-	faves,
-	setIsFaved,
-	_id,
 }) {
 	const { slug } = useParams();
 
@@ -35,8 +31,9 @@ export default function GamePage({
 	console.log(selectedGame);
 	return (
 		<>
+		<Breadcrumbs slug={slug}/>
 			<article className="game-page">
-				<h3 className="game-page-title">{selectedGame.title}</h3>
+				<h3 className="game-page-title">{selectedGame.name}</h3>
 				<section className="info-area list-bckg">
 					<p>
 						Release date:

@@ -11,7 +11,7 @@
 	border: 2px solid $cardcolor;
 	box-shadow: 0px 4px 8px 0px #00000045;
 	overflow: clip;
-	color: $fontcolor; 
+	color: $fontcolor;
 	.card-title {
 		font-size: 0.8rem;
 		text-align: center;
@@ -21,10 +21,9 @@
 		gap: 0.3rem;
 		color: $darkfontcolor;
 		h4 {
-			font-size: 0.45rem;
+			font-size: 0.4rem;
 			text-transform: uppercase;
 			color: inherit;
-			
 		}
 	}
 	a {
@@ -44,7 +43,6 @@
 				color: $darkfontcolor;
 				font-size: 0.9rem;
 				transition: ease-in-out 0.2s;
-			
 			}
 		}
 	}
@@ -55,8 +53,6 @@
 		object-fit: cover;
 		border-top-right-radius: 15px;
 		border-top-left-radius: 15px;
-		
-		
 	}
 	&:hover {
 		background-color: $cardhovercolor;
@@ -79,11 +75,15 @@
 	width: 85%;
 	border: 2px solid $cardcolor;
 	box-shadow: 0px 4px 8px 0px #00000045;
+	a {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+	}
 	img {
 		max-width: 50%;
 		border-top-left-radius: 15px;
 		border-bottom-left-radius: 15px;
-		
 	}
 	.fave-card-btn {
 		width: 80%;
@@ -95,10 +95,5 @@
 			transition: ease-in-out 0.2s;
 			text-decoration: underline;
 		}
-	}.fa-chevron-right{
-		width: 10%;
-		padding-right: 0.1rem;
-		color: $fontcolor; 
-		
 	}
 }
