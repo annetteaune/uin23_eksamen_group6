@@ -29,7 +29,7 @@ export default function LoginPage({ setLogin, login, users, setUser }) {
 	let navigate = useNavigate();
 
 	return (
-		<article className="login-page">
+		<article className="login-page list-bckg">
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="email">Registered e-mail:</label>
 				<input

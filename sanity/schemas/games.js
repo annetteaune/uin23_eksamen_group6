@@ -22,8 +22,13 @@ export default {
     },
     {
       name: 'slug',
-      type: 'string',
+      type: 'slug',
       title: 'Slug',
+      //kilde:https://www.sanity.io/docs/slug-type
+      options: {
+        source: 'title',
+        slugify: (input) => input.toLowerCase().replace(/\s+/g, '-').slice(0, 200),
+      },
     },
     {
       name: 'apiid',
@@ -40,11 +45,6 @@ export default {
       type: 'reference',
       to: {type: 'genre'},
       title: 'Genre',
-    },
-    {
-      name: 'favourited',
-      type: 'boolean',
-      title: 'Favourited',
     },
   ],
 }

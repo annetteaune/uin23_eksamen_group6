@@ -25,7 +25,7 @@ export default function FavouritesPage({ setSelectedId, login, favourites }) {
 	} else {
 		console.log("login", login);
 		return (
-			<article className="mustlogin">
+			<article className="mustlogin page-title ">
 				<h2>Favourites</h2>
 				<p>You must be logged in to see your favourites.</p>
 				<Link to="/login">

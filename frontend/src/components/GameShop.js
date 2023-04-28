@@ -3,7 +3,7 @@ import GameCard from "./GameCard";
 
 export default function GameShop({ shopGames, setSelectedId }) {
 	return (
-		<section className="shop">
+		<section className="shop list-bckg">
 			<div className="header-title">
 				<h2>Shop</h2>
 				<Link to="/shop">Visit Shop</Link>

@@ -46,9 +46,6 @@ export default function Layout({ shopGames, login }) {
 				<a href="https://rawg.io/" target="blank">
 					API and additional images by RAWG
 				</a>
-				<a href="https://www.vecteezy.com/vector-art/2915042-small-squares-are-connected-to-each-other-to-form-a-color-bar-simple-pattern-design-template">
-					Background by Vecteezy
-				</a>
 			</footer>
 		</>
 	);

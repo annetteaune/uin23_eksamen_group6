@@ -2,6 +2,7 @@
 @media (min-width: 480px) and (max-width: 768px) {
 	main {
 		max-width: 600px;
+		min-height: 400px;
 	}
 	.game-card {
 		width: 70%;
@@ -37,6 +38,7 @@
 @media (min-width: 769px) and (max-width: 1200px) {
 	main {
 		max-width: 800px;
+		min-height: 600px;
 		.shop {
 			flex-direction: row;
 		}
@@ -105,6 +107,7 @@
 @media (min-width: 1201px) {
 	main {
 		max-width: 1000px;
+		min-height: 700px;
 		.shop {
 			flex-direction: row;
 		}

@@ -9,7 +9,7 @@ export default function MyGames({ setSelectedId, myGamesArray,  }) {
 
 
 	return (
-		<section className="my-games">
+		<section className="my-games list-bckg">
 			<div className="header-title">
 				<h2>My Games</h2>
 				<Link to="/my-games">See all {myGamesArray.length} games</Link>

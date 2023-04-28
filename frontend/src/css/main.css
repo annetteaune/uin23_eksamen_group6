@@ -2,14 +2,14 @@
 .game-card {
   width: 70%;
   height: 8rem;
-  background-color: #9bceb5;
+  background-color: #fffaed;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   border-radius: 15px;
-  border: 2px solid #9bceb5;
+  border: 2px solid #fffaed;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2705882353);
   overflow: clip;
   color: #161514;
@@ -54,9 +54,9 @@
   border-top-left-radius: 15px;
 }
 .game-card:hover {
-  background-color: #e5af7d;
-  border: 2px solid #e5af7d;
-  color: #e5af7d;
+  background-color: #f4a127;
+  border: 2px solid #f4a127;
+  color: #f4a127;
 }
 
 .fave-card {
@@ -64,15 +64,15 @@
   align-items: center;
   margin: 0.5rem auto;
   border-radius: 15px;
-  background-color: #9bceb5;
+  background-color: #fffaed;
   width: 85%;
-  border: 2px solid #9bceb5;
+  border: 2px solid #fffaed;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2705882353);
 }
 .fave-card:hover {
-  background-color: #e5af7d;
-  border: 2px solid #e5af7d;
-  color: #e5af7d;
+  background-color: #f4a127;
+  border: 2px solid #f4a127;
+  color: #f4a127;
 }
 .fave-card img {
   max-width: 50%;
@@ -104,6 +104,7 @@ main {
   flex-direction: column;
 }
 main .shop {
+  margin-top: 1rem;
   grid-area: main;
   display: flex;
   flex-direction: column;
@@ -132,6 +133,7 @@ main .my-games a {
 main .favourites {
   grid-area: aside;
   padding-bottom: 2rem;
+  margin-top: 1rem;
 }
 main .favourites h2 {
   width: 100%;
@@ -154,7 +156,6 @@ main .header-title {
 main .header-title h2 {
   width: 100%;
   color: #161514;
-  padding-top: 1rem;
   font-size: 1.3rem;
   font-family: "Bitter", Times, serif;
   text-align: center;
@@ -174,7 +175,7 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
-  background-color: #e5af7d;
+  background-color: #f4a127;
 }
 header a {
   text-decoration: none;
@@ -201,7 +202,7 @@ header nav ul li {
 }
 
 footer {
-  background-color: #9bceb5;
+  background-color: #f4a127;
   text-align: center;
   color: #161514;
   padding: 2rem 0 1rem 0;
@@ -260,7 +261,7 @@ footer a:hover {
 .game-page .img-area img {
   max-width: 70%;
   margin: 0 auto;
-  border: 2px solid #e5af7d;
+  border: 2px solid #f4a127;
 }
 .game-page .platform-area {
   display: flex;
@@ -294,7 +295,7 @@ footer a:hover {
 }
 
 .list-bckg {
-  background-color: #f4debe;
+  background-color: #fff5da;
   border-radius: 25px;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -315,7 +316,7 @@ footer a:hover {
   text-align: center;
 }
 .mustlogin button {
-  background-color: #9bceb5;
+  background-color: #fffaed;
   color: #161514;
   border: 2px solid #161514;
   padding: 0.3rem;
@@ -349,7 +350,7 @@ footer a:hover {
 }
 
 .login-page {
-  margin: 0 auto;
+  margin: 1rem auto;
   padding: 3rem;
 }
 .login-page p {
@@ -374,23 +375,26 @@ footer a:hover {
   text-align: center;
   font-size: 0.8rem;
 }
-.login-page form .login-btn {
-  background-color: #9bceb5;
+
+.login-btn {
+  background-color: #fffaed;
   color: #161514;
   border: 2px solid #161514;
   padding: 0.3rem;
   border-radius: 15px;
   margin: 0.3rem auto;
+  display: flex;
 }
-.login-page form .login-btn:hover {
+.login-btn:hover {
   color: #161514;
-  background-color: #e5af7d;
+  background-color: #f4a127;
   text-decoration: underline;
 }
 
 @media (min-width: 480px) and (max-width: 768px) {
   main {
     max-width: 600px;
+    min-height: 400px;
   }
   .game-card {
     width: 70%;
@@ -420,6 +424,7 @@ footer a:hover {
 @media (min-width: 769px) and (max-width: 1200px) {
   main {
     max-width: 800px;
+    min-height: 600px;
   }
   main .shop {
     flex-direction: row;
@@ -478,6 +483,7 @@ footer a:hover {
 @media (min-width: 1201px) {
   main {
     max-width: 1000px;
+    min-height: 700px;
   }
   main .shop {
     flex-direction: row;
@@ -554,11 +560,8 @@ footer a:hover {
 
 body {
   font-family: Urbanist, Arial, Helvetica, sans-serif;
-  background-color: #f4debe;
+  background: linear-gradient(45deg, #ffefc0 10%, #ffefc0 20%, #553a2a 20%, #553a2a 30%, #d77526 30%, #d77526 40%, #76c7ad 40%, #76c7ad 50%, #ffefc0 50%, #ffefc0 100%);
   color: #161514;
-  background-image: url("/src/images/5.jpg");
-  background-size: cover;
-  background-blend-mode: soft-light;
 }
 
 html {

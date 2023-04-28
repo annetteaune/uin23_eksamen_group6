@@ -15,7 +15,7 @@ export default function GameCard({
 
 	/* filter for å bestemme om det er shop- eller mygame-kort som returneres.
 		API-et returnerer en array for sjangere, mens sanity returnerer et objekt, så jeg bruker
-		disse for å differensiere mellom dem. Kunne også brukt state her.
+		disse for å differensiere mellom dem. Kunne brukt state her isteden.
 		Kilder:
 		https://www.w3schools.com/jsref/jsref_isarray.asp
 		https://www.w3schools.com/js/js_typeof.asp 
@@ -47,7 +47,7 @@ export default function GameCard({
 				</h4></div>
 				
 
-				<Link to={`/my-games/${slug}`}>
+				<Link to={`/my-games/${slug.current}`}>
 					<button className="card-btn" id={id} onClick={saveGameId}>
 						View
 					</button>

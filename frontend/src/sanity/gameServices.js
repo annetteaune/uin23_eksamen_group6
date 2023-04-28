@@ -13,7 +13,7 @@ export const fetchMyGames = async () => {
 //hente ett enkelt spill
 export const fetchSanityGame = async (slug) => {
 	const data = await client.fetch(
-		`*[_type == "game" && slug == $slug]{title, slug, apiid, _id, hoursplayed, image, "imageUrl": image.asset->url, genre->}`,
+		`*[_type == "game" && slug.current == $slug]{title, slug, apiid, _id, hoursplayed, image, "imageUrl": image.asset->url, genre->}`,
 		{ slug }
 	);
 	return data;
