@@ -7,7 +7,7 @@ export default function FaveCards({ title, image, setSelectedId, slug, id }) {
 	return (
 		<article className="fave-card">
 			<img src={image} alt={title} />
-			<Link to={`/my-games/${slug}`}>
+			<Link to={`/my-games/${slug.current}`}>
 				<button className="fave-card-btn" id={id} onClick={saveGameId}>
 					{title}
 				</button>
