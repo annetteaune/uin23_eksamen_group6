@@ -18,19 +18,17 @@ export default function WordCloud({ selectedGame }) {
 		fontWeight: "bold",
 		padding: 3,
 	};
-//gjemmer hele komponentet fra gamepage om det er svært få tags, av estetiske grunner
-if (selectedGame?.length > 5){
-	return (
-		
-		<section className="wordcloud">
-			<ReactWordcloud
-				words={words}
-				minSize={minSize}
-				options={options}
-				maxWords={maxWords}
-			/>
-		</section>
-	);
+	//gjemmer hele komponentet fra gamepage om det er svært få tags, av estetiske grunner
+	if (selectedGame?.length > 5) {
+		return (
+			<section className="wordcloud">
+				<ReactWordcloud
+					words={words}
+					minSize={minSize}
+					options={options}
+					maxWords={maxWords}
+				/>
+			</section>
+		);
+	}
 }
-}
-	

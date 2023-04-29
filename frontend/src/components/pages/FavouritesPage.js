@@ -6,7 +6,7 @@ export default function FavouritesPage({ setSelectedId, login, favourites }) {
 	if (login === true) {
 		return (
 			<>
-			<Breadcrumbs />
+				<Breadcrumbs />
 				<h2 className="page-title">Favourites</h2>
 				<section className="games-list">
 					{favourites.map((game, index) => (

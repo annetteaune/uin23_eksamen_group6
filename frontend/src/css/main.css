@@ -171,32 +171,45 @@ main .header-title a:hover {
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
   background-color: #f4a127;
 }
-header a {
-  text-decoration: none;
-  color: #161514;
-}
-header a h1 {
-  text-decoration: none;
-  color: #161514;
-  font-size: 0.9rem;
-}
-header nav a {
-  text-decoration: none;
-  color: #161514;
-  font-size: 0.8rem;
-}
-header nav a:hover {
-  text-decoration: underline;
-}
-header nav ul {
+header .navbar {
   display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  align-items: center;
+}
+header .navbar .logo a {
+  color: #161514;
+  text-decoration: none;
+}
+header .navbar .nav-icon {
+  border: none;
+  background-color: inherit;
+  font-size: 1.2rem;
+}
+header .navbar .nav-links {
+  position: absolute;
+  background-color: #fffaed;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2705882353);
+  top: 3.54rem;
+  right: 0;
+  height: 100%;
+  width: 50%;
+}
+header .navbar .nav-links ul {
   list-style: none;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
+  padding: 1rem 1.5rem;
+}
+header .navbar .nav-links ul li a {
+  color: #161514;
+  text-decoration: none;
+}
+header .navbar .nav-links ul li a:hover {
+  text-decoration: underline;
 }
 
 .breadcrumb-not-active {
@@ -206,6 +219,14 @@ header nav ul {
 .breadcrumb-active {
   color: #161514;
   font-size: 0.7rem;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
 }
 
 footer {
@@ -459,6 +480,37 @@ footer a:hover {
   }
 }
 @media (min-width: 769px) and (max-width: 1200px) {
+  header .navbar {
+    align-items: center;
+  }
+  header .navbar .nav-icon {
+    display: none;
+  }
+  header .navbar .nav-links {
+    display: block;
+    position: inherit;
+    box-shadow: none;
+    background-color: #f4a127;
+    width: 65%;
+  }
+  header .navbar .nav-links ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 0;
+  }
+  header .navbar .nav-links ul li {
+    font-size: 0.9rem;
+  }
+  header .navbar .nav-links ul li a {
+    color: #161514;
+    text-decoration: none;
+  }
+  header .navbar .nav-links ul li a:hover {
+    text-decoration: underline;
+  }
   main {
     max-width: 800px;
     min-height: 600px;
@@ -525,6 +577,37 @@ footer a:hover {
   }
 }
 @media (min-width: 1201px) {
+  header .navbar {
+    align-items: center;
+  }
+  header .navbar .nav-icon {
+    display: none;
+  }
+  header .navbar .nav-links {
+    display: block;
+    position: inherit;
+    box-shadow: none;
+    background-color: #f4a127;
+    width: 65%;
+  }
+  header .navbar .nav-links ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 0;
+  }
+  header .navbar .nav-links ul li {
+    font-size: 0.9rem;
+  }
+  header .navbar .nav-links ul li a {
+    color: #161514;
+    text-decoration: none;
+  }
+  header .navbar .nav-links ul li a:hover {
+    text-decoration: underline;
+  }
   main {
     max-width: 1000px;
     min-height: 700px;
@@ -593,7 +676,8 @@ footer a:hover {
     font-weight: bold;
     width: 100%;
   }
-  .game-page .platform-area span, .game-page .platform-area a {
+  .game-page .platform-area span,
+  .game-page .platform-area a {
     width: 100%;
     flex-direction: column;
     display: flex;

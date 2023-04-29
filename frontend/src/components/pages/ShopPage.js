@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import GameCard from "../GameCard";
 import Breadcrumbs from "../Breadcrumbs";
 
-export default function ShopPage({setSelectedId}) {
+export default function ShopPage({ setSelectedId }) {
 	//state for å lagre nye spill
 	const [newGames, setNewGames] = useState([]);
 	//hente spill til shop fra api
@@ -35,7 +35,7 @@ export default function ShopPage({setSelectedId}) {
 
 	return (
 		<>
-		<Breadcrumbs />
+			<Breadcrumbs />
 			<h2 className="page-title">Shop</h2>
 			<section className="games-list list-bckg">
 				<h3 className="under-title">New & Upcoming Platformer Games</h3>

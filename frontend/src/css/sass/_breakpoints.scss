@@ -17,7 +17,7 @@
 			}
 		}
 	}
-	.list-bckg{
+	.list-bckg {
 		max-width: 100%;
 	}
 	.fave-card {
@@ -43,6 +43,40 @@
 }
 //desktop
 @media (min-width: 769px) and (max-width: 1200px) {
+	header {
+		.navbar {
+			align-items: center;
+			.nav-icon {
+				display: none;
+			}
+			.nav-links {
+				display: block;
+				position: inherit;
+				box-shadow: none;
+				background-color: $footercolor;
+				width: 65%;
+
+				ul {
+					list-style: none;
+					display: flex;
+					justify-content: space-evenly;
+					flex-direction: row;
+					gap: 1rem;
+					padding: 0;
+					li {
+						font-size: 0.9rem;
+						a {
+							color: $darkfontcolor;
+							text-decoration: none;
+							&:hover {
+								text-decoration: underline;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	main {
 		max-width: 800px;
 		min-height: 600px;
@@ -53,7 +87,7 @@
 			flex-direction: row;
 		}
 	}
-	.list-bckg{
+	.list-bckg {
 		max-width: 100%;
 	}
 	.game-card {
@@ -119,6 +153,40 @@
 }
 //xl
 @media (min-width: 1201px) {
+	header {
+		.navbar {
+			align-items: center;
+			.nav-icon {
+				display: none;
+			}
+			.nav-links {
+				display: block;
+				position: inherit;
+				box-shadow: none;
+				background-color: $footercolor;
+				width: 65%;
+
+				ul {
+					list-style: none;
+					display: flex;
+					justify-content: space-evenly;
+					flex-direction: row;
+					gap: 1rem;
+					padding: 0;
+					li {
+						font-size: 0.9rem;
+						a {
+							color: $darkfontcolor;
+							text-decoration: none;
+							&:hover {
+								text-decoration: underline;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	main {
 		max-width: 1000px;
 		min-height: 700px;
@@ -129,13 +197,13 @@
 			flex-direction: row;
 		}
 	}
-	.list-bckg{
+	.list-bckg {
 		max-width: 100%;
 	}
 	.game-card {
 		width: 30%;
 	}
-	
+
 	.fave-card {
 		width: 100%;
 		img {
@@ -186,16 +254,17 @@
 			}
 		}
 		.platform-area {
-		display: flex;
-		p {
-			font-weight: bold;
-			width: 100%;
-		}
-		span, a {
-			width: 100%;
-			flex-direction: column;
 			display: flex;
+			p {
+				font-weight: bold;
+				width: 100%;
+			}
+			span,
+			a {
+				width: 100%;
+				flex-direction: column;
+				display: flex;
+			}
 		}
-	}
 	}
 }

@@ -2,11 +2,9 @@ import { Link } from "react-router-dom";
 import GameCard from "./GameCard";
 import { useEffect, useState } from "react";
 
-export default function MyGames({ setSelectedId, myGamesArray,  }) {
+export default function MyGames({ setSelectedId, myGamesArray }) {
 	//ny games-array for å kun hente ut tre stk
 	const dashGames = myGamesArray.slice(0, 3);
-
-
 
 	return (
 		<section className="my-games list-bckg">

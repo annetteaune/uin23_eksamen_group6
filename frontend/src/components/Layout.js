@@ -1,44 +1,12 @@
 import { Link, Outlet } from "react-router-dom";
+import Navbar from "./Navbar";
 
 export default function Layout({ shopGames, login }) {
 	return (
 		<>
 			<header>
-				<Link to="/">
-					<h1>LOGO</h1>
-				</Link>
-				<nav>
-					<ul>
-						<li>
-							<Link to="/">Home</Link>
-						</li>
-
-						<li>
-							<Link to="/shop">Shop</Link>
-						</li>
-
-						<li>
-							{" "}
-							<Link to="/my-games">My Games</Link>
-						</li>
-
-						<li>
-							<Link to="/favourites">Favourites</Link>
-						</li>
-
-						{login === false ? (
-							<li>
-								<Link to="/login">Log in</Link>
-							</li>
-						) : (
-							<li>
-								<Link to="/profile">Account</Link>
-							</li>
-						)}
-					</ul>
-				</nav>
+				<Navbar login={login} />
 			</header>
-
 			<main>
 				<Outlet shopGames={shopGames} />
 			</main>

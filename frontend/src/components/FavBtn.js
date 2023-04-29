@@ -19,8 +19,8 @@ export default function FavBtn({ user, myGame, userId, login, setUser }) {
 	}, [userId]);
 
 	//oppdatere sanity og legge til favoritt ved klikk, om man er logget inn
-	//kilde: https://webtricks.blog/oppdatere-et-array-felt-i-en-innholdstype-i-sanity-fra-et-react-grensesnitt/	
-    //kilde: https://github.com/toremake/UIN2023_sanity_create/blob/main/frontend/src/components/Show.js
+	//kilde: https://webtricks.blog/oppdatere-et-array-felt-i-en-innholdstype-i-sanity-fra-et-react-grensesnitt/
+	//kilde: https://github.com/toremake/UIN2023_sanity_create/blob/main/frontend/src/components/Show.js
 	const gameReference = {
 		_type: "reference",
 		_ref: myGame._id,
@@ -64,7 +64,7 @@ export default function FavBtn({ user, myGame, userId, login, setUser }) {
 			setMessage("You must be logged in to remove favourites.");
 		}
 	}
-    //sette state som faved om spillet fins i favoritt-listen
+	//sette state som faved om spillet fins i favoritt-listen
 	useEffect(() => {
 		if (user.favourites && myGame._id) {
 			const gameFaved = user.favourites.find((fav) => fav._ref === myGame._id);

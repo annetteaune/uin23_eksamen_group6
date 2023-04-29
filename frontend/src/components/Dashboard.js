@@ -13,8 +13,6 @@ export default function Dashboard({
 	user,
 	login,
 	favourites,
-	
-	
 }) {
 	useEffect(() => {
 		getGamesForShop();
@@ -31,7 +29,6 @@ export default function Dashboard({
 					setSelectedId={setSelectedId}
 					myGamesArray={myGamesArray}
 					login={login}
-					
 				/>
 			</div>
 			<MyFavourites

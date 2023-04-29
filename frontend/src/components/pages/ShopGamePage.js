@@ -28,8 +28,6 @@ export default function GamePage({
 	let completeStore = storeNoURL?.map((item, i) =>
 		Object.assign({}, item, stores[i])
 	);
-
-	console.log(selectedGame);
 	return (
 		<>
 			<Breadcrumbs slug={slug} />

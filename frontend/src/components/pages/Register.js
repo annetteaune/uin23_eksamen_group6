@@ -24,50 +24,49 @@ export default function Register() {
 		});
 		setCreated(true);
 	}
-if (created===false){
-return (
-	<section className="login-page list-bckg">
-		<h2 className="page-title">Create an account:</h2>
-		<form>
-			<label htmlFor="username">Your name:</label>
-			<input
-				name="username"
-				id="username"
-				type="text"
-				placeholder="Your Name"
-				onChange={(event) => {
-					setUsername(event.target.value);
-				}}
-				value={username}
-			></input>
-			<label htmlFor="email">Your email:</label>
-			<input
-				name="email"
-				id="email"
-				type="text"
-				placeholder="annettla@hiof.no"
-				onChange={(event) => {
-					setUseremail(event.target.value);
-				}}
-				value={useremail}
-			></input>
+	if (created === false) {
+		return (
+			<section className="login-page list-bckg">
+				<h2 className="page-title">Create an account:</h2>
+				<form>
+					<label htmlFor="username">Your name:</label>
+					<input
+						name="username"
+						id="username"
+						type="text"
+						placeholder="Your Name"
+						onChange={(event) => {
+							setUsername(event.target.value);
+						}}
+						value={username}
+					></input>
+					<label htmlFor="email">Your email:</label>
+					<input
+						name="email"
+						id="email"
+						type="text"
+						placeholder="annettla@hiof.no"
+						onChange={(event) => {
+							setUseremail(event.target.value);
+						}}
+						value={useremail}
+					></input>
 
-			<button type="submit" onClick={saveUser} className="login-btn">
-				Create User
-			</button>
-		</form>
-	</section>
-);
-} else {
-	return (
-		<section className="login-page list-bckg">
-			<h2 className="page-title">Your user account has been created!</h2>
-			<p>Note: May require a site refresh.</p>
-			<Link to="/login">
-				<button className="login-btn">Log in</button>
-			</Link>
-		</section>
-	);
-}
-	
+					<button type="submit" onClick={saveUser} className="login-btn">
+						Create User
+					</button>
+				</form>
+			</section>
+		);
+	} else {
+		return (
+			<section className="login-page list-bckg">
+				<h2 className="page-title">Your user account has been created!</h2>
+				<p>Note: May require a site refresh.</p>
+				<Link to="/login">
+					<button className="login-btn">Log in</button>
+				</Link>
+			</section>
+		);
+	}
 }

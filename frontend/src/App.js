@@ -27,7 +27,6 @@ function App() {
 
 		const data = await response.json();
 		setShopGames(data.results);
-		//console.log("shopgames:", data.results);
 	};
 
 	/** GAMEPAGE **********************************************************************************/
@@ -78,7 +77,7 @@ function App() {
 	const getMyGames = async () => {
 		const data = await fetchMyGames();
 		setMyGamesArray(data);
-		console.log("mygames:", data);
+		//console.log("mygames:", data);
 	};
 
 	/**LOGIN & USERPAGE**************************************************************************/
@@ -95,12 +94,11 @@ function App() {
 	};
 	useEffect(() => {
 		getUsers();
-		console.log(users);
 	}, []);
 
 	const [favourites, setFavourites] = useState([]);
 
-	/** */
+
 
 
 	

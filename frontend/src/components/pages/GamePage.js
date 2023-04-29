@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchSanityGame } from "../../sanity/gameServices";
 import FavBtn from "../FavBtn";
 import Breadcrumbs from "../Breadcrumbs";
-import WordCloud from "../WordCloud"
+import WordCloud from "../WordCloud";
 
 export default function GamePage({
 	getGame,
@@ -51,8 +51,7 @@ export default function GamePage({
 		Object.assign({}, item, stores[i])
 	);
 
-	console.log("tags",selectedGame.tags)
-
+	console.log("tags", selectedGame.tags);
 
 	return (
 		<>
