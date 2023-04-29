@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchSanityGame } from "../../sanity/gameServices";
 import FavBtn from "../FavBtn";
 import Breadcrumbs from "../Breadcrumbs";
+import WordCloud from "../WordCloud"
 
 export default function GamePage({
 	getGame,
@@ -50,9 +51,13 @@ export default function GamePage({
 		Object.assign({}, item, stores[i])
 	);
 
+	console.log("tags",selectedGame.tags)
+
+
 	return (
 		<>
-		<Breadcrumbs slug={slug} />
+			<Breadcrumbs slug={slug} />
+
 			<article className="game-page">
 				<FavBtn
 					user={user}
@@ -93,6 +98,7 @@ export default function GamePage({
 						))}{" "}
 					</p>
 				</section>
+				<WordCloud selectedGame={selectedGame.tags} />
 				<section className="platform-area list-bckg">
 					<div>
 						<p>Avaliable platforms:</p>

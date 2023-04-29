@@ -38,6 +38,7 @@
 
 .mustlogin{
     text-align: center;
+    font-size: 0.8rem;
     button{
         background-color: $cardcolor;
 			color: $fontcolor;
@@ -45,5 +46,6 @@
 			padding: 0.3rem;
 			border-radius: 15px;
 			margin: 0.3rem auto;
+            font-size: 0.8rem;
     }
 }

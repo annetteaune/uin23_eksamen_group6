@@ -3,10 +3,12 @@
 	padding: 1rem;
 	h2 {
 		text-align: center;
+		font-size: 0.9rem;
 	}
 	span {
 		text-align: center;
 		display: block;
+		font-size: 0.8rem;
 	}
 	//kilde for sirkulære bilder:
 	//https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
@@ -28,8 +30,10 @@
 .login-page {
 	margin: 1rem auto;
 	padding: 3rem;
+	font-size: 0.9rem;
 	p {
 		text-align: center;
+		font-size: 0.8rem;
 		a {
 			color: $darkfontcolor;
 		}
@@ -59,6 +63,7 @@
 	border-radius: 15px;
 	margin: 0.3rem auto;
 	display: flex;
+	font-size: 0.8rem;
 	&:hover {
 		color: $darkfontcolor;
 		background-color: $cardhovercolor;

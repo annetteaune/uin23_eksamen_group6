@@ -9,9 +9,11 @@
 	}
 	.favourites {
 		.header-title {
-			padding-left: 0.5rem;
 			h2 {
 				text-align: left;
+			}
+			a {
+				justify-content: left;
 			}
 		}
 	}
@@ -19,6 +21,7 @@
 		max-width: 100%;
 	}
 	.fave-card {
+		width: 100%;
 		img {
 			max-width: 40%;
 			mask-image: linear-gradient(90deg, black, transparent);
@@ -35,6 +38,7 @@
 		display: grid;
 		grid-template-areas: "main aside";
 		grid-template-columns: 3fr 1fr;
+		gap: 1rem;
 	}
 }
 //desktop
@@ -57,10 +61,13 @@
 	}
 	.favourites {
 		.header-title {
-			padding-left: 0.5rem;
+			a {
+				justify-content: left;
+			}
 		}
 	}
 	.fave-card {
+		width: 100%;
 		img {
 			max-width: 40%;
 			mask-image: linear-gradient(90deg, black, transparent);
@@ -84,6 +91,7 @@
 		display: grid;
 		grid-template-areas: "main aside";
 		grid-template-columns: 3fr 1fr;
+		gap: 1rem;
 	}
 	.game-page {
 		.info-area {
@@ -127,12 +135,9 @@
 	.game-card {
 		width: 30%;
 	}
-	.favourites {
-		.header-title {
-			padding-left: 0.5rem;
-		}
-	}
+	
 	.fave-card {
+		width: 100%;
 		img {
 			max-width: 40%;
 			mask-image: linear-gradient(90deg, black, transparent);
@@ -156,6 +161,7 @@
 		display: grid;
 		grid-template-areas: "main aside";
 		grid-template-columns: 3fr 1fr;
+		gap: 1rem;
 	}
 	.game-page {
 		.info-area {

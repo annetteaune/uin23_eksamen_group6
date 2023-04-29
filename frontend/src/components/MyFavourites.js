@@ -25,11 +25,9 @@ export default function MyFavourites({
 		}
 	}, [login, myGamesArray, setFavourites, user.favourites]);
 
-	console.log("favourties fix", favourites);
-
 	if (login === true) {
 		return (
-			<section className="favourites">
+			<section className="favourites list-bckg">
 				<div className="header-title">
 					<h2>
 						My <img src="/fav.png" alt="red heart icon" /> Favourites
@@ -59,7 +57,7 @@ export default function MyFavourites({
 		);
 	} else {
 		return (
-			<section className="favourites">
+			<section className="favourites list-bckg">
 				<div className="header-title">
 					<h2>MyFavourites</h2>
 				</div>

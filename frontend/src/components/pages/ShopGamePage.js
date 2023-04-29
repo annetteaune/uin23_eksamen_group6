@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Breadcrumbs from "../Breadcrumbs";
+import WordCloud from "../WordCloud";
 
 export default function GamePage({
 	getGame,
@@ -31,7 +32,7 @@ export default function GamePage({
 	console.log(selectedGame);
 	return (
 		<>
-		<Breadcrumbs slug={slug}/>
+			<Breadcrumbs slug={slug} />
 			<article className="game-page">
 				<h3 className="game-page-title">{selectedGame.name}</h3>
 				<section className="info-area list-bckg">
@@ -70,6 +71,7 @@ export default function GamePage({
 						))}{" "}
 					</p>
 				</section>
+				<WordCloud selectedGame={selectedGame.tags} />
 				<section className="platform-area list-bckg">
 					<div>
 						<p>Avaliable platforms:</p>

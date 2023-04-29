@@ -10,56 +10,41 @@ main {
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
-	.shop {
+	.shop,
+	.my-games {
 		margin-top: 1rem;
 		grid-area: main;
-		h2 {
-			width: 100%;
-		}
-		a {
-			width: 100%;
-		}
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
 		flex-wrap: wrap;
 	}
-	.my-games {
-		grid-area: main;
-		h2 {
-			width: 100%;
-		}
-		a {
-			width: 100%;
-		}
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		flex-wrap: wrap;
-	}
+
 	.favourites {
 		grid-area: aside;
 		padding-bottom: 2rem;
 		margin-top: 1rem;
 		flex-direction: column;
-		div{
+		div {
 			flex-direction: column;
 			h2 {
-			width: 100%;
-			
-			img {
-				width: 1rem;
+				width: 100%;
+
+				img {
+					width: 1rem;
+				}
 			}
-		}
-		a {
-			justify-content: left;
-		}
-		width: 100%;
+			a {
+				justify-content: center;
+			}
+			width: 100%;
 		}
 		.login-msg {
 			padding: 0.1rem 0.5rem;
 			width: 100%;
 			display: block;
+			font-size: 0.8rem;
+			text-align: center;
 		}
 	}
 	.header-title {
@@ -71,7 +56,7 @@ main {
 		h2 {
 			width: 100%;
 			color: $darkfontcolor;
-			font-size: 1.3rem;
+			font-size: 1rem;
 			font-family: "Bitter", Times, serif;
 			text-align: center;
 		}
@@ -82,6 +67,7 @@ main {
 			text-decoration: none;
 			justify-content: end;
 			align-items: baseline;
+			font-size: 0.8rem;
 			&:hover {
 				text-decoration: underline;
 			}

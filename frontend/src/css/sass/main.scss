@@ -1,7 +1,7 @@
 @import "colors.scss";
 @import "gamecards.scss";
 @import "dashboard.scss";
-@import "header.scss";
+@import "headerandnav.scss";
 @import "footer.scss";
 @import "gamepage.scss";
 @import "collectionpages.scss";
@@ -12,17 +12,10 @@
 
 * {
 	margin: 0;
-	padding: 0;
 	box-sizing: border-box;
-	font-size: 0.7rem;
 }
-
-.breadcrumb-not-active {
-display: none;
-}
-
-.breadcrumb-active {
-color: $darkfontcolor;
+html {
+	font-size: calc(1em + 1vw);
 }
 
 body {
@@ -41,9 +34,5 @@ body {
 		$bk-light 100%
 	);
 	color: $darkfontcolor;
-	
 }
 
-html {
-	font-size: calc(1em + 1vw);
-}

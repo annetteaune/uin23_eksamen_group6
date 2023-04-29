@@ -109,32 +109,14 @@ main {
   display: flex;
   flex-direction: column;
 }
-main .shop {
+main .shop,
+main .my-games {
   margin-top: 1rem;
   grid-area: main;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   flex-wrap: wrap;
-}
-main .shop h2 {
-  width: 100%;
-}
-main .shop a {
-  width: 100%;
-}
-main .my-games {
-  grid-area: main;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-main .my-games h2 {
-  width: 100%;
-}
-main .my-games a {
-  width: 100%;
 }
 main .favourites {
   grid-area: aside;
@@ -153,12 +135,14 @@ main .favourites div h2 img {
   width: 1rem;
 }
 main .favourites div a {
-  justify-content: left;
+  justify-content: center;
 }
 main .favourites .login-msg {
   padding: 0.1rem 0.5rem;
   width: 100%;
   display: block;
+  font-size: 0.8rem;
+  text-align: center;
 }
 main .header-title {
   width: 100%;
@@ -169,7 +153,7 @@ main .header-title {
 main .header-title h2 {
   width: 100%;
   color: #161514;
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-family: "Bitter", Times, serif;
   text-align: center;
 }
@@ -180,6 +164,7 @@ main .header-title a {
   text-decoration: none;
   justify-content: end;
   align-items: baseline;
+  font-size: 0.8rem;
 }
 main .header-title a:hover {
   text-decoration: underline;
@@ -198,10 +183,12 @@ header a {
 header a h1 {
   text-decoration: none;
   color: #161514;
+  font-size: 0.9rem;
 }
 header nav a {
   text-decoration: none;
   color: #161514;
+  font-size: 0.8rem;
 }
 header nav a:hover {
   text-decoration: underline;
@@ -211,8 +198,14 @@ header nav ul {
   list-style: none;
   gap: 1rem;
 }
-header nav ul li {
+
+.breadcrumb-not-active {
+  display: none;
+}
+
+.breadcrumb-active {
   color: #161514;
+  font-size: 0.7rem;
 }
 
 footer {
@@ -227,6 +220,7 @@ footer {
 footer a {
   color: #161514;
   text-decoration: none;
+  font-size: 0.8rem;
 }
 footer a:hover {
   text-decoration: underline;
@@ -258,15 +252,18 @@ footer a:hover {
   margin: 0 auto;
   text-align: center;
   display: block;
+  font-size: 0.75rem;
 }
 .game-page .info-area {
   padding: 1rem 1rem 1rem 3rem;
 }
 .game-page .info-area p {
   font-weight: bold;
+  font-size: 0.8rem;
 }
 .game-page .info-area p span {
   font-weight: normal;
+  font-size: 0.7rem;
 }
 .game-page .img-area {
   display: flex;
@@ -285,14 +282,24 @@ footer a:hover {
 }
 .game-page .platform-area p {
   font-weight: bold;
+  font-size: 0.8rem;
 }
 .game-page .platform-area span,
 .game-page .platform-area a {
   display: flex;
   color: #161514;
+  font-size: 0.7rem;
 }
 .game-page .plot-area {
   margin: 1rem;
+  font-size: 0.7rem;
+}
+
+.wordcloud {
+  max-height: 16rem;
+  background-color: #fffaed;
+  border-radius: 25px;
+  margin-bottom: 1rem;
 }
 
 .page-title {
@@ -330,6 +337,7 @@ footer a:hover {
 
 .mustlogin {
   text-align: center;
+  font-size: 0.8rem;
 }
 .mustlogin button {
   background-color: #fffaed;
@@ -338,6 +346,7 @@ footer a:hover {
   padding: 0.3rem;
   border-radius: 15px;
   margin: 0.3rem auto;
+  font-size: 0.8rem;
 }
 
 .profile-page {
@@ -346,10 +355,12 @@ footer a:hover {
 }
 .profile-page h2 {
   text-align: center;
+  font-size: 0.9rem;
 }
 .profile-page span {
   text-align: center;
   display: block;
+  font-size: 0.8rem;
 }
 .profile-page .image-wrapper {
   width: 250px;
@@ -368,9 +379,11 @@ footer a:hover {
 .login-page {
   margin: 1rem auto;
   padding: 3rem;
+  font-size: 0.9rem;
 }
 .login-page p {
   text-align: center;
+  font-size: 0.8rem;
 }
 .login-page p a {
   color: #161514;
@@ -400,6 +413,7 @@ footer a:hover {
   border-radius: 15px;
   margin: 0.3rem auto;
   display: flex;
+  font-size: 0.8rem;
 }
 .login-btn:hover {
   color: #161514;
@@ -415,14 +429,17 @@ footer a:hover {
   .game-card {
     width: 70%;
   }
-  .favourites .header-title {
-    padding-left: 0.5rem;
-  }
   .favourites .header-title h2 {
     text-align: left;
   }
+  .favourites .header-title a {
+    justify-content: left;
+  }
   .list-bckg {
     max-width: 100%;
+  }
+  .fave-card {
+    width: 100%;
   }
   .fave-card img {
     max-width: 40%;
@@ -438,6 +455,7 @@ footer a:hover {
     display: grid;
     grid-template-areas: "main aside";
     grid-template-columns: 3fr 1fr;
+    gap: 1rem;
   }
 }
 @media (min-width: 769px) and (max-width: 1200px) {
@@ -457,8 +475,11 @@ footer a:hover {
   .game-card {
     width: 30%;
   }
-  .favourites .header-title {
-    padding-left: 0.5rem;
+  .favourites .header-title a {
+    justify-content: left;
+  }
+  .fave-card {
+    width: 100%;
   }
   .fave-card img {
     max-width: 40%;
@@ -480,6 +501,7 @@ footer a:hover {
     display: grid;
     grid-template-areas: "main aside";
     grid-template-columns: 3fr 1fr;
+    gap: 1rem;
   }
   .game-page .info-area {
     display: flex;
@@ -519,8 +541,8 @@ footer a:hover {
   .game-card {
     width: 30%;
   }
-  .favourites .header-title {
-    padding-left: 0.5rem;
+  .fave-card {
+    width: 100%;
   }
   .fave-card img {
     max-width: 40%;
@@ -542,6 +564,7 @@ footer a:hover {
     display: grid;
     grid-template-areas: "main aside";
     grid-template-columns: 3fr 1fr;
+    gap: 1rem;
   }
   .game-page .info-area {
     padding: 1rem;
@@ -578,27 +601,17 @@ footer a:hover {
 }
 * {
   margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  font-size: 0.7rem;
 }
 
-.breadcrumb-not-active {
-  display: none;
-}
-
-.breadcrumb-active {
-  color: #161514;
+html {
+  font-size: calc(1em + 1vw);
 }
 
 body {
   font-family: Urbanist, Arial, Helvetica, sans-serif;
   background: linear-gradient(45deg, #ffefc0 10%, #ffefc0 20%, #553a2a 20%, #553a2a 30%, #d77526 30%, #d77526 40%, #76c7ad 40%, #76c7ad 50%, #ffefc0 50%, #ffefc0 100%);
   color: #161514;
-}
-
-html {
-  font-size: calc(1em + 1vw);
 }
 
 /*# sourceMappingURL=main.css.map */
