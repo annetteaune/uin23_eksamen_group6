@@ -16,7 +16,7 @@ export default function Navbar({ login }) {
 				{isActive ? (
 					<i className="fa-solid fa-bars"></i>
 				) : (
-					<i class="fa-solid fa-x"></i>
+					<i className="fa-solid fa-x"></i>
 				)}
 			</button>
 			<div className={`nav-links ${isActive ? "hide" : "show"}`}>
