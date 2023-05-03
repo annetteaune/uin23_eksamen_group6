@@ -2,7 +2,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function LoginPage({ setLogin, login, users, getUsers, setUser }) {
+export default function LoginPage({
+	setLogin,
+	login,
+	users,
+	getUsers,
+	setUser,
+}) {
 	//state for feilmedling
 	const [message, setMessage] = useState("");
 	//lagre inputvalue for sjekk mot brukerarray
@@ -12,9 +18,11 @@ export default function LoginPage({ setLogin, login, users, getUsers, setUser })
 		setInputValue(event.target.value);
 	}
 	//refreshe users i tilfelle ny registering
-		useEffect(() => {
-			getUsers();
-		}, []); 
+	useEffect(() => {
+		getUsers();
+	// eslint-disable-next-line
+	}, []);
+
 	//sjekke om brukeren fins og handle deretter
 	function handleSubmit(event) {
 		event.preventDefault();
