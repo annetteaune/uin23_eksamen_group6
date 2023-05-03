@@ -1,8 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 
 export default function Breadcrumbs({ slug }) {
-	//oppsett modifisert og hentet fra ->
-	//kilde: https://www.makeuseof.com/create-breadcrumbs-in-reactjs/
+	//kilde oppsett: https://www.makeuseof.com/create-breadcrumbs-in-reactjs/
 	const location = useLocation();
 	return (
 		<nav>

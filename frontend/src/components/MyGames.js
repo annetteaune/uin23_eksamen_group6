@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import GameCard from "./GameCard";
-import { useEffect, useState } from "react";
 
 export default function MyGames({ setSelectedId, myGamesArray }) {
 	//ny games-array for å kun hente ut tre stk
@@ -24,7 +23,6 @@ export default function MyGames({ setSelectedId, myGamesArray }) {
 					id={game.apiid}
 					setSelectedId={setSelectedId}
 					genres={game.genre}
-					_id={game._id}
 				/>
 			))}
 		</section>

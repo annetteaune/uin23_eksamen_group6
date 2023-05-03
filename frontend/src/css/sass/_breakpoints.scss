@@ -22,12 +22,17 @@
 	}
 	.fave-card {
 		width: 100%;
-		img {
-			max-width: 40%;
-			mask-image: linear-gradient(90deg, black, transparent);
-		}
-		.fave-card-btn {
-			font-size: 0.55rem;
+		a {
+			img {
+				max-width: 40%;
+				mask-image: linear-gradient(90deg, black, transparent);
+			}
+			h3 {
+				font-size: 0.55rem;
+			}
+			.fa-chevron-right {
+				font-size: 0.6rem;
+			}
 		}
 	}
 	.games-list {
@@ -92,6 +97,16 @@
 	}
 	.game-card {
 		width: 30%;
+		a {
+			.card-title {
+				font-size: 0.75rem;
+			}
+			.card-genre {
+				h4 {
+					font-size: 0.4rem;
+				}
+			}
+		}
 	}
 	.favourites {
 		.header-title {
@@ -102,12 +117,17 @@
 	}
 	.fave-card {
 		width: 100%;
-		img {
-			max-width: 40%;
-			mask-image: linear-gradient(90deg, black, transparent);
-		}
-		.fave-card-btn {
-			font-size: 0.55rem;
+		a {
+			img {
+				max-width: 40%;
+				mask-image: linear-gradient(90deg, black, transparent);
+			}
+			h3 {
+				font-size: 0.6rem;
+			}
+			.fa-chevron-right {
+				font-size: 0.6rem;
+			}
 		}
 	}
 	.games-list {
@@ -202,16 +222,31 @@
 	}
 	.game-card {
 		width: 30%;
+		a {
+			.card-title {
+				font-size: 0.75rem;
+			}
+			.card-genre {
+				h4 {
+					font-size: 0.4rem;
+				}
+			}
+		}
 	}
 
 	.fave-card {
 		width: 100%;
-		img {
-			max-width: 40%;
-			mask-image: linear-gradient(90deg, black, transparent);
-		}
-		.fave-card-btn {
-			font-size: 0.6rem;
+		a {
+			img {
+				max-width: 40%;
+				mask-image: linear-gradient(90deg, black, transparent);
+			}
+			h3 {
+				font-size: 0.6rem;
+			}
+			.fa-chevron-right {
+				font-size: 0.6rem;
+			}
 		}
 	}
 	.games-list {

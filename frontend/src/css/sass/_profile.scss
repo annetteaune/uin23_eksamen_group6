@@ -18,6 +18,7 @@
 		position: relative;
 		overflow: hidden;
 		border-radius: 50%;
+		border: 10px $cardhovercolor dashed;
 		img {
 			display: inline;
 			margin: 0 auto;

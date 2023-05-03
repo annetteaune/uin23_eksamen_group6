@@ -34,12 +34,14 @@ export default function FavBtn({ user, myGame, userId, login, setUser }) {
 				.patch(user._id)
 				.setIfMissing({ favourites: [] })
 				.append("favourites", [gameReference])
-				.commit({ autoGenerateKeys: true });
-			//setTimeout for å gi sanity nok tid til å fullføre oppdatering av ny favoritt
-			setTimeout(() => {
-				setMessage(`${myGame.title} has been added to your favourites!`);
-				getUserById();
-			}, 1000);
+				.commit({ autoGenerateKeys: true })
+				.then(
+					() => getUserById(),
+					setMessage(`${myGame.title} has been added to your favourites!`)
+				)
+				.catch((error) => {
+					console.log(error.message);
+				});
 		} else {
 			setMessage("You must be logged in to add favourites.");
 		}
@@ -54,14 +56,14 @@ export default function FavBtn({ user, myGame, userId, login, setUser }) {
 			writeClient
 				.patch(user._id)
 				.set({ favourites: updatedFavourites })
-				.commit({ autoGenerateKeys: true });
-			//setTimeout for å gi sanity nok tid til å fullføre oppdateringen
-			setTimeout(() => {
-				setMessage(`${myGame.title} has been removed from your favourites!`);
-				getUserById();
-			}, 1000);
-		} else {
-			setMessage("You must be logged in to remove favourites.");
+				.commit({ autoGenerateKeys: true })
+				.then(
+					() => getUserById(),
+					setMessage(`${myGame.title} has been removed from your favourites!`)
+				)
+				.catch((error) => {
+					console.log(error.message);
+				});
 		}
 	}
 	//sette state som faved om spillet fins i favoritt-listen

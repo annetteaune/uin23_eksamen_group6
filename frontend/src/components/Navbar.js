@@ -13,14 +13,14 @@ export default function Navbar({ login }) {
 				<NavLink to="/">LOGO</NavLink>
 			</div>
 			<button className="nav-icon" onClick={toggleMenu}>
-				{isActive ? (
+				{isActive === true ? (
 					<i className="fa-solid fa-bars"></i>
 				) : (
 					<i className="fa-solid fa-x"></i>
 				)}
 			</button>
-			<div className={`nav-links ${isActive ? "hide" : "show"}`}>
-				<ul className>
+			<div className={`nav-links ${isActive === true ? "hide" : "show"}`}>
+				<ul>
 					<li>
 						<NavLink to="/">Home</NavLink>
 					</li>

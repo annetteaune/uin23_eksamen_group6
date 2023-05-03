@@ -1,4 +1,4 @@
-import { Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import "./css/main.css";
 import { useEffect, useState } from "react";
@@ -7,12 +7,11 @@ import ShopPage from "./components/pages/ShopPage";
 import MyGamesPage from "./components/pages/MyGamesPage";
 import FavouritesPage from "./components/pages/FavouritesPage";
 import GamePage from "./components/pages/GamePage";
-import { fetchGamesCount, fetchMyGames } from "./sanity/gameServices";
+import {fetchMyGames } from "./sanity/gameServices";
 import LoginPage from "./components/pages/LoginPage";
 import Profile from "./components/pages/Profile";
 import { fetchAllUsers } from "./sanity/userServices";
 import Register from "./components/pages/Register";
-import ShopGamePage from "./components/pages/ShopGamePage";
 
 function App() {
 	/** GAMESHOP ********************************************************************************/
@@ -129,11 +128,12 @@ function App() {
 								setLogin={setLogin}
 								login={login}
 								users={users}
+								getUsers={getUsers}
 								setUser={setUser}
 							/>
 						}
 					/>
-					<Route path="/register" element={<Register />} />
+					<Route path="/register" element={<Register getUsers={getUsers} />} />
 					<Route
 						path="/profile"
 						element={<Profile user={user} login={login} />}
@@ -172,11 +172,7 @@ function App() {
 								myGame={myGame}
 								user={user}
 								login={login}
-								getUsers={getUsers}
 								setUser={setUser}
-								users={users}
-								favourites={favourites}
-								setFavourites={setFavourites}
 								userId={user._id}
 								getShops={getShops}
 								stores={stores}
@@ -187,9 +183,15 @@ function App() {
 					<Route
 						path="/shop/:slug"
 						element={
-							<ShopGamePage
+							<GamePage
 								getGame={getGame}
 								selectedGame={selectedGame}
+								setMyGame={setMyGame}
+								myGame={myGame}
+								user={user}
+								login={login}
+								setUser={setUser}
+								userId={user._id}
 								getShops={getShops}
 								stores={stores}
 								storeNoURL={storeNoURL}

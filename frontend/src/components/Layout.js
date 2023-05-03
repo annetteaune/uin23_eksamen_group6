@@ -1,14 +1,17 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 
-export default function Layout({ shopGames, login }) {
+export default function Layout({ login }) {
 	return (
 		<>
+		<a className="skip" href="#main" >
+			Skip to main content
+		</a>
 			<header>
 				<Navbar login={login} />
 			</header>
-			<main>
-				<Outlet shopGames={shopGames} />
+			<main id="main">
+				<Outlet />
 			</main>
 			<footer>
 				<a href="https://rawg.io/" target="blank">

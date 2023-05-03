@@ -25,9 +25,14 @@ export default {
       type: 'slug',
       title: 'Slug',
       //kilde:https://www.sanity.io/docs/slug-type
+      //kilde: https://github.com/toremake/UIN23_sanity_sandbox/blob/main/sanity/schemas/products.js
       options: {
         source: 'title',
-        slugify: (input) => input.toLowerCase().replace(/\s+/g, '-').slice(0, 200),
+        slugify: (input) =>
+          input
+            .toLowerCase()
+            .replace(/[^\w-]+/g, '-')
+            .slice(0, 200),
       },
     },
     {

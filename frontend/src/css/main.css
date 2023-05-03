@@ -11,52 +11,65 @@
   border-radius: 15px;
   border: 2px solid #fffaed;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2705882353);
-  overflow: clip;
+  overflow: visible;
   color: #161514;
 }
-.game-card .card-title {
-  font-size: 0.8rem;
-  text-align: center;
+.game-card:hover,
+.game-card :focus {
+  background-color: #f4a127;
+  border: 2px solid #f4a127;
+  color: #f4a127;
 }
-.game-card .card-genre {
-  display: flex;
-  gap: 0.3rem;
+.game-card:hover .card-title,
+.game-card :focus .card-title {
+  font-size: 1px;
+  color: #f4a127;
+}
+.game-card:hover .card-view,
+.game-card :focus .card-view {
+  font-size: 1rem;
   color: #161514;
 }
-.game-card .card-genre h4 {
-  font-size: 0.4rem;
-  text-transform: uppercase;
-  color: inherit;
+.game-card a:focus {
+  outline: 2px solid #161514;
+  border-radius: 15px;
 }
 .game-card a {
-  height: 0.1rem;
-}
-.game-card a .card-btn {
+  height: 100%;
   width: 100%;
-  color: rgba(255, 255, 255, 0);
-  background-color: rgba(0, 0, 0, 0);
-  border-radius: 15px;
-  border: none;
-  position: relative;
-  top: -7.7rem;
-  padding: 5.7rem 0.5rem 1.3rem 0.5rem;
-}
-.game-card a .card-btn:hover {
+  text-decoration: none;
   color: #161514;
-  font-size: 0.9rem;
-  transition: ease-in-out 0.2s;
 }
-.game-card img {
+.game-card a img {
   width: 100%;
-  height: 70%;
+  height: 60%;
   object-fit: cover;
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
 }
-.game-card:hover {
-  background-color: #f4a127;
-  border: 2px solid #f4a127;
-  color: #f4a127;
+.game-card a .card-title {
+  font-size: 0.9rem;
+  text-align: center;
+}
+.game-card a .card-view {
+  font-size: 1px;
+  color: #fffaed;
+  display: block;
+  text-align: center;
+  text-decoration: underline;
+  font-weight: bold;
+}
+.game-card a .card-genre {
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+  overflow: clip;
+  color: #161514;
+}
+.game-card a .card-genre h4 {
+  font-size: 0.4rem;
+  text-transform: uppercase;
+  color: inherit;
 }
 
 .fave-card {
@@ -69,31 +82,41 @@
   border: 2px solid #fffaed;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2705882353);
 }
-.fave-card:hover {
+.fave-card:hover, .fave-card :focus {
   background-color: #f4a127;
   border: 2px solid #f4a127;
   color: #f4a127;
+}
+.fave-card a:focus {
+  outline: 2px solid #161514;
+  border-radius: 15px;
 }
 .fave-card a {
   display: flex;
   align-items: center;
   text-decoration: none;
 }
-.fave-card img {
+.fave-card a img {
   max-width: 50%;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
 }
-.fave-card .fave-card-btn {
+.fave-card a h3 {
   width: 80%;
   color: #161514;
   background-color: rgba(0, 0, 0, 0);
   border: none;
+  font-size: 0.9rem;
+  text-align: center;
 }
-.fave-card .fave-card-btn:hover {
+.fave-card a h3:hover {
   color: #161514;
   transition: ease-in-out 0.2s;
   text-decoration: underline;
+}
+.fave-card a .fa-chevron-right {
+  font-size: 1rem;
+  padding-right: 0.5rem;
 }
 
 .fa-chevron-right {
@@ -169,6 +192,10 @@ main .header-title a {
 main .header-title a:hover {
   text-decoration: underline;
 }
+main .header-title a:focus {
+  outline: 2px solid #161514;
+  border-radius: 15px;
+}
 
 header {
   background-color: #f4a127;
@@ -196,6 +223,7 @@ header .navbar .nav-links {
   right: 0;
   height: 100%;
   width: 50%;
+  z-index: 98;
 }
 header .navbar .nav-links ul {
   list-style: none;
@@ -227,6 +255,23 @@ header .navbar .nav-links ul li a:hover {
 
 .show {
   display: block;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  z-index: 99;
+  padding: 1rem;
+  background-color: white;
+  color: #161514;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 5px solid #d77526;
+  box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.4980392157);
+}
+.skip:focus {
+  left: 2rem;
+  transition: ease-in-out 0.2s;
 }
 
 footer {
@@ -389,6 +434,7 @@ footer a:hover {
   position: relative;
   overflow: hidden;
   border-radius: 50%;
+  border: 10px #f4a127 dashed;
 }
 .profile-page .image-wrapper img {
   display: inline;
@@ -462,12 +508,15 @@ footer a:hover {
   .fave-card {
     width: 100%;
   }
-  .fave-card img {
+  .fave-card a img {
     max-width: 40%;
     mask-image: linear-gradient(90deg, black, transparent);
   }
-  .fave-card .fave-card-btn {
+  .fave-card a h3 {
     font-size: 0.55rem;
+  }
+  .fave-card a .fa-chevron-right {
+    font-size: 0.6rem;
   }
   .games-list {
     flex-direction: row;
@@ -527,18 +576,27 @@ footer a:hover {
   .game-card {
     width: 30%;
   }
+  .game-card a .card-title {
+    font-size: 0.75rem;
+  }
+  .game-card a .card-genre h4 {
+    font-size: 0.4rem;
+  }
   .favourites .header-title a {
     justify-content: left;
   }
   .fave-card {
     width: 100%;
   }
-  .fave-card img {
+  .fave-card a img {
     max-width: 40%;
     mask-image: linear-gradient(90deg, black, transparent);
   }
-  .fave-card .fave-card-btn {
-    font-size: 0.55rem;
+  .fave-card a h3 {
+    font-size: 0.6rem;
+  }
+  .fave-card a .fa-chevron-right {
+    font-size: 0.6rem;
   }
   .games-list {
     flex-direction: row;
@@ -624,14 +682,23 @@ footer a:hover {
   .game-card {
     width: 30%;
   }
+  .game-card a .card-title {
+    font-size: 0.75rem;
+  }
+  .game-card a .card-genre h4 {
+    font-size: 0.4rem;
+  }
   .fave-card {
     width: 100%;
   }
-  .fave-card img {
+  .fave-card a img {
     max-width: 40%;
     mask-image: linear-gradient(90deg, black, transparent);
   }
-  .fave-card .fave-card-btn {
+  .fave-card a h3 {
+    font-size: 0.6rem;
+  }
+  .fave-card a .fa-chevron-right {
     font-size: 0.6rem;
   }
   .games-list {

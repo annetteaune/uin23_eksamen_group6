@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { fetchSanityGame } from "../../sanity/gameServices";
 import FavBtn from "../FavBtn";
 import Breadcrumbs from "../Breadcrumbs";
@@ -19,28 +19,28 @@ export default function GamePage({
 	storeNoURL,
 }) {
 	const { slug } = useParams();
+	const location = useLocation();
 
 	//hente enkelt spill fra sanity
 	const getMyGame = async (slug) => {
 		const data = await fetchSanityGame(slug);
 		setMyGame(data[0]);
-		console.log("mygame:", data[0]);
+		//console.log("mygame:", data[0]);
 	};
 
 	//hente api-info
 	useEffect(() => {
 		getGame();
-	}, []);
-
-	//hente sanity-info
-	useEffect(() => {
-		getMyGame(slug);
-	}, [slug]);
-
-	//hente shops
-	useEffect(() => {
 		getShops();
 	}, []);
+
+	//hente sanity-info, men bare om man ikke befinner seg i /shop
+
+	useEffect(() => {
+		if (location.pathname.startsWith("/my-games")) {
+			getMyGame(slug);
+		}
+	}, [slug]);
 
 	/* Kombinere arrays med info om stores med og uten url, slik at de kan mappes gjennom  
 		Kilde: https://stackoverflow.com/questions/46849286/merge-two-array-of-objects-based-on-a-key
@@ -51,29 +51,32 @@ export default function GamePage({
 		Object.assign({}, item, stores[i])
 	);
 
-	console.log("tags", selectedGame.tags);
+	//console.log("tags", selectedGame.tags);
 
 	return (
 		<>
 			<Breadcrumbs slug={slug} />
-
 			<article className="game-page">
-				<FavBtn
-					user={user}
-					myGame={myGame}
-					userId={userId}
-					login={login}
-					setUser={setUser}
-				/>
+				{login == true && location.pathname.startsWith("/my-games") ? (
+					<FavBtn
+						user={user}
+						myGame={myGame}
+						userId={userId}
+						login={login}
+						setUser={setUser}
+					/>
+				) : null}
 
-				<h3 className="game-page-title">{myGame.title}</h3>
+				<h3 className="game-page-title">{selectedGame?.name}</h3>
 				<section className="info-area list-bckg">
-					<p>
-						Playtime: <span>{myGame.hoursplayed} hours</span>
-					</p>
+					{location.pathname.startsWith("/my-games") ? (
+						<p>
+							Playtime: <span>{myGame?.hoursplayed} hours</span>
+						</p>
+					) : null}
 
 					<p>
-						Release date: <span>{selectedGame.released}</span>
+						Release date: <span>{selectedGame?.released}</span>
 					</p>
 					<p>
 						Genres:
@@ -82,7 +85,7 @@ export default function GamePage({
 						))}{" "}
 					</p>
 					<p>
-						Rating: <span>{selectedGame.metacritic}</span>
+						Rating: <span>{selectedGame?.metacritic}</span>
 					</p>
 					<p>
 						Developers:
@@ -107,7 +110,7 @@ export default function GamePage({
 					</div>
 					<div>
 						<p>Avaliable to purchase from:</p>
-						{completeStore.map((store) => (
+						{completeStore?.map((store) => (
 							<a href={store.url} key={store.id} target="blank">
 								{store.store.name}
 							</a>
@@ -116,14 +119,14 @@ export default function GamePage({
 				</section>
 
 				<section className="img-area">
-					<img src={selectedGame.background_image} alt={selectedGame.name} />
+					<img src={selectedGame?.background_image} alt={selectedGame.name} />
 					<img
-						src={selectedGame.background_image_additional}
-						alt={selectedGame.name}
+						src={selectedGame?.background_image_additional}
+						alt={selectedGame?.name}
 					/>
 				</section>
 				<section className="plot-area list-bckg">
-					<p>{selectedGame.description_raw}</p>
+					<p>{selectedGame?.description_raw}</p>
 				</section>
 			</article>
 		</>

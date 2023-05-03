@@ -2,7 +2,7 @@ import { useState } from "react";
 import { writeClient } from "../../sanity/client";
 import { Link } from "react-router-dom";
 
-export default function Register() {
+export default function Register({getUsers}) {
 	//state for å lagre brukernavn
 	const [username, setUsername] = useState("");
 	//state for å lagre epost
@@ -23,6 +23,7 @@ export default function Register() {
 			useremail: useremail,
 		});
 		setCreated(true);
+		getUsers()
 	}
 	if (created === false) {
 		return (
@@ -62,7 +63,6 @@ export default function Register() {
 		return (
 			<section className="login-page list-bckg">
 				<h2 className="page-title">Your user account has been created!</h2>
-				<p>Note: May require a site refresh.</p>
 				<Link to="/login">
 					<button className="login-btn">Log in</button>
 				</Link>

@@ -10,63 +10,69 @@
 	border-radius: 15px;
 	border: 2px solid $cardcolor;
 	box-shadow: 0px 4px 8px 0px #00000045;
-	overflow: clip;
+	overflow: visible;
 	color: $fontcolor;
-	.card-title {
-		font-size: 0.8rem;
-		text-align: center;
-	}
-	.card-genre {
-		display: flex;
-		gap: 0.3rem;
-		color: $darkfontcolor;
-		h4 {
-			font-size: 0.4rem;
-			text-transform: uppercase;
-			color: inherit;
-		}
-	}
-	a {
-		height: 0.1rem;
-
-		.card-btn {
-			width: 100%;
-			color: rgba(255, 255, 255, 0);
-			background-color: rgba(0, 0, 0, 0);
-			border-radius: 15px;
-			border: none;
-			position: relative;
-			top: -7.7rem;
-			padding: 5.7rem 0.5rem 1.3rem 0.5rem;
-
-			&:hover {
-				color: $darkfontcolor;
-				font-size: 0.9rem;
-				transition: ease-in-out 0.2s;
-			}
-		}
-	}
-
-	img {
-		width: 100%;
-		height: 70%;
-		object-fit: cover;
-		border-top-right-radius: 15px;
-		border-top-left-radius: 15px;
-	}
-	&:hover {
+	&:hover,
+	:focus {
 		background-color: $cardhovercolor;
 		border: 2px solid $cardhovercolor;
 		color: $cardhovercolor;
+
+		.card-title {
+			font-size: 1px;
+			color: $cardhovercolor;
+		}
+		.card-view {
+			font-size: 1rem;
+			color: $darkfontcolor;
+		}
+	}
+	a:focus {
+		outline: 2px solid $darkfontcolor;
+		border-radius: 15px;
+	}
+
+	a {
+		height: 100%;
+		width: 100%;
+		text-decoration: none;
+		color: $darkfontcolor;
+		img {
+			width: 100%;
+			height: 60%;
+			object-fit: cover;
+			border-top-right-radius: 15px;
+			border-top-left-radius: 15px;
+		}
+		.card-title {
+			font-size: 0.9rem;
+			text-align: center;
+		}
+		.card-view {
+			font-size: 1px;
+			color: $cardcolor;
+			display: block;
+			text-align: center;
+			text-decoration: underline;
+			font-weight: bold;
+		}
+
+		.card-genre {
+			display: flex;
+			justify-content: center;
+			gap: 0.3rem;
+			overflow: clip;
+			color: $darkfontcolor;
+			h4 {
+				font-size: 0.4rem;
+				text-transform: uppercase;
+				color: inherit;
+			}
+		}
 	}
 }
 
 .fave-card {
-	&:hover {
-		background-color: $cardhovercolor;
-		border: 2px solid $cardhovercolor;
-		color: $cardhovercolor;
-	}
 	display: flex;
 	align-items: center;
 	margin: 0.5rem auto;
@@ -75,25 +81,40 @@
 	width: 85%;
 	border: 2px solid $cardcolor;
 	box-shadow: 0px 4px 8px 0px #00000045;
+	&:hover, :focus {
+		background-color: $cardhovercolor;
+		border: 2px solid $cardhovercolor;
+		color: $cardhovercolor;
+	}
+	a:focus {
+		outline: 2px solid $darkfontcolor;
+		border-radius: 15px;
+	}
 	a {
 		display: flex;
 		align-items: center;
 		text-decoration: none;
-	}
-	img {
-		max-width: 50%;
-		border-top-left-radius: 15px;
-		border-bottom-left-radius: 15px;
-	}
-	.fave-card-btn {
-		width: 80%;
-		color: $fontcolor;
-		background-color: rgba(0, 0, 0, 0);
-		border: none;
-		&:hover {
-			color: $darkfontcolor;
-			transition: ease-in-out 0.2s;
-			text-decoration: underline;
+		img {
+			max-width: 50%;
+			border-top-left-radius: 15px;
+			border-bottom-left-radius: 15px;
+		}
+		h3 {
+			width: 80%;
+			color: $fontcolor;
+			background-color: rgba(0, 0, 0, 0);
+			border: none;
+			font-size: 0.9rem;
+			text-align: center;
+			&:hover {
+				color: $darkfontcolor;
+				transition: ease-in-out 0.2s;
+				text-decoration: underline;
+			}
+		}
+		.fa-chevron-right{
+			font-size: 1rem;
+			padding-right: 0.5rem;
 		}
 	}
 }

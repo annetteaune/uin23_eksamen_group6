@@ -20,10 +20,10 @@ export default function Profile({ user, login }) {
 		);
 	} else {
 		return (
-			<section>
+			<section className="profile-page">
 				<h2>You must be logged in to see your profile</h2>
 				<Link to="/login">
-					<button>Log in</button>
+					<button className="login-btn">Log in</button>
 				</Link>
 			</section>
 		);
