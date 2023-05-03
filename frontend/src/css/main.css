@@ -185,7 +185,7 @@ main .header-title a {
   width: 100%;
   color: #161514;
   text-decoration: none;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: baseline;
   font-size: 0.8rem;
 }

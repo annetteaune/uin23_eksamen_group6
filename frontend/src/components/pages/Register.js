@@ -2,7 +2,7 @@ import { useState } from "react";
 import { writeClient } from "../../sanity/client";
 import { Link } from "react-router-dom";
 
-export default function Register({getUsers}) {
+export default function Register({ getUsers }) {
 	//state for å lagre brukernavn
 	const [username, setUsername] = useState("");
 	//state for å lagre epost
@@ -23,7 +23,7 @@ export default function Register({getUsers}) {
 			useremail: useremail,
 		});
 		setCreated(true);
-		getUsers()
+		getUsers();
 	}
 	if (created === false) {
 		return (

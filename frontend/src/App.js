@@ -7,7 +7,7 @@ import ShopPage from "./components/pages/ShopPage";
 import MyGamesPage from "./components/pages/MyGamesPage";
 import FavouritesPage from "./components/pages/FavouritesPage";
 import GamePage from "./components/pages/GamePage";
-import {fetchMyGames } from "./sanity/gameServices";
+import { fetchMyGames } from "./sanity/gameServices";
 import LoginPage from "./components/pages/LoginPage";
 import Profile from "./components/pages/Profile";
 import { fetchAllUsers } from "./sanity/userServices";
@@ -29,6 +29,9 @@ function App() {
 	};
 
 	/** GAMEPAGE **********************************************************************************/
+
+	//state for å lagre favoritter
+	const [favourites, setFavourites] = useState([]);
 
 	//state for å lagre id for å se detaljer om hvert enkelt spill
 	const [selectedId, setSelectedId] = useState("");
@@ -95,12 +98,6 @@ function App() {
 		getUsers();
 	}, []);
 
-	const [favourites, setFavourites] = useState([]);
-
-
-
-
-	
 	return (
 		<>
 			<Routes>

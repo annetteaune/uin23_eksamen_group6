@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
 export default function FaveCards({ title, image, setSelectedId, slug, id }) {
-const saveGameId = (id) => {
-	setSelectedId(id);
-};
+	const saveGameId = (id) => {
+		setSelectedId(id);
+	};
 	return (
 		<article className="fave-card">
 			<Link

@@ -4,9 +4,9 @@ import Navbar from "./Navbar";
 export default function Layout({ login }) {
 	return (
 		<>
-		<a className="skip" href="#main" >
-			Skip to main content
-		</a>
+			<a className="skip" href="#main">
+				Skip to main content
+			</a>
 			<header>
 				<Navbar login={login} />
 			</header>

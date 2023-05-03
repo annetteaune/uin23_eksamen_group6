@@ -8,11 +8,10 @@ export default function GameCard({
 	setSelectedId,
 	genres,
 }) {
-
-	const saveGameId = (id) => {		
+	const saveGameId = (id) => {
 		setSelectedId(id);
 	};
-	
+
 	/* filter for å bestemme om det er shop- eller mygame-kort som returneres.
 		API-et returnerer en array for sjangere, mens sanity returnerer et objekt, så jeg bruker
 		disse for å differensiere mellom dem. Kunne brukt state her isteden.
@@ -27,7 +26,7 @@ export default function GameCard({
 					{image !== null ? (
 						<img src={image} alt={title} />
 					) : (
-						<img src="/placeholder.png" alt="pleaceholder image" />
+						<img src="/placeholder.png" alt="pleaceholder" />
 					)}
 					<div className="card-genre">
 						{genres.map((gen) => (
@@ -50,7 +49,7 @@ export default function GameCard({
 					{image !== null ? (
 						<img src={image} alt={title} />
 					) : (
-						<img src="/placeholder.png" alt="pleaceholder image" />
+						<img src="/placeholder.png" alt="pleaceholder" />
 					)}
 					<div className="card-genre">
 						<h4 key={genres.id}>{genres.title}</h4>

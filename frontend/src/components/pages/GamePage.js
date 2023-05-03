@@ -32,6 +32,7 @@ export default function GamePage({
 	useEffect(() => {
 		getGame();
 		getShops();
+	// eslint-disable-next-line
 	}, []);
 
 	//hente sanity-info, men bare om man ikke befinner seg i /shop
@@ -40,6 +41,7 @@ export default function GamePage({
 		if (location.pathname.startsWith("/my-games")) {
 			getMyGame(slug);
 		}
+		// eslint-disable-next-line
 	}, [slug]);
 
 	/* Kombinere arrays med info om stores med og uten url, slik at de kan mappes gjennom  
@@ -57,7 +59,7 @@ export default function GamePage({
 		<>
 			<Breadcrumbs slug={slug} />
 			<article className="game-page">
-				{login == true && location.pathname.startsWith("/my-games") ? (
+				{login === true && location.pathname.startsWith("/my-games") ? (
 					<FavBtn
 						user={user}
 						myGame={myGame}

@@ -6,7 +6,6 @@ export default function Profile({ user, login }) {
 	if (login === true) {
 		return (
 			<section className="profile-page list-bckg">
-				{" "}
 				<div className="image-wrapper">
 					{user.imageUrl == null ? (
 						<img src="fav.png" alt="User avatar placeholder" />
