@@ -98,10 +98,26 @@ function App() {
 		getUsers();
 	}, []);
 
+	/**SEARCH************************************************************************************/
+	//State for å lagre søkeresultat
+	const [searchResult, setSearchResult] = useState([]);
+
+
 	return (
 		<>
 			<Routes>
-				<Route path="/" element={<Layout login={login} />}>
+				<Route
+					path="/"
+					element={
+						<Layout
+							login={login}
+							setSelectedId={setSelectedId}
+							searchResult={searchResult}
+							setSearchResult={setSearchResult}
+							
+						/>
+					}
+				>
 					<Route
 						index
 						element={

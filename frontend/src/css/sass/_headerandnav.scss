@@ -3,15 +3,39 @@ header {
 	.navbar {
 		display: flex;
 		justify-content: space-between;
-		padding: 0.7rem 2rem;
+		padding: 0.7rem 1rem;
 		align-items: center;
 		.logo {
 			a {
 				display: block;
+				max-width: 5rem;
+				min-width: 2rem;
 				img {
-					width: 40%;
+					width: 100%;
 					display: flex;
 					justify-content: center;
+				}
+			}
+		}
+		#search-form {
+			display: flex;
+			gap: 0.2rem;
+			input {
+				text-align: center;
+				font-size: 0.8rem;
+				border: none;
+				border-radius: 15px;
+				color: $darkfontcolor;
+				background-color: $backgroundcolor;
+			}
+			button {
+				border: 2px solid $cardcolor;
+				border-radius: 15px;
+				background-color: $backgroundcolor;
+				font-size: 0.8rem;
+				color: $darkfontcolor;
+				&:hover {
+					background-color: $cardhovercolor;
 				}
 			}
 		}

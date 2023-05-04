@@ -1,10 +1,21 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import Search from "./Search";
+import SearchResults from "./SearchResults";
 
-export default function Navbar({ login }) {
+export default function Navbar({
+	login,
+	searchResult,
+	setSearchResult,
+	setSelectedId,
+}) {
 	const [isActive, setIsActive] = useState(true);
+	const [openDropdown, setOpenDropDown] = useState(false);
 	function toggleMenu() {
 		setIsActive((current) => !current);
+	}
+	function toggleDropdown() {
+		setOpenDropDown((current) => !current);
 	}
 
 	return (
@@ -13,6 +24,19 @@ export default function Navbar({ login }) {
 				<NavLink to="/">
 					<img src="/logo.png" alt="logo" />
 				</NavLink>
+			</div>
+			<Search
+				setSearchResult={setSearchResult}
+				setOpenDropDown={setOpenDropDown}
+			/>
+			<div
+				className={`search-dropdown ${openDropdown === true ? "hide" : "show"}`}
+			>
+				<SearchResults
+					searchResult={searchResult.results}
+					setSelectedId={setSelectedId}
+					toggleDropdown={toggleDropdown}
+				/>
 			</div>
 			<button className="nav-icon" onClick={toggleMenu}>
 				{isActive === true ? (
