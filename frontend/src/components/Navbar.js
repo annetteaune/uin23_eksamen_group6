@@ -10,7 +10,9 @@ export default function Navbar({ login }) {
 	return (
 		<nav className="navbar">
 			<div className="logo">
-				<NavLink to="/">LOGO</NavLink>
+				<NavLink to="/">
+					<img src="/logo.png" alt="logo" />
+				</NavLink>
 			</div>
 			<button className="nav-icon" onClick={toggleMenu}>
 				{isActive === true ? (
@@ -22,29 +24,41 @@ export default function Navbar({ login }) {
 			<div className={`nav-links ${isActive === true ? "hide" : "show"}`}>
 				<ul>
 					<li>
-						<NavLink to="/">Home</NavLink>
+						<NavLink to="/" onClick={toggleMenu}>
+							Home
+						</NavLink>
 					</li>
 
 					<li>
-						<NavLink to="/shop">Shop</NavLink>
+						<NavLink to="/shop" onClick={toggleMenu}>
+							Shop
+						</NavLink>
 					</li>
 
 					<li>
 						{" "}
-						<NavLink to="/my-games">My Games</NavLink>
+						<NavLink to="/my-games" onClick={toggleMenu}>
+							My Games
+						</NavLink>
 					</li>
 
 					<li>
-						<NavLink to="/favourites">Favourites</NavLink>
+						<NavLink to="/favourites" onClick={toggleMenu}>
+							Favourites
+						</NavLink>
 					</li>
 
 					{login === false ? (
 						<li>
-							<NavLink to="/login">Log in</NavLink>
+							<NavLink to="/login" onClick={toggleMenu}>
+								Log in
+							</NavLink>
 						</li>
 					) : (
 						<li>
-							<NavLink to="/profile">Account</NavLink>
+							<NavLink to="/profile" onClick={toggleMenu}>
+								Account
+							</NavLink>
 						</li>
 					)}
 				</ul>

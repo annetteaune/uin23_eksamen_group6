@@ -21,10 +21,12 @@
 		.card-title {
 			font-size: 1px;
 			color: $cardhovercolor;
+			padding-top: 0;
 		}
 		.card-view {
 			font-size: 1rem;
 			color: $darkfontcolor;
+			padding-top: 0.3rem;
 		}
 	}
 	a:focus {
@@ -47,6 +49,7 @@
 		.card-title {
 			font-size: 0.9rem;
 			text-align: center;
+			padding-top: 0.2rem;
 		}
 		.card-view {
 			font-size: 1px;

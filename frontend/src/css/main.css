@@ -24,11 +24,13 @@
 .game-card :focus .card-title {
   font-size: 1px;
   color: #f4a127;
+  padding-top: 0;
 }
 .game-card:hover .card-view,
 .game-card :focus .card-view {
   font-size: 1rem;
   color: #161514;
+  padding-top: 0.3rem;
 }
 .game-card a:focus {
   outline: 2px solid #161514;
@@ -50,6 +52,7 @@
 .game-card a .card-title {
   font-size: 0.9rem;
   text-align: center;
+  padding-top: 0.2rem;
 }
 .game-card a .card-view {
   font-size: 1px;
@@ -203,12 +206,16 @@ header {
 header .navbar {
   display: flex;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 0.7rem 2rem;
   align-items: center;
 }
 header .navbar .logo a {
-  color: #161514;
-  text-decoration: none;
+  display: block;
+}
+header .navbar .logo a img {
+  width: 40%;
+  display: flex;
+  justify-content: center;
 }
 header .navbar .nav-icon {
   border: none;

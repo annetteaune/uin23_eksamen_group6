@@ -3,12 +3,16 @@ header {
 	.navbar {
 		display: flex;
 		justify-content: space-between;
-		padding: 1rem 2rem;
+		padding: 0.7rem 2rem;
 		align-items: center;
 		.logo {
 			a {
-				color: $darkfontcolor;
-				text-decoration: none;
+				display: block;
+				img {
+					width: 40%;
+					display: flex;
+					justify-content: center;
+				}
 			}
 		}
 		.nav-icon {
@@ -71,11 +75,10 @@ header {
 	color: $darkfontcolor;
 	font-size: 1.2rem;
 	font-weight: bold;
-	border: 5px  solid $bk-orange;
+	border: 5px solid $bk-orange;
 	box-shadow: 4px 4px 8px 4px #0000007f;
 	&:focus {
 		left: 2rem;
 		transition: ease-in-out 0.2s;
-		
 	}
 }
