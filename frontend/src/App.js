@@ -1,4 +1,4 @@
-import { Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import "./css/main.css";
 import { useEffect, useState } from "react";
@@ -12,7 +12,6 @@ import LoginPage from "./components/pages/LoginPage";
 import Profile from "./components/pages/Profile";
 import { fetchAllUsers } from "./sanity/userServices";
 import Register from "./components/pages/Register";
-import ShopGamePage from "./components/pages/ShopGamePage";
 
 function App() {
 	/** GAMESHOP ********************************************************************************/
@@ -27,10 +26,12 @@ function App() {
 
 		const data = await response.json();
 		setShopGames(data.results);
-		//console.log("shopgames:", data.results);
 	};
 
 	/** GAMEPAGE **********************************************************************************/
+
+	//state for å lagre favoritter
+	const [favourites, setFavourites] = useState([]);
 
 	//state for å lagre id for å se detaljer om hvert enkelt spill
 	const [selectedId, setSelectedId] = useState("");
@@ -78,7 +79,7 @@ function App() {
 	const getMyGames = async () => {
 		const data = await fetchMyGames();
 		setMyGamesArray(data);
-		console.log("mygames:", data);
+		//console.log("mygames:", data);
 	};
 
 	/**LOGIN & USERPAGE**************************************************************************/
@@ -95,10 +96,7 @@ function App() {
 	};
 	useEffect(() => {
 		getUsers();
-		console.log(users);
 	}, []);
-
-	const [favourites, setFavourites] = useState([]);
 
 	return (
 		<>
@@ -127,11 +125,12 @@ function App() {
 								setLogin={setLogin}
 								login={login}
 								users={users}
+								getUsers={getUsers}
 								setUser={setUser}
 							/>
 						}
 					/>
-					<Route path="/register" element={<Register />} />
+					<Route path="/register" element={<Register getUsers={getUsers} />} />
 					<Route
 						path="/profile"
 						element={<Profile user={user} login={login} />}
@@ -170,21 +169,26 @@ function App() {
 								myGame={myGame}
 								user={user}
 								login={login}
-								getUsers={getUsers}
 								setUser={setUser}
-								users={users}
-								favourites={favourites}
-								setFavourites={setFavourites}
 								userId={user._id}
+								getShops={getShops}
+								stores={stores}
+								storeNoURL={storeNoURL}
 							/>
 						}
 					/>
 					<Route
 						path="/shop/:slug"
 						element={
-							<ShopGamePage
+							<GamePage
 								getGame={getGame}
 								selectedGame={selectedGame}
+								setMyGame={setMyGame}
+								myGame={myGame}
+								user={user}
+								login={login}
+								setUser={setUser}
+								userId={user._id}
 								getShops={getShops}
 								stores={stores}
 								storeNoURL={storeNoURL}

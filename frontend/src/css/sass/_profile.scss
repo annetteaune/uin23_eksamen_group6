@@ -1,13 +1,15 @@
 .profile-page {
+	margin: 1rem auto;
+	padding: 1rem;
 	h2 {
 		text-align: center;
+		font-size: 0.9rem;
 	}
 	span {
 		text-align: center;
 		display: block;
+		font-size: 0.8rem;
 	}
-	margin: 0 auto;
-	padding: 1rem;
 	//kilde for sirkulære bilder:
 	//https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
 	.image-wrapper {
@@ -16,6 +18,7 @@
 		position: relative;
 		overflow: hidden;
 		border-radius: 50%;
+		border: 10px $cardhovercolor dashed;
 		img {
 			display: inline;
 			margin: 0 auto;
@@ -26,10 +29,12 @@
 }
 
 .login-page {
-	margin: 0 auto;
+	margin: 1rem auto;
 	padding: 3rem;
+	font-size: 0.9rem;
 	p {
 		text-align: center;
+		font-size: 0.8rem;
 		a {
 			color: $darkfontcolor;
 		}
@@ -37,7 +42,7 @@
 	form {
 		display: flex;
 		flex-direction: column;
-justify-content: center;
+		justify-content: center;
 		label {
 			width: 100%;
 			text-align: center;
@@ -49,18 +54,20 @@ justify-content: center;
 			text-align: center;
 			font-size: 0.8rem;
 		}
-		button {
-			background-color: $cardcolor;
-			color: $fontcolor;
-			border: 2px solid $darkfontcolor;
-			padding: 0.3rem;
-			border-radius: 15px;
-			margin: 0.3rem auto;
-			&:hover {
-				color: $darkfontcolor;
-				background-color: $cardhovercolor;
-				text-decoration: underline;
-			}
-		}
+	}
+}
+.login-btn {
+	background-color: $cardcolor;
+	color: $fontcolor;
+	border: 2px solid $darkfontcolor;
+	padding: 0.3rem;
+	border-radius: 15px;
+	margin: 0.3rem auto;
+	display: flex;
+	font-size: 0.8rem;
+	&:hover {
+		color: $darkfontcolor;
+		background-color: $cardhovercolor;
+		text-decoration: underline;
 	}
 }

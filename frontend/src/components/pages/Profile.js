@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 export default function Profile({ user, login }) {
 	console.log(user);
 
-
 	if (login === true) {
 		return (
-			<section className="profile-page">
-				{" "}
+			<section className="profile-page list-bckg">
 				<div className="image-wrapper">
 					{user.imageUrl == null ? (
 						<img src="fav.png" alt="User avatar placeholder" />
@@ -21,10 +19,10 @@ export default function Profile({ user, login }) {
 		);
 	} else {
 		return (
-			<section>
+			<section className="profile-page">
 				<h2>You must be logged in to see your profile</h2>
 				<Link to="/login">
-					<button>Log in</button>
+					<button className="login-btn">Log in</button>
 				</Link>
 			</section>
 		);

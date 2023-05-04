@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { writeClient } from "../../sanity/client";
+import { useEffect } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import { fetchSanityGame } from "../../sanity/gameServices";
-import { fetchUserById } from "../../sanity/userServices";
+import FavBtn from "../FavBtn";
+import Breadcrumbs from "../Breadcrumbs";
+import WordCloud from "../WordCloud";
 
 export default function GamePage({
 	getGame,
@@ -10,136 +11,83 @@ export default function GamePage({
 	setMyGame,
 	myGame,
 	user,
-	users,
 	login,
 	setUser,
 	userId,
-	favourite,
-	setFavourite,
+	getShops,
+	stores,
+	storeNoURL,
 }) {
 	const { slug } = useParams();
+	const location = useLocation();
 
 	//hente enkelt spill fra sanity
 	const getMyGame = async (slug) => {
 		const data = await fetchSanityGame(slug);
 		setMyGame(data[0]);
-		console.log("mygame:", data[0]);
+		//console.log("mygame:", data[0]);
 	};
 
 	//hente api-info
 	useEffect(() => {
 		getGame();
+		getShops();
+	// eslint-disable-next-line
 	}, []);
 
-	//hente sanity-info
+	//hente sanity-info, men bare om man ikke befinner seg i /shop
+
 	useEffect(() => {
-		getMyGame(slug);
+		if (location.pathname.startsWith("/my-games")) {
+			getMyGame(slug);
+		}
+		// eslint-disable-next-line
 	}, [slug]);
 
-	//state for melding om favoritter
-	const [message, setMessage] = useState("Click to toggle");
+	/* Kombinere arrays med info om stores med og uten url, slik at de kan mappes gjennom  
+		Kilde: https://stackoverflow.com/questions/46849286/merge-two-array-of-objects-based-on-a-key
+		Resultatene i begge svar-arrayer returneres i APIet i samme rekkefølge hver gang, så velger 
+		å benytte det øverste svaret i linken. 
+		*/
+	let completeStore = storeNoURL?.map((item, i) =>
+		Object.assign({}, item, stores[i])
+	);
 
-	//legge til favoritt ved klikk, om man er logget inn
-	//kilde: https://github.com/toremake/UIN2023_sanity_create/blob/main/frontend/src/components/Show.js
-	const gameReference = {
-		_type: "reference",
-		_ref: myGame._id,
-		_key: myGame.title,
-	};
-
-	//oppdatere sanity
-	//kilde: https://webtricks.blog/oppdatere-et-array-felt-i-en-innholdstype-i-sanity-fra-et-react-grensesnitt/
-	function addFave(event) {
-		event.preventDefault();
-		if (login === true) {
-			writeClient
-				.patch(user._id)
-				.setIfMissing({ favourites: [] })
-				.append("favourites", [gameReference])
-				.commit({ autoGenerateKeys: true });
-
-			//setTimeout for å gi sanity nok tid til å fullføre oppdatering av ny favoritt
-			setTimeout(() => {
-				setMessage(`${myGame.title} has been added to your favourites!`);
-				getUserById();
-			}, 1000);
-		} else {
-			setMessage("You must be logged in to add favourites.");
-		}
-	}
-	function removeFave(event) {
-		event.preventDefault();
-		if (login === true) {
-			const updatedFavourites = user.favourites.filter(
-				(fav) => fav._ref !== myGame._id
-			);
-			writeClient
-				.patch(user._id)
-				.set({ favourites: updatedFavourites })
-				.commit({ autoGenerateKeys: true });
-			//setTimeout for å gi sanity nok tid til å fullføre oppdateringen
-			setTimeout(() => {
-				setMessage(`${myGame.title} has been removed from your favourites!`);
-				getUserById();
-			}, 1000);
-		} else {
-			setMessage("You must be logged in to remove favourites.");
-		}
-	}
-	const getUserById = async () => {
-		const userData = await fetchUserById(userId);
-		setUser(userData);
-	};
-
-	useEffect(() => {
-		getUserById();
-	}, [userId]);
-
-	//state for å sjekke om spillet er i favoritter
-	const [isFaved, setIsFaved] = useState(false);
-	useEffect(() => {
-		if (user.favourites && myGame._id) {
-			const gameFaved = user.favourites.find((fav) => fav._ref === myGame._id);
-			if (gameFaved) {
-				setIsFaved(true);
-			} else {
-				setIsFaved(false);
-			}
-		}
-	}, [user, myGame]);
-
-	console.log(selectedGame);
+	//console.log("tags", selectedGame.tags);
 
 	return (
 		<>
+			<Breadcrumbs slug={slug} />
 			<article className="game-page">
-				<section className="fav-button-area">
-					{isFaved === true ? (
-						<button className="heart-btn" onClick={removeFave}>
-							<img src="/fav.png" alt="red heart icon" />
-						</button>
-					) : (
-						<button className="heart-btn" onClick={addFave}>
-							<img src="/nofav.png" alt="empty heart icon" />
-						</button>
-					)}
-					<span className="fav-msg">{message}</span>
-				</section>
+				{login === true && location.pathname.startsWith("/my-games") ? (
+					<FavBtn
+						user={user}
+						myGame={myGame}
+						userId={userId}
+						login={login}
+						setUser={setUser}
+					/>
+				) : null}
 
-				<h3 className="game-page-title">{myGame.title}</h3>
-				<section className="info-area">
-					<p>
-						Playtime: <span>{myGame.hoursplayed} hours</span>
-					</p>
+				<h3 className="game-page-title">{selectedGame?.name}</h3>
+				<section className="info-area list-bckg">
+					{location.pathname.startsWith("/my-games") ? (
+						<p>
+							Playtime: <span>{myGame?.hoursplayed} hours</span>
+						</p>
+					) : null}
 
 					<p>
-						Release date: <span>{selectedGame.released}</span>
+						Release date: <span>{selectedGame?.released}</span>
 					</p>
 					<p>
 						Genres:
 						{selectedGame.genres?.map((gen) => (
 							<span key={gen.id}> {gen.name} </span>
 						))}{" "}
+					</p>
+					<p>
+						Rating: <span>{selectedGame?.metacritic}</span>
 					</p>
 					<p>
 						Developers:
@@ -154,13 +102,33 @@ export default function GamePage({
 						))}{" "}
 					</p>
 				</section>
+				<WordCloud selectedGame={selectedGame.tags} />
+				<section className="platform-area list-bckg">
+					<div>
+						<p>Avaliable platforms:</p>
+						{selectedGame.platforms?.map((plat) => (
+							<span key={plat.id}>{plat.platform.name}</span>
+						))}
+					</div>
+					<div>
+						<p>Avaliable to purchase from:</p>
+						{completeStore?.map((store) => (
+							<a href={store.url} key={store.id} target="blank">
+								{store.store.name}
+							</a>
+						))}
+					</div>
+				</section>
 
 				<section className="img-area">
-					<img src={selectedGame.background_image} alt={selectedGame.name} />
+					<img src={selectedGame?.background_image} alt={selectedGame.name} />
 					<img
-						src={selectedGame.background_image_additional}
-						alt={selectedGame.name}
+						src={selectedGame?.background_image_additional}
+						alt={selectedGame?.name}
 					/>
+				</section>
+				<section className="plot-area list-bckg">
+					<p>{selectedGame?.description_raw}</p>
 				</section>
 			</article>
 		</>

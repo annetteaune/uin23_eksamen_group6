@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import GameCard from "../GameCard";
+import Breadcrumbs from "../Breadcrumbs";
 
-export default function ShopPage({setSelectedId}) {
+export default function ShopPage({ setSelectedId }) {
 	//state for å lagre nye spill
 	const [newGames, setNewGames] = useState([]);
 	//hente spill til shop fra api
 	const getNewGames = async () => {
 		const response = await fetch(
-			`https://api.rawg.io/api/games?key=58b2b216076c4896b0055f655cd83168&dates=2023-01-10,2023-05-01&ordering=-released&stores=1&page=1&page_size=6`
+			`https://api.rawg.io/api/games?key=58b2b216076c4896b0055f655cd83168&genres=83&ordering=-released&page=1&page_size=6`
 		);
 
 		const data = await response.json();
@@ -34,9 +35,10 @@ export default function ShopPage({setSelectedId}) {
 
 	return (
 		<>
+			<Breadcrumbs />
 			<h2 className="page-title">Shop</h2>
 			<section className="games-list list-bckg">
-				<h3 className="under-title">New Games</h3>
+				<h3 className="under-title">New & Upcoming Platformer Games</h3>
 				{newGames.map((game, index) => (
 					<GameCard
 						key={index}

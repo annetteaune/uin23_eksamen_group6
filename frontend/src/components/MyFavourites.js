@@ -6,16 +6,16 @@ export default function MyFavourites({
 	user,
 	login,
 	setSelectedId,
+	setFavourites,
 	favourites,
 	myGamesArray,
-	setFavourites,
 }) {
 	/*Ettersom favoritt-listen kun er referanser til de faktiske spillene, bruker jeg
 	.find for å "slå de sammen" med arrayen med de komplette objektene, slik at de blir brukbare objekter. 
 	Putter det hele i en useEffect, da jeg kun vil at dette skal skje når visse ting oppdateres, og kun når
-	en bruker logget inn. */
+	en bruker er logget inn. */
 	useEffect(() => {
-		if (login === true) {
+		if (login === true && user.favourites != null) {
 			const favGames = user.favourites.map((obj) => {
 				const refId = obj._ref;
 				const matchingObj = myGamesArray.find((o) => o._id === refId);
@@ -25,19 +25,23 @@ export default function MyFavourites({
 		}
 	}, [login, myGamesArray, setFavourites, user.favourites]);
 
-	console.log("favourties fix", favourites);
-
 	if (login === true) {
 		return (
-			<section className="favourites">
+			<section className="favourites list-bckg">
 				<div className="header-title">
 					<h2>
 						My <img src="/fav.png" alt="red heart icon" /> Favourites
-						
 					</h2>
-					<Link to="/favourites">Go to Favourites</Link>
+					{favourites?.length < 1 ? (
+						<Link to="/favourites">Add some favourites! </Link>
+					) : (
+						<Link to="/favourites">
+							See all {favourites.length} games{" "}
+							<i className="fa-solid fa-chevron-right"></i>
+						</Link>
+					)}
 				</div>
-				{favourites.map((game, index) => (
+				{favourites?.map((game, index) => (
 					<FaveCards
 						key={index}
 						title={game.title}
@@ -53,7 +57,7 @@ export default function MyFavourites({
 		);
 	} else {
 		return (
-			<section className="favourites">
+			<section className="favourites list-bckg">
 				<div className="header-title">
 					<h2>MyFavourites</h2>
 				</div>

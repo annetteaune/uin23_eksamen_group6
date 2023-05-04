@@ -4,7 +4,6 @@ import MyFavourites from "./MyFavourites";
 import { useEffect } from "react";
 
 export default function Dashboard({
-	setFavourites,
 	shopGames,
 	setSelectedId,
 	myGamesArray,
@@ -13,6 +12,7 @@ export default function Dashboard({
 	user,
 	login,
 	favourites,
+	setFavourites,
 }) {
 	useEffect(() => {
 		getGamesForShop();
@@ -25,16 +25,12 @@ export default function Dashboard({
 		<div className="grid-container">
 			<div className="dash-container">
 				<GameShop shopGames={shopGames} setSelectedId={setSelectedId} />
-				<MyGames
-					setSelectedId={setSelectedId}
-					myGamesArray={myGamesArray}
-					login={login}
-				/>
+				<MyGames setSelectedId={setSelectedId} myGamesArray={myGamesArray} />
 			</div>
 			<MyFavourites
-				setSelectedId={setSelectedId}
 				user={user}
 				login={login}
+				setSelectedId={setSelectedId}
 				setFavourites={setFavourites}
 				favourites={favourites}
 				myGamesArray={myGamesArray}

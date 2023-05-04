@@ -2,7 +2,7 @@ import { useState } from "react";
 import { writeClient } from "../../sanity/client";
 import { Link } from "react-router-dom";
 
-export default function Register() {
+export default function Register({ getUsers }) {
 	//state for å lagre brukernavn
 	const [username, setUsername] = useState("");
 	//state for å lagre epost
@@ -23,47 +23,50 @@ export default function Register() {
 			useremail: useremail,
 		});
 		setCreated(true);
+		getUsers();
 	}
+	if (created === false) {
+		return (
+			<section className="login-page list-bckg">
+				<h2 className="page-title">Create an account:</h2>
+				<form>
+					<label htmlFor="username">Your name:</label>
+					<input
+						name="username"
+						id="username"
+						type="text"
+						placeholder="Your Name"
+						onChange={(event) => {
+							setUsername(event.target.value);
+						}}
+						value={username}
+					></input>
+					<label htmlFor="email">Your email:</label>
+					<input
+						name="email"
+						id="email"
+						type="text"
+						placeholder="annettla@hiof.no"
+						onChange={(event) => {
+							setUseremail(event.target.value);
+						}}
+						value={useremail}
+					></input>
 
-	return (
-		<section className="login-page">
-			<form>
-				<label htmlFor="username">Your name:</label>
-				<input
-					name="username"
-					id="username"
-					type="text"
-					placeholder="Your Name"
-					onChange={(event) => {
-						setUsername(event.target.value);
-					}}
-					value={username}
-				></input>
-				<label htmlFor="email">Your email:</label>
-				<input
-					name="email"
-					id="email"
-					type="text"
-					placeholder="annettla@hiof.no"
-					onChange={(event) => {
-						setUseremail(event.target.value);
-					}}
-					value={useremail}
-				></input>
-
-				<button type="submit" onClick={saveUser}>
-					Create User
-				</button>
-			</form>
-			{created === true ? (
-				<>
-					<p>Your user account has been created!</p>
-					<p>May require a site refresh.</p>
-					<Link to="/login">
-						<button>Log in</button>
-					</Link>
-				</>
-			) : null}
-		</section>
-	);
+					<button type="submit" onClick={saveUser} className="login-btn">
+						Create User
+					</button>
+				</form>
+			</section>
+		);
+	} else {
+		return (
+			<section className="login-page list-bckg">
+				<h2 className="page-title">Your user account has been created!</h2>
+				<Link to="/login">
+					<button className="login-btn">Log in</button>
+				</Link>
+			</section>
+		);
+	}
 }
