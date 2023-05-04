@@ -6,10 +6,10 @@
 	}
 	.navbar {
 		.search-dropdown {
+			top: 3.5rem;
+			left: 25%;
 			.search-results {
-				width: 80%;
-				top: 3.5rem;
-				left: 3rem;
+				width: 70%;
 			}
 		}
 	}
@@ -43,7 +43,6 @@
 	}
 	.list-bckg {
 		max-width: 100%;
-	
 	}
 	.games-list {
 		flex-direction: row;
@@ -79,10 +78,10 @@
 				}
 			}
 			.search-dropdown {
+				top: 2.7rem;
+				left: 2rem;
 				.search-results {
-					width: 60%;
-					top: 2.7rem;
-					left: 2rem;
+					width: 40%;
 				}
 			}
 
@@ -210,11 +209,11 @@
 		.navbar {
 			align-items: center;
 			.search-dropdown {
-				.search-results {
-					width: 40%;
-					top: 3.5rem;
-					left: 3rem;
-				}
+				top: 3.5rem;
+				left: 3rem;
+			}
+			.search-results {
+				width: 40%;
 			}
 			.nav-icon {
 				display: none;
@@ -296,7 +295,6 @@
 		}
 	}
 
-	
 	.games-list {
 		flex-direction: row;
 	}

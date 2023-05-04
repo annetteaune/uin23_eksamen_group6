@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
-import SearchResults from "./SearchResults";
 
 export default function Layout({ login, searchResult, setSearchResult, setSelectedId }) {
 	return (

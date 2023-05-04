@@ -525,10 +525,12 @@ footer a:hover {
     max-width: 600px;
     min-height: 400px;
   }
-  .navbar .search-dropdown .search-results {
-    width: 80%;
+  .navbar .search-dropdown {
     top: 3.5rem;
-    left: 3rem;
+    left: 25%;
+  }
+  .navbar .search-dropdown .search-results {
+    width: 70%;
   }
   .game-card {
     width: 70%;
@@ -582,10 +584,12 @@ footer a:hover {
   header .navbar #search-form button {
     font-size: 0.7rem;
   }
-  header .navbar .search-dropdown .search-results {
-    width: 60%;
+  header .navbar .search-dropdown {
     top: 2.7rem;
     left: 2rem;
+  }
+  header .navbar .search-dropdown .search-results {
+    width: 40%;
   }
   header .navbar .nav-links {
     display: block;
@@ -690,10 +694,12 @@ footer a:hover {
   header .navbar {
     align-items: center;
   }
-  header .navbar .search-dropdown .search-results {
-    width: 40%;
+  header .navbar .search-dropdown {
     top: 3.5rem;
     left: 3rem;
+  }
+  header .navbar .search-results {
+    width: 40%;
   }
   header .navbar .nav-icon {
     display: none;
@@ -810,17 +816,19 @@ footer a:hover {
     display: flex;
   }
 }
+.search-dropdown {
+  position: absolute;
+  top: 3rem;
+  left: 0;
+}
 .search-dropdown .search-results {
   background-color: #f4a127;
-  position: absolute;
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   padding: 0.5rem;
   text-align: center;
-  top: 3rem;
-  left: 0;
   box-shadow: 0px 10px 7px 4px rgba(0, 0, 0, 0.21);
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;

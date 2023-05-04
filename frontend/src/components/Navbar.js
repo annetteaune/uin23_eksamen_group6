@@ -36,6 +36,8 @@ export default function Navbar({
 					searchResult={searchResult.results}
 					setSelectedId={setSelectedId}
 					toggleDropdown={toggleDropdown}
+					setOpenDropDown={setOpenDropDown}
+					openDropdown={openDropdown}
 				/>
 			</div>
 			<button className="nav-icon" onClick={toggleMenu}>

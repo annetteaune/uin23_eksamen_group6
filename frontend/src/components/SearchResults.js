@@ -1,27 +1,44 @@
 import SearchCards from "./SearchCards";
+import { useRef } from "react";
 
-export default function SearchResults({ searchResult, setSelectedId, toggleDropdown }) {
+export default function SearchResults({
+	searchResult,
+	setSelectedId,
+	toggleDropdown,
+	setOpenDropDown,
+	openDropdown,
+}) {
+	//lukke dropdown ved klikk utenfor komponentet
+	//Kilde: https://stackoverflow.com/questions/63359138/react-closing-a-dropdown-when-click-outside
+	const openMenu = useRef(null);
 
-    if (searchResult?.length >= 3){
-        	return (
-						<section className="search-results">
-							{searchResult?.map((res, index) => (
-								<SearchCards
-									key={index}
-									title={res.name}
-									image={res.background_image}
-									slug={res.slug}
-									id={res.id}
-									setSelectedId={setSelectedId}
-									toggleDropdown={toggleDropdown}
-								/>
-							))}
-							<i
-								className="fa-solid fa-angles-up"
-								onClick={toggleDropdown}
-							></i>
-						</section>
-					);
-    }
+	const closeDropdown = (event) => {
+		if (
+			openMenu.current &&
+			openDropdown &&
+			!openMenu.current.contains(event.target)
+		) {
+			setOpenDropDown(true);
+		}
+	};
+	document.addEventListener("mousedown", closeDropdown);
 
+	if (searchResult?.length >= 3) {
+		return (
+			<section className="search-results" ref={openMenu}>
+				{searchResult?.map((res, index) => (
+					<SearchCards
+						key={index}
+						title={res.name}
+						image={res.background_image}
+						slug={res.slug}
+						id={res.id}
+						setSelectedId={setSelectedId}
+						toggleDropdown={toggleDropdown}
+					/>
+				))}
+				<i className="fa-solid fa-angles-up" onClick={toggleDropdown}></i>
+			</section>
+		);
+	}
 }

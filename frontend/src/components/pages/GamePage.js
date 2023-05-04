@@ -25,18 +25,17 @@ export default function GamePage({
 	const getMyGame = async (slug) => {
 		const data = await fetchSanityGame(slug);
 		setMyGame(data[0]);
-		//console.log("mygame:", data[0]);
 	};
 
-	//hente api-info
+	//hente api-info, oppdatere om slug endrer seg ifht search
 	useEffect(() => {
 		getGame();
 		getShops();
-	// eslint-disable-next-line
-	}, []);
+		// eslint-disable-next-line
+	}, [slug]);
+	//console.log("loopsjekk:",selectedGame)
 
 	//hente sanity-info, men bare om man ikke befinner seg i /shop
-
 	useEffect(() => {
 		if (location.pathname.startsWith("/my-games")) {
 			getMyGame(slug);
@@ -106,8 +105,8 @@ export default function GamePage({
 				<section className="platform-area list-bckg">
 					<div>
 						<p>Avaliable platforms:</p>
-						{selectedGame.platforms?.map((plat) => (
-							<span key={plat.id}>{plat.platform.name}</span>
+						{selectedGame.platforms?.map((plat, index) => (
+							<span key={index}>{plat.platform.name}</span>
 						))}
 					</div>
 					<div>
