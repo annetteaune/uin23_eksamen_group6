@@ -13,8 +13,11 @@
 		box-shadow: 0px 10px 7px 4px rgba(0, 0, 0, 0.21);
 		border-bottom-left-radius: 15px;
 		border-bottom-right-radius: 15px;
-		.fa-chevron-up {
+		.fa-angles-up{
 			padding-top: 1rem;
+			&:hover{
+				color: white;
+			}
 		}
 		a {
 			text-decoration: none;
@@ -26,8 +29,9 @@
 				align-items: center;
 				justify-content: space-between;
 				box-shadow: 0px 4px 8px 0px #00000045;
+				color: $darkfontcolor;
 				&:hover {
-					background-color: $cardhovercolor;
+					background-color: $bk-light;
 					text-decoration: underline;
 				}
 

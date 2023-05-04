@@ -17,7 +17,7 @@ export default function SearchResults({ searchResult, setSelectedId, toggleDropd
 								/>
 							))}
 							<i
-								className="fa-solid fa-chevron-up"
+								className="fa-solid fa-angles-up"
 								onClick={toggleDropdown}
 							></i>
 						</section>
