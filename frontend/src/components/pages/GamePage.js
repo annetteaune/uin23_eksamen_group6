@@ -119,14 +119,14 @@ export default function GamePage({
 						))}
 					</div>
 				</section>
-
-				<section className="img-area">
+					{selectedGame.background_image !== null ? (<section className="img-area">
 					<img src={selectedGame?.background_image} alt={selectedGame.name} />
 					<img
 						src={selectedGame?.background_image_additional}
 						alt={selectedGame?.name}
-					/>
-				</section>
+					/></section>) : null}
+				
+				
 				<section className="plot-area list-bckg">
 					<p>{selectedGame?.description_raw}</p>
 				</section>

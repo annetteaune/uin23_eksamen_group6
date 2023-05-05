@@ -16,7 +16,11 @@ export default function SearchCards({
 	return (
 		<Link to={`/shop/${slug}`} id={id} onClick={() => saveGameId(id)}>
 			<article className="search-card">
-				<img src={image} alt={title} />
+				{image !== null ? (
+					<img src={image} alt={title} />
+				) : (
+					<img src="/placeholder.png" alt="pleaceholder" />
+				)}
 				<h3>{title}</h3>
 				<i className="fa-solid fa-chevron-right"></i>
 			</article>

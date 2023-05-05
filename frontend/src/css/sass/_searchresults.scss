@@ -31,6 +31,7 @@
 				justify-content: space-between;
 				box-shadow: 0px 4px 8px 0px #00000045;
 				color: $darkfontcolor;
+				overflow: clip;
 				&:hover {
 					background-color: $bk-light;
 					text-decoration: underline;

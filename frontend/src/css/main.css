@@ -855,6 +855,7 @@ footer a:hover {
   justify-content: space-between;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2705882353);
   color: #161514;
+  overflow: clip;
 }
 .search-dropdown .search-results a .search-card:hover {
   background-color: #ffefc0;
