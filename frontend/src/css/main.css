@@ -535,6 +535,9 @@ footer a:hover {
   .game-card {
     width: 70%;
   }
+  .game-card a h3 {
+    font-size: 0.8rem;
+  }
   .favourites .header-title h2 {
     text-align: left;
   }
@@ -633,7 +636,7 @@ footer a:hover {
     width: 30%;
   }
   .game-card a .card-title {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
   .game-card a .card-genre h4 {
     font-size: 0.4rem;
@@ -762,7 +765,7 @@ footer a:hover {
     width: 30%;
   }
   .game-card a .card-title {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
   .game-card a .card-genre h4 {
     font-size: 0.4rem;
@@ -844,6 +847,7 @@ footer a:hover {
 }
 .search-dropdown .search-results a .search-card {
   width: 100%;
+  max-height: 2rem;
   background-color: #fffaed;
   border-radius: 15px;
   display: flex;
@@ -860,6 +864,8 @@ footer a:hover {
   max-width: 20%;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
+  object-fit: cover;
+  height: 100%;
 }
 .search-dropdown .search-results a .search-card h3 {
   color: #161514;

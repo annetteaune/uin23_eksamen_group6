@@ -15,6 +15,11 @@
 	}
 	.game-card {
 		width: 70%;
+		a{
+			h3{
+				font-size: 0.8rem;
+			}
+		}
 	}
 	.favourites {
 		.header-title {
@@ -130,7 +135,7 @@
 		width: 30%;
 		a {
 			.card-title {
-				font-size: 0.75rem;
+				font-size: 0.7rem;
 			}
 			.card-genre {
 				h4 {
@@ -285,7 +290,7 @@
 		width: 30%;
 		a {
 			.card-title {
-				font-size: 0.75rem;
+				font-size: 0.7rem;
 			}
 			.card-genre {
 				h4 {

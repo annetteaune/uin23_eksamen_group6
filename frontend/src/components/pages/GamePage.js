@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { fetchSanityGame } from "../../sanity/gameServices";
 import FavBtn from "../FavBtn";
@@ -22,17 +22,19 @@ export default function GamePage({
 	const location = useLocation();
 
 	//hente enkelt spill fra sanity
-	const getMyGame = async (slug) => {
-		const data = await fetchSanityGame(slug);
-		setMyGame(data[0]);
-	};
+	const getMyGame = useCallback(
+		async (slug) => {
+			const data = await fetchSanityGame(slug);
+			setMyGame(data[0]);
+		},
+		[setMyGame]
+	);
 
 	//hente api-info, oppdatere om slug endrer seg ifht search
 	useEffect(() => {
 		getGame();
 		getShops();
-		// eslint-disable-next-line
-	}, [slug]);
+	}, [slug, getGame, getShops]);
 	//console.log("loopsjekk:",selectedGame)
 
 	//hente sanity-info, men bare om man ikke befinner seg i /shop
@@ -40,8 +42,7 @@ export default function GamePage({
 		if (location.pathname.startsWith("/my-games")) {
 			getMyGame(slug);
 		}
-		// eslint-disable-next-line
-	}, [slug]);
+	}, [slug, getMyGame, location.pathname]);
 
 	/* Kombinere arrays med info om stores med og uten url, slik at de kan mappes gjennom  
 		Kilde: https://stackoverflow.com/questions/46849286/merge-two-array-of-objects-based-on-a-key

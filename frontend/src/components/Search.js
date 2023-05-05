@@ -22,12 +22,12 @@ export default function Search({ setSearchResult, setOpenDropDown }) {
 
 	const handleSearch = (event) => {
 		const inputValue = event.target.value;
-			setSearch(inputValue);
+		setSearch(inputValue);
 	};
 
 	const handleClick = () => {
-			getGameSearch();
-			setOpenDropDown(false);
+		getGameSearch();
+		setOpenDropDown(false);
 	};
 
 	return (

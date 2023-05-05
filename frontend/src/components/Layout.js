@@ -1,7 +1,12 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 
-export default function Layout({ login, searchResult, setSearchResult, setSelectedId }) {
+export default function Layout({
+	login,
+	searchResult,
+	setSearchResult,
+	setSelectedId,
+}) {
 	return (
 		<>
 			<a className="skip" href="#main">
@@ -15,7 +20,7 @@ export default function Layout({ login, searchResult, setSearchResult, setSelect
 					setSelectedId={setSelectedId}
 				/>
 			</header>
-			
+
 			<main id="main">
 				<Outlet />
 			</main>

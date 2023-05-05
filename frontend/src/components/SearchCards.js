@@ -10,7 +10,7 @@ export default function SearchCards({
 }) {
 	const saveGameId = (id) => {
 		setSelectedId(id);
-        toggleDropdown();
+		toggleDropdown();
 	};
 	return (
 		<Link to={`/shop/${slug}`} id={id} onClick={() => saveGameId(id)}>

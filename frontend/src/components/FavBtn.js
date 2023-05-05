@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { writeClient } from "../sanity/client";
 import { fetchUserById } from "../sanity/userServices";
 
@@ -9,14 +9,14 @@ export default function FavBtn({ user, myGame, userId, login, setUser }) {
 	const [message, setMessage] = useState("Click to toggle");
 
 	//hente bruker for lagring på riktig sted
-	const getUserById = async () => {
+	const getUserById = useCallback(async () => {
 		const userData = await fetchUserById(userId);
 		setUser(userData);
-	};
+	}, [userId, setUser]);
 
 	useEffect(() => {
 		getUserById();
-	}, [userId]);
+	}, [getUserById]);
 
 	//oppdatere sanity og legge til favoritt ved klikk, om man er logget inn
 	//kilde: https://webtricks.blog/oppdatere-et-array-felt-i-en-innholdstype-i-sanity-fra-et-react-grensesnitt/
