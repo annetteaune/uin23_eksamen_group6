@@ -10,13 +10,13 @@ export default function SearchResults({
 }) {
 	//lukke dropdown ved klikk utenfor komponentet
 	//Kilde: https://stackoverflow.com/questions/63359138/react-closing-a-dropdown-when-click-outside
-	const openMenu = useRef(null);
+	const openSearch = useRef(null);
 
 	const closeDropdown = (event) => {
 		if (
-			openMenu.current &&
+			openSearch.current &&
 			openDropdown &&
-			!openMenu.current.contains(event.target)
+			!openSearch.current.contains(event.target)
 		) {
 			setOpenDropDown(true);
 		}
@@ -25,7 +25,7 @@ export default function SearchResults({
 
 	if (searchResult?.length >= 3) {
 		return (
-			<section className="search-results" ref={openMenu}>
+			<section className="search-results" ref={openSearch}>
 				{searchResult?.map((res, index) => (
 					<SearchCards
 						key={index}
