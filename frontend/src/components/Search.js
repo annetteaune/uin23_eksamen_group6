@@ -13,7 +13,6 @@ export default function Search({ setSearchResult, setOpenDropDown }) {
 		);
 		const data = await response.json();
 		setSearchResult(data);
-		console.log(data);
 	};
 
 	const handleSubmit = (event) => {
