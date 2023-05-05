@@ -77,11 +77,10 @@ function App() {
 	const [myGame, setMyGame] = useState([]);
 
 	//hente mygames fra sanity
-	const getMyGames = async () => {
+	const getMyGames = useCallback(async () => {
 		const data = await fetchMyGames();
 		setMyGamesArray(data);
-		//console.log("mygames:", data);
-	};
+	},[]);
 
 	/**LOGIN & USERPAGE**************************************************************************/
 	//state for å lagre om en bruker er logget inn

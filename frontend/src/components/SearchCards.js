@@ -12,6 +12,7 @@ export default function SearchCards({
 		setSelectedId(id);
 		toggleDropdown();
 	};
+
 	return (
 		<Link to={`/shop/${slug}`} id={id} onClick={() => saveGameId(id)}>
 			<article className="search-card">
