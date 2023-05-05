@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Search from "./Search";
 import SearchResults from "./SearchResults";
@@ -17,21 +17,6 @@ export default function Navbar({
 	function toggleDropdown() {
 		setOpenDropDown((current) => !current);
 	}
-
-	//lukke dropdown ved klikk utenfor komponentet
-	//Kilde: https://stackoverflow.com/questions/63359138/react-closing-a-dropdown-when-click-outside
-	const openMenu = useRef(null);
-
-	const closeDropdown = (event) => {
-		if (
-			openMenu.current &&
-			openDropdown &&
-			!openMenu.current.contains(event.target)
-		) {
-			setIsActive(true);
-		}
-	};
-	document.addEventListener("mousedown", closeDropdown);
 
 	return (
 		<nav className="navbar">
@@ -62,10 +47,7 @@ export default function Navbar({
 					<i className="fa-solid fa-x"></i>
 				)}
 			</button>
-			<div
-				className={`nav-links ${isActive === true ? "hide" : "show"}`}
-				ref={openMenu}
-			>
+			<div className={`nav-links ${isActive === true ? "hide" : "show"}`}>
 				<ul>
 					<li>
 						<NavLink to="/" onClick={toggleMenu}>
