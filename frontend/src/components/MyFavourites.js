@@ -10,8 +10,8 @@ export default function MyFavourites({
 	favourites,
 	myGamesArray,
 }) {
-	/*Ettersom favoritt-listen kun er referanser til de faktiske spillene, bruker jeg
-	.find for å "slå de sammen" med arrayen med de komplette objektene, slik at de blir brukbare objekter. 
+	/*Ettersom favoritt-listen kun er referanser til de faktiske spillene, bruker jeg .find for å 
+	"slå de sammen" med arrayen med de komplette objektene basert på id, slik at de blir brukbare objekter. 
 	Putter det hele i en useEffect, da jeg kun vil at dette skal skje når visse ting oppdateres, og kun når
 	en bruker er logget inn. */
 	useEffect(() => {

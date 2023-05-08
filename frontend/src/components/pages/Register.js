@@ -26,9 +26,7 @@ export default function Register({ getUsers, users }) {
 
 		// sjekke om epost er valid
 		//kilde regex: https://www.w3resource.com/javascript/form/email-validation.php
-		const isValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
-			useremail
-		);
+		const isValid = /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/.test(useremail);
 		if (!isValid) {
 			alert("Please enter a valid email address!");
 			return;
