@@ -59,7 +59,7 @@ export default function MyFavourites({
 		return (
 			<section className="favourites list-bckg">
 				<div className="header-title">
-					<h2>MyFavourites</h2>
+					<h2>My Favourites</h2>
 				</div>
 				<span className="login-msg">Log in to see your favourites</span>
 			</section>
