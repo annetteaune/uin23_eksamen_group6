@@ -2,7 +2,7 @@ import { useState } from "react";
 import { writeClient } from "../../sanity/client";
 import { Link } from "react-router-dom";
 
-export default function Register({ getUsers }) {
+export default function Register({ getUsers, users }) {
 	//state for å lagre brukernavn
 	const [username, setUsername] = useState("");
 	//state for å lagre epost
@@ -16,6 +16,21 @@ export default function Register({ getUsers }) {
 
 	function saveUser(event) {
 		event.preventDefault();
+
+		//sjekke om eposten allerede er registret
+		const userExists = users.find((users) => users.useremail === useremail);
+		if (userExists) {
+			alert("A user with this email already exists!");
+			return;
+		}
+
+		// sjekke om epost er valid
+		//kilde regex: https://www.w3resource.com/javascript/form/email-validation.php
+		const isValid = /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/.test(useremail);
+		if (!isValid) {
+			alert("Please enter a valid email address!");
+			return;
+		}
 		console.log(username, useremail);
 		writeClient.create({
 			_type: "user",
@@ -46,7 +61,7 @@ export default function Register({ getUsers }) {
 						name="email"
 						id="email"
 						type="text"
-						placeholder="annettla@hiof.no"
+						placeholder="your@email.com"
 						onChange={(event) => {
 							setUseremail(event.target.value);
 						}}

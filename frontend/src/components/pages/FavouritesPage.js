@@ -7,7 +7,7 @@ export default function FavouritesPage({ setSelectedId, login, favourites }) {
 		return (
 			<>
 				<Breadcrumbs />
-				<h2 className="page-title">Favourites</h2>
+				<h1 className="page-title">Favourites</h1>
 				<section className="games-list">
 					{favourites.map((game, index) => (
 						<GameCard
@@ -27,7 +27,7 @@ export default function FavouritesPage({ setSelectedId, login, favourites }) {
 	} else {
 		return (
 			<article className="mustlogin page-title ">
-				<h2>Favourites</h2>
+				<h1 className="page-title">Favourites</h1>
 				<p>You must be logged in to see your favourites.</p>
 				<Link to="/login">
 					<button className="login-btn">To Login</button>

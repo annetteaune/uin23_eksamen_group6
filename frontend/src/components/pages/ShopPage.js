@@ -36,9 +36,9 @@ export default function ShopPage({ setSelectedId }) {
 	return (
 		<>
 			<Breadcrumbs />
-			<h2 className="page-title">Shop</h2>
+			<h1 className="page-title">Shop</h1>
 			<section className="games-list list-bckg">
-				<h3 className="under-title">New & Upcoming Platformer Games</h3>
+				<h2 className="under-title">New & Upcoming Platformer Games</h2>
 				{newGames.map((game, index) => (
 					<GameCard
 						key={index}
@@ -52,7 +52,7 @@ export default function ShopPage({ setSelectedId }) {
 				))}
 			</section>
 			<section className="games-list list-bckg">
-				<h3 className="under-title">Trending games</h3>
+				<h2 className="under-title">Trending games</h2>
 				{trendingGames.map((game, index) => (
 					<GameCard
 						key={index}

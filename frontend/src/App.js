@@ -14,6 +14,9 @@ import { fetchAllUsers } from "./sanity/userServices";
 import Register from "./components/pages/Register";
 
 function App() {
+	//State for å lagre søkeresultat
+	const [searchResult, setSearchResult] = useState([]);
+
 	/** GAMESHOP ********************************************************************************/
 	//state for å lagre spill til shop
 	const [shopGames, setShopGames] = useState([]);
@@ -33,16 +36,12 @@ function App() {
 
 	//state for å lagre favoritter
 	const [favourites, setFavourites] = useState([]);
-
 	//state for å lagre id for å se detaljer om hvert enkelt spill
 	const [selectedId, setSelectedId] = useState("");
-
 	//state for å lagre info om hvert enkelt spill
 	const [selectedGame, setSelectedGame] = useState([]);
-
 	//State for å lagre tilgjengelige  butikker, har url men ikke navn
 	const [stores, setStores] = useState([]);
-
 	//state for å lagre en array av stores for hvert enkelt spill, inneholder ikke url
 	//kombineres med stores i gamepage
 	const [storeNoURL, setStoreNoURL] = useState([]);
@@ -70,9 +69,8 @@ function App() {
 
 	/**MYGAMES************************************************************************************/
 
-	//state for å lagre mygames
+	//state for å lagre spill hentet fra sanity
 	const [myGamesArray, setMyGamesArray] = useState([]);
-
 	//state for å lagre ett enkelt spill
 	const [myGame, setMyGame] = useState([]);
 
@@ -80,15 +78,17 @@ function App() {
 	const getMyGames = useCallback(async () => {
 		const data = await fetchMyGames();
 		setMyGamesArray(data);
-	},[]);
+	}, []);
 
 	/**LOGIN & USERPAGE**************************************************************************/
+
 	//state for å lagre om en bruker er logget inn
 	const [login, setLogin] = useState(false);
 	//state for å lagre alle brukere
 	const [users, setUsers] = useState([]);
 	//state for å lagre innlogget bruker
 	const [user, setUser] = useState({});
+
 	//hente brukere fra sanity
 	const getUsers = useCallback(async () => {
 		const data = await fetchAllUsers();
@@ -98,10 +98,6 @@ function App() {
 	useEffect(() => {
 		getUsers();
 	}, [getUsers]);
-
-	/**SEARCH************************************************************************************/
-	//State for å lagre søkeresultat
-	const [searchResult, setSearchResult] = useState([]);
 
 	return (
 		<>
@@ -145,7 +141,10 @@ function App() {
 							/>
 						}
 					/>
-					<Route path="/register" element={<Register getUsers={getUsers} />} />
+					<Route
+						path="/register"
+						element={<Register getUsers={getUsers} users={users} />}
+					/>
 					<Route
 						path="/profile"
 						element={<Profile user={user} login={login} />}

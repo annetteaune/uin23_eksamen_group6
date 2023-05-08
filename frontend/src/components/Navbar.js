@@ -22,7 +22,7 @@ export default function Navbar({
 		<nav className="navbar">
 			<div className="logo">
 				<NavLink to="/">
-					<img src="/logo.png" alt="logo" />
+					<img src="/logo.png" alt="game genie" />
 				</NavLink>
 			</div>
 			<Search

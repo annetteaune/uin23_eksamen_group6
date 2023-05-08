@@ -3,6 +3,7 @@ import GameCard from "./GameCard";
 
 export default function MyGames({ setSelectedId, myGamesArray }) {
 	//ny games-array for å kun hente ut tre stk
+	//kilde: https://www.w3schools.com/jsref/jsref_slice_array.asp
 	const dashGames = myGamesArray.slice(0, 3);
 
 	return (

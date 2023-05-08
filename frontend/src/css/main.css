@@ -69,7 +69,7 @@
   overflow: clip;
   color: #161514;
 }
-.game-card a .card-genre h4 {
+.game-card a .card-genre span {
   font-size: 0.4rem;
   text-transform: uppercase;
   color: inherit;
@@ -150,6 +150,7 @@ main .favourites {
   padding-bottom: 2rem;
   margin-top: 1rem;
   flex-direction: column;
+  min-width: 9rem;
 }
 main .favourites div {
   flex-direction: column;
@@ -180,7 +181,7 @@ main .header-title {
 main .header-title h2 {
   width: 100%;
   color: #161514;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-family: "Bitter", Times, serif;
   text-align: center;
 }
@@ -355,11 +356,11 @@ footer a:hover {
 .game-page .info-area {
   padding: 1rem 1rem 1rem 3rem;
 }
-.game-page .info-area p {
+.game-page .info-area h2 {
   font-weight: bold;
   font-size: 0.8rem;
 }
-.game-page .info-area p span {
+.game-page .info-area h2 span {
   font-weight: normal;
   font-size: 0.7rem;
 }
@@ -378,6 +379,9 @@ footer a:hover {
   gap: 1rem;
   justify-content: space-evenly;
 }
+.game-page .platform-area div h3 {
+  font-size: 0.8rem;
+}
 .game-page .platform-area p {
   font-weight: bold;
   font-size: 0.8rem;
@@ -393,6 +397,9 @@ footer a:hover {
   margin: 1rem;
   font-size: 0.7rem;
   line-height: 1rem;
+}
+.game-page .plot-area p {
+  padding-bottom: 0.3rem;
 }
 
 .wordcloud {
@@ -626,7 +633,7 @@ footer a:hover {
     text-decoration: underline;
   }
   main {
-    max-width: 800px;
+    max-width: 1000px;
     min-height: 600px;
   }
   main .shop {
@@ -644,8 +651,11 @@ footer a:hover {
   .game-card a .card-title {
     font-size: 0.7rem;
   }
-  .game-card a .card-genre h4 {
+  .game-card a .card-genre span {
     font-size: 0.4rem;
+  }
+  .favourites {
+    width: 30%;
   }
   .favourites .header-title a {
     justify-content: left;
@@ -701,10 +711,14 @@ footer a:hover {
 }
 @media (min-width: 1201px) {
   header .navbar {
+    padding: 0.3rem 1rem;
     align-items: center;
   }
+  header .navbar .logo a {
+    max-width: 3.2rem;
+  }
   header .navbar .search-dropdown {
-    top: 3.5rem;
+    top: 1.97rem;
     left: 3rem;
   }
   header .navbar .search-results {
@@ -739,7 +753,7 @@ footer a:hover {
     text-decoration: underline;
   }
   main {
-    max-width: 1000px;
+    max-width: 40rem;
     min-height: 700px;
   }
   main .shop {
@@ -773,7 +787,7 @@ footer a:hover {
   .game-card a .card-title {
     font-size: 0.7rem;
   }
-  .game-card a .card-genre h4 {
+  .game-card a .card-genre span {
     font-size: 0.4rem;
   }
   .games-list {

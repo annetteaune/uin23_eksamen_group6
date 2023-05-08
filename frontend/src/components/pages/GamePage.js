@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { fetchSanityGame } from "../../sanity/gameServices";
 import FavBtn from "../FavBtn";
@@ -21,6 +21,8 @@ export default function GamePage({
 	const { slug } = useParams();
 	const location = useLocation();
 
+	const [description, setDescription] = useState([])
+
 	//hente enkelt spill fra sanity
 	const getMyGame = useCallback(
 		async (slug) => {
@@ -34,8 +36,11 @@ export default function GamePage({
 	useEffect(() => {
 		getGame();
 		getShops();
-	}, [slug, getGame, getShops]);
+		////kilde split: https://stackoverflow.com/questions/21895233/how-to-split-string-with-newline-n-in-node
+		setDescription(selectedGame?.description_raw?.split("\n"));
+	}, [slug, getGame, getShops, selectedGame.description_raw]);
 	//console.log("loopsjekk:",selectedGame)
+	console.log(description)
 
 	//hente sanity-info, men bare om man ikke befinner seg i /shop
 	useEffect(() => {
@@ -67,51 +72,51 @@ export default function GamePage({
 					/>
 				) : null}
 
-				<h3 className="game-page-title">{selectedGame?.name}</h3>
+				<h1 className="game-page-title">{selectedGame?.name}</h1>
 				<section className="info-area list-bckg">
 					{location.pathname.startsWith("/my-games") ? (
-						<p>
+						<h2>
 							Playtime: <span>{myGame?.hoursplayed} hours</span>
-						</p>
+						</h2>
 					) : null}
 
-					<p>
+					<h2>
 						Release date: <span>{selectedGame?.released}</span>
-					</p>
-					<p>
+					</h2>
+					<h2>
 						Genres:
 						{selectedGame.genres?.map((gen) => (
 							<span key={gen.id}> {gen.name} </span>
 						))}{" "}
-					</p>
-					<p>
+					</h2>
+					<h2>
 						Rating: <span>{selectedGame?.metacritic}</span>
-					</p>
-					<p>
+					</h2>
+					<h2>
 						Developers:
 						{selectedGame.developers?.map((dev) => (
 							<span key={dev.id}> {dev.name} </span>
 						))}
-					</p>
-					<p>
+					</h2>
+					<h2>
 						Published by:
 						{selectedGame.publishers?.map((pub) => (
 							<span key={pub.id}> {pub.name} </span>
 						))}{" "}
-					</p>
+					</h2>
 				</section>
 				<section className="wordcloud">
 					<WordCloud tags={selectedGame?.tags} />
 				</section>
 				<section className="platform-area list-bckg">
 					<div>
-						<p>Avaliable platforms:</p>
+						<h3>Avaliable platforms:</h3>
 						{selectedGame.platforms?.map((plat, index) => (
 							<span key={index}>{plat.platform.name}</span>
 						))}
 					</div>
 					<div>
-						<p>Avaliable to purchase from:</p>
+						<h3>Avaliable to purchase from:</h3>
 						{completeStore?.map((store) => (
 							<a href={store.url} key={store.id} target="blank">
 								{store.store.name}
@@ -130,7 +135,9 @@ export default function GamePage({
 				) : null}
 
 				<section className="plot-area list-bckg">
-					<p>{selectedGame?.description_raw}</p>
+					{description?.map((desc, i) => (
+						<p key={i}>{desc}</p>
+					))}
 				</section>
 			</article>
 		</>
