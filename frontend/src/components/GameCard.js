@@ -30,7 +30,7 @@ export default function GameCard({
 					)}
 					<div className="card-genre">
 						{genres.map((gen) => (
-							<h4 key={gen.id}>{gen.name}</h4>
+							<span key={gen.id}>{gen.name}</span>
 						))}
 					</div>
 					<h3 className="card-title">{title}</h3>
@@ -52,7 +52,7 @@ export default function GameCard({
 						<img src="/placeholder.png" alt="pleaceholder" />
 					)}
 					<div className="card-genre">
-						<h4 key={genres.id}>{genres.title}</h4>
+						<span key={genres.id}>{genres.title}</span>
 					</div>
 					<h3 className="card-title">{title}</h3>
 					<span className="card-view">View</span>

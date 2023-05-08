@@ -5,7 +5,7 @@ export default function MyGamesPage({ myGamesArray, setSelectedId }) {
 	return (
 		<>
 			<Breadcrumbs />
-			<h2 className="page-title">My games</h2>
+			<h1 className="page-title">My games</h1>
 			<section className="games-list list-bckg">
 				{myGamesArray.map((game, index) => (
 					<GameCard

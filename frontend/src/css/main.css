@@ -69,7 +69,7 @@
   overflow: clip;
   color: #161514;
 }
-.game-card a .card-genre h4 {
+.game-card a .card-genre span {
   font-size: 0.4rem;
   text-transform: uppercase;
   color: inherit;
@@ -356,11 +356,11 @@ footer a:hover {
 .game-page .info-area {
   padding: 1rem 1rem 1rem 3rem;
 }
-.game-page .info-area p {
+.game-page .info-area h2 {
   font-weight: bold;
   font-size: 0.8rem;
 }
-.game-page .info-area p span {
+.game-page .info-area h2 span {
   font-weight: normal;
   font-size: 0.7rem;
 }
@@ -378,6 +378,9 @@ footer a:hover {
   display: flex;
   gap: 1rem;
   justify-content: space-evenly;
+}
+.game-page .platform-area div h3 {
+  font-size: 0.8rem;
 }
 .game-page .platform-area p {
   font-weight: bold;
@@ -648,7 +651,7 @@ footer a:hover {
   .game-card a .card-title {
     font-size: 0.7rem;
   }
-  .game-card a .card-genre h4 {
+  .game-card a .card-genre span {
     font-size: 0.4rem;
   }
   .favourites {
@@ -784,7 +787,7 @@ footer a:hover {
   .game-card a .card-title {
     font-size: 0.7rem;
   }
-  .game-card a .card-genre h4 {
+  .game-card a .card-genre span {
     font-size: 0.4rem;
   }
   .games-list {
