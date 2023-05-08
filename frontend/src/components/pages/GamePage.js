@@ -53,8 +53,6 @@ export default function GamePage({
 		Object.assign({}, item, stores[i])
 	);
 
-	//console.log("tags", selectedGame.tags);
-
 	return (
 		<>
 			<Breadcrumbs slug={slug} />
@@ -103,7 +101,7 @@ export default function GamePage({
 					</p>
 				</section>
 				<section className="wordcloud">
-					<WordCloud selectedGame={selectedGame.tags} />
+					<WordCloud tags={selectedGame?.tags} />
 				</section>
 				<section className="platform-area list-bckg">
 					<div>
