@@ -145,7 +145,7 @@ function App() {
 							/>
 						}
 					/>
-					<Route path="/register" element={<Register getUsers={getUsers} />} />
+					<Route path="/register" element={<Register getUsers={getUsers} users={users}/>} />
 					<Route
 						path="/profile"
 						element={<Profile user={user} login={login} />}
