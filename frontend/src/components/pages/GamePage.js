@@ -52,7 +52,9 @@ export default function GamePage({
 	let completeStore = storeNoURL?.map((item, i) =>
 		Object.assign({}, item, stores[i])
 	);
-
+	//kilde split: https://stackoverflow.com/questions/21895233/how-to-split-string-with-newline-n-in-node
+	const description = selectedGame?.description_raw.split("\n");
+	
 	return (
 		<>
 			<Breadcrumbs slug={slug} />
@@ -130,7 +132,9 @@ export default function GamePage({
 				) : null}
 
 				<section className="plot-area list-bckg">
-					<p>{selectedGame?.description_raw}</p>
+					{description.map((desc) => (
+						<p>{desc}</p>
+					))}
 				</section>
 			</article>
 		</>

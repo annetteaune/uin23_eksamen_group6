@@ -395,6 +395,9 @@ footer a:hover {
   font-size: 0.7rem;
   line-height: 1rem;
 }
+.game-page .plot-area p {
+  padding-bottom: 0.3rem;
+}
 
 .wordcloud {
   max-height: 16rem;
