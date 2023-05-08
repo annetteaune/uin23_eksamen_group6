@@ -16,17 +16,20 @@ export default function Register({ getUsers, users }) {
 
 	function saveUser(event) {
 		event.preventDefault();
-		console.log("users",users)
+
 		//sjekke om eposten allerede er registret
-		const userExists = users.find((users) => users.email === useremail);
+		const userExists = users.find((users) => users.useremail === useremail);
 		if (userExists) {
-			alert("User with this email already exists!");
+			alert("A user with this email already exists!");
 			return;
 		}
 
 		// sjekke om epost er valid
-		const isValidEmail = useremail.includes("@");
-		if (!isValidEmail) {
+		//kilde regex: https://www.w3resource.com/javascript/form/email-validation.php
+		const isValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+			useremail
+		);
+		if (!isValid) {
 			alert("Please enter a valid email address!");
 			return;
 		}
@@ -60,7 +63,7 @@ export default function Register({ getUsers, users }) {
 						name="email"
 						id="email"
 						type="text"
-						placeholder="annettla@hiof.no"
+						placeholder="your@email.com"
 						onChange={(event) => {
 							setUseremail(event.target.value);
 						}}
