@@ -5,16 +5,16 @@ export default function FaveCards({ title, image, setSelectedId, slug, id }) {
 		setSelectedId(id);
 	};
 	return (
-		<article className="fave-card">
-			<Link
-				to={`/my-games/${slug.current}`}
-				id={id}
-				onClick={() => saveGameId(id)}
-			>
+		<Link
+			to={`/my-games/${slug.current}`}
+			id={id}
+			onClick={() => saveGameId(id)}
+		>
+			<article className="fave-card">
 				<img src={image} alt={title} />
 				<h3>{title}</h3>
 				<i className="fa-solid fa-chevron-right"></i>
-			</Link>
-		</article>
+			</article>
+		</Link>
 	);
 }

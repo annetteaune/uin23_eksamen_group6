@@ -20,8 +20,7 @@ export default function LoginPage({
 	//refreshe users i tilfelle ny registering
 	useEffect(() => {
 		getUsers();
-	// eslint-disable-next-line
-	}, []);
+	}, [getUsers]);
 
 	//sjekke om brukeren fins og handle deretter
 	function handleSubmit(event) {

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 export default function Profile({ user, login }) {
-	console.log(user);
 
 	if (login === true) {
 		return (

@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import "./css/main.css";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Dashboard from "./components/Dashboard";
 import ShopPage from "./components/pages/ShopPage";
 import MyGamesPage from "./components/pages/MyGamesPage";
@@ -19,14 +19,15 @@ function App() {
 	const [shopGames, setShopGames] = useState([]);
 
 	//hente spill til shop fra api
-	const getGamesForShop = async () => {
+	//kilde usecallback: https://react.dev/reference/react/useCallback
+	const getGamesForShop = useCallback(async () => {
 		const response = await fetch(
-			`https://api.rawg.io/api/games?key=58b2b216076c4896b0055f655cd83168&dates=2023-01-10,2023-05-01&ordering=-released&stores=1&page=1&page_size=3`
+			`https://api.rawg.io/api/games?key=58b2b216076c4896b0055f655cd83168&dates=2023-01-01,2023-05-02&ordering=-released&stores=1&page=1&page_size=3`
 		);
 
 		const data = await response.json();
 		setShopGames(data.results);
-	};
+	}, []);
 
 	/** GAMEPAGE **********************************************************************************/
 
@@ -47,7 +48,7 @@ function App() {
 	const [storeNoURL, setStoreNoURL] = useState([]);
 
 	//hente detaljer om hvert enkelt spill
-	const getGame = async () => {
+	const getGame = useCallback(async () => {
 		const response = await fetch(
 			`https://api.rawg.io/api/games/${selectedId}?key=58b2b216076c4896b0055f655cd83168`
 		);
@@ -55,17 +56,17 @@ function App() {
 		const data = await response.json();
 		setSelectedGame(data);
 		setStoreNoURL(data.stores);
-	};
+	}, [selectedId]);
 
 	//Hente butikker som selger spillene
-	const getShops = async () => {
+	const getShops = useCallback(async () => {
 		const response = await fetch(
 			`https://api.rawg.io/api/games/${selectedId}/stores?key=58b2b216076c4896b0055f655cd83168`
 		);
 
 		const data = await response.json();
 		setStores(data.results);
-	};
+	}, [selectedId]);
 
 	/**MYGAMES************************************************************************************/
 
@@ -76,11 +77,10 @@ function App() {
 	const [myGame, setMyGame] = useState([]);
 
 	//hente mygames fra sanity
-	const getMyGames = async () => {
+	const getMyGames = useCallback(async () => {
 		const data = await fetchMyGames();
 		setMyGamesArray(data);
-		//console.log("mygames:", data);
-	};
+	},[]);
 
 	/**LOGIN & USERPAGE**************************************************************************/
 	//state for å lagre om en bruker er logget inn
@@ -90,18 +90,33 @@ function App() {
 	//state for å lagre innlogget bruker
 	const [user, setUser] = useState({});
 	//hente brukere fra sanity
-	const getUsers = async () => {
+	const getUsers = useCallback(async () => {
 		const data = await fetchAllUsers();
 		setUsers(data);
-	};
+	}, []);
+
 	useEffect(() => {
 		getUsers();
-	}, []);
+	}, [getUsers]);
+
+	/**SEARCH************************************************************************************/
+	//State for å lagre søkeresultat
+	const [searchResult, setSearchResult] = useState([]);
 
 	return (
 		<>
 			<Routes>
-				<Route path="/" element={<Layout login={login} />}>
+				<Route
+					path="/"
+					element={
+						<Layout
+							login={login}
+							setSelectedId={setSelectedId}
+							searchResult={searchResult}
+							setSearchResult={setSearchResult}
+						/>
+					}
+				>
 					<Route
 						index
 						element={

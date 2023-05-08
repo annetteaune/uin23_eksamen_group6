@@ -60,6 +60,7 @@
 		}
 		span,
 		a {
+			padding-top: 0.5rem;
 			display: flex;
 			color: $darkfontcolor;
 			font-size: 0.7rem;
@@ -69,6 +70,7 @@
 	.plot-area {
 		margin: 1rem;
 		font-size: 0.7rem;
+		line-height: 1rem;
 	}
 }
 

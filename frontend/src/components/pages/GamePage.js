@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { fetchSanityGame } from "../../sanity/gameServices";
 import FavBtn from "../FavBtn";
@@ -22,27 +22,27 @@ export default function GamePage({
 	const location = useLocation();
 
 	//hente enkelt spill fra sanity
-	const getMyGame = async (slug) => {
-		const data = await fetchSanityGame(slug);
-		setMyGame(data[0]);
-		//console.log("mygame:", data[0]);
-	};
+	const getMyGame = useCallback(
+		async (slug) => {
+			const data = await fetchSanityGame(slug);
+			setMyGame(data[0]);
+		},
+		[setMyGame]
+	);
 
-	//hente api-info
+	//hente api-info, oppdatere om slug endrer seg ifht search
 	useEffect(() => {
 		getGame();
 		getShops();
-	// eslint-disable-next-line
-	}, []);
+	}, [slug, getGame, getShops]);
+	//console.log("loopsjekk:",selectedGame)
 
 	//hente sanity-info, men bare om man ikke befinner seg i /shop
-
 	useEffect(() => {
 		if (location.pathname.startsWith("/my-games")) {
 			getMyGame(slug);
 		}
-		// eslint-disable-next-line
-	}, [slug]);
+	}, [slug, getMyGame, location.pathname]);
 
 	/* Kombinere arrays med info om stores med og uten url, slik at de kan mappes gjennom  
 		Kilde: https://stackoverflow.com/questions/46849286/merge-two-array-of-objects-based-on-a-key
@@ -106,8 +106,8 @@ export default function GamePage({
 				<section className="platform-area list-bckg">
 					<div>
 						<p>Avaliable platforms:</p>
-						{selectedGame.platforms?.map((plat) => (
-							<span key={plat.id}>{plat.platform.name}</span>
+						{selectedGame.platforms?.map((plat, index) => (
+							<span key={index}>{plat.platform.name}</span>
 						))}
 					</div>
 					<div>
@@ -119,14 +119,14 @@ export default function GamePage({
 						))}
 					</div>
 				</section>
-
-				<section className="img-area">
+					{selectedGame.background_image !== null ? (<section className="img-area">
 					<img src={selectedGame?.background_image} alt={selectedGame.name} />
 					<img
 						src={selectedGame?.background_image_additional}
 						alt={selectedGame?.name}
-					/>
-				</section>
+					/></section>) : null}
+				
+				
 				<section className="plot-area list-bckg">
 					<p>{selectedGame?.description_raw}</p>
 				</section>

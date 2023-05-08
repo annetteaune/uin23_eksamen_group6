@@ -4,8 +4,22 @@
 		max-width: 600px;
 		min-height: 400px;
 	}
+	.navbar {
+		.search-dropdown {
+			top: 3.5rem;
+			left: 25%;
+			.search-results {
+				width: 70%;
+			}
+		}
+	}
 	.game-card {
 		width: 70%;
+		a{
+			h3{
+				font-size: 0.8rem;
+			}
+		}
 	}
 	.favourites {
 		.header-title {
@@ -16,24 +30,24 @@
 				justify-content: left;
 			}
 		}
+		a {
+			.fave-card {
+				width: 100%;
+				img {
+					max-width: 40%;
+					mask-image: linear-gradient(90deg, black, transparent);
+				}
+				h3 {
+					font-size: 0.55rem;
+				}
+				.fa-chevron-right {
+					font-size: 0.6rem;
+				}
+			}
+		}
 	}
 	.list-bckg {
 		max-width: 100%;
-	}
-	.fave-card {
-		width: 100%;
-		a {
-			img {
-				max-width: 40%;
-				mask-image: linear-gradient(90deg, black, transparent);
-			}
-			h3 {
-				font-size: 0.55rem;
-			}
-			.fa-chevron-right {
-				font-size: 0.6rem;
-			}
-		}
 	}
 	.games-list {
 		flex-direction: row;
@@ -51,15 +65,37 @@
 	header {
 		.navbar {
 			align-items: center;
+			padding: 0.7rem 1rem;
+			.logo {
+				a {
+					max-width: 3rem;
+				}
+			}
 			.nav-icon {
 				display: none;
 			}
+			#search-form {
+				input {
+					font-size: 0.7rem;
+				}
+				button {
+					font-size: 0.7rem;
+				}
+			}
+			.search-dropdown {
+				top: 2.7rem;
+				left: 2rem;
+				.search-results {
+					width: 40%;
+				}
+			}
+
 			.nav-links {
 				display: block;
 				position: inherit;
 				box-shadow: none;
 				background-color: $footercolor;
-				width: 65%;
+				width: 55%;
 
 				ul {
 					list-style: none;
@@ -69,7 +105,7 @@
 					gap: 1rem;
 					padding: 0;
 					li {
-						font-size: 0.9rem;
+						font-size: 0.75rem;
 						a {
 							color: $darkfontcolor;
 							text-decoration: none;
@@ -99,7 +135,7 @@
 		width: 30%;
 		a {
 			.card-title {
-				font-size: 0.75rem;
+				font-size: 0.7rem;
 			}
 			.card-genre {
 				h4 {
@@ -114,22 +150,23 @@
 				justify-content: left;
 			}
 		}
-	}
-	.fave-card {
-		width: 100%;
 		a {
-			img {
-				max-width: 40%;
-				mask-image: linear-gradient(90deg, black, transparent);
-			}
-			h3 {
-				font-size: 0.6rem;
-			}
-			.fa-chevron-right {
-				font-size: 0.6rem;
+			.fave-card {
+				width: 100%;
+				img {
+					max-width: 40%;
+					mask-image: linear-gradient(90deg, black, transparent);
+				}
+				h3 {
+					font-size: 0.6rem;
+				}
+				.fa-chevron-right {
+					font-size: 0.6rem;
+				}
 			}
 		}
 	}
+
 	.games-list {
 		flex-direction: row;
 	}
@@ -176,6 +213,13 @@
 	header {
 		.navbar {
 			align-items: center;
+			.search-dropdown {
+				top: 3.5rem;
+				left: 3rem;
+			}
+			.search-results {
+				width: 40%;
+			}
 			.nav-icon {
 				display: none;
 			}
@@ -184,7 +228,7 @@
 				position: inherit;
 				box-shadow: none;
 				background-color: $footercolor;
-				width: 65%;
+				width: 50%;
 
 				ul {
 					list-style: none;
@@ -217,6 +261,28 @@
 			flex-direction: row;
 		}
 	}
+	.favourites {
+		.header-title {
+			a {
+				justify-content: left;
+			}
+		}
+		a {
+			.fave-card {
+				width: 100%;
+				img {
+					max-width: 40%;
+					mask-image: linear-gradient(90deg, black, transparent);
+				}
+				h3 {
+					font-size: 0.6rem;
+				}
+				.fa-chevron-right {
+					font-size: 0.6rem;
+				}
+			}
+		}
+	}
 	.list-bckg {
 		max-width: 100%;
 	}
@@ -224,7 +290,7 @@
 		width: 30%;
 		a {
 			.card-title {
-				font-size: 0.75rem;
+				font-size: 0.7rem;
 			}
 			.card-genre {
 				h4 {
@@ -234,21 +300,6 @@
 		}
 	}
 
-	.fave-card {
-		width: 100%;
-		a {
-			img {
-				max-width: 40%;
-				mask-image: linear-gradient(90deg, black, transparent);
-			}
-			h3 {
-				font-size: 0.6rem;
-			}
-			.fa-chevron-right {
-				font-size: 0.6rem;
-			}
-		}
-	}
 	.games-list {
 		flex-direction: row;
 	}

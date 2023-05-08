@@ -16,10 +16,10 @@ export default function Dashboard({
 }) {
 	useEffect(() => {
 		getGamesForShop();
-	}, []);
+	}, [getGamesForShop]);
 	useEffect(() => {
 		getMyGames();
-	}, []);
+	}, [getMyGames]);
 
 	return (
 		<div className="grid-container">
