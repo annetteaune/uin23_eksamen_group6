@@ -53,8 +53,6 @@ export default function GamePage({
 		Object.assign({}, item, stores[i])
 	);
 
-	//console.log("tags", selectedGame.tags);
-
 	return (
 		<>
 			<Breadcrumbs slug={slug} />
@@ -102,7 +100,9 @@ export default function GamePage({
 						))}{" "}
 					</p>
 				</section>
-				<WordCloud selectedGame={selectedGame.tags} />
+				<section className="wordcloud">
+					<WordCloud tags={selectedGame?.tags} />
+				</section>
 				<section className="platform-area list-bckg">
 					<div>
 						<p>Avaliable platforms:</p>
@@ -119,14 +119,16 @@ export default function GamePage({
 						))}
 					</div>
 				</section>
-					{selectedGame.background_image !== null ? (<section className="img-area">
-					<img src={selectedGame?.background_image} alt={selectedGame.name} />
-					<img
-						src={selectedGame?.background_image_additional}
-						alt={selectedGame?.name}
-					/></section>) : null}
-				
-				
+				{selectedGame.background_image !== null ? (
+					<section className="img-area">
+						<img src={selectedGame?.background_image} alt={selectedGame.name} />
+						<img
+							src={selectedGame?.background_image_additional}
+							alt={selectedGame?.name}
+						/>
+					</section>
+				) : null}
+
 				<section className="plot-area list-bckg">
 					<p>{selectedGame?.description_raw}</p>
 				</section>

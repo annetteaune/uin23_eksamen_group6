@@ -25,7 +25,6 @@ export default function FavouritesPage({ setSelectedId, login, favourites }) {
 			</>
 		);
 	} else {
-		console.log("login", login);
 		return (
 			<article className="mustlogin page-title ">
 				<h2>Favourites</h2>
