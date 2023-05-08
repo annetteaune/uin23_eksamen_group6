@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { fetchSanityGame } from "../../sanity/gameServices";
 import FavBtn from "../FavBtn";
@@ -21,6 +21,8 @@ export default function GamePage({
 	const { slug } = useParams();
 	const location = useLocation();
 
+	const [description, setDescription] = useState([])
+
 	//hente enkelt spill fra sanity
 	const getMyGame = useCallback(
 		async (slug) => {
@@ -34,8 +36,11 @@ export default function GamePage({
 	useEffect(() => {
 		getGame();
 		getShops();
-	}, [slug, getGame, getShops]);
+		////kilde split: https://stackoverflow.com/questions/21895233/how-to-split-string-with-newline-n-in-node
+		setDescription(selectedGame?.description_raw?.split("\n"));
+	}, [slug, getGame, getShops, selectedGame.description_raw]);
 	//console.log("loopsjekk:",selectedGame)
+	console.log(description)
 
 	//hente sanity-info, men bare om man ikke befinner seg i /shop
 	useEffect(() => {
@@ -52,9 +57,7 @@ export default function GamePage({
 	let completeStore = storeNoURL?.map((item, i) =>
 		Object.assign({}, item, stores[i])
 	);
-	//kilde split: https://stackoverflow.com/questions/21895233/how-to-split-string-with-newline-n-in-node
-	const description = selectedGame?.description_raw.split("\n");
-	
+
 	return (
 		<>
 			<Breadcrumbs slug={slug} />
@@ -132,8 +135,8 @@ export default function GamePage({
 				) : null}
 
 				<section className="plot-area list-bckg">
-					{description.map((desc) => (
-						<p>{desc}</p>
+					{description?.map((desc, i) => (
+						<p key={i}>{desc}</p>
 					))}
 				</section>
 			</article>
