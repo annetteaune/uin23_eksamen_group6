@@ -10,7 +10,7 @@ export default function WordCloud({ tags }) {
 		  }))
 		: [];
 
-	console.log(tags);
+
 	//gjemmer clouden om det er svært få tags
 	if (words.length > 2)
 		return (
